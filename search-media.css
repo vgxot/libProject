@@ -1,0 +1,24 @@
+@media only screen and (max-width: 734px) {
+    .top-menu {
+        display: none;
+    }
+    .top-menu-mobile {
+        display: block;
+        height: 62px;
+    }
+    .input{
+        width: 265px;
+    }
+    .button {
+        display: none;
+    }
+    .mobile-button {
+        display: block;
+    }
+    .table-db {
+        display: none;
+    }
+    .mobile-table-db {
+        display: block;
+    }
+}

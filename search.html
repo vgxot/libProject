@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Каталог</title>
+  <link rel="stylesheet" href="uni-css/css.css">
+  <link rel="stylesheet" href="uni-css/header.css">
+  <link rel="stylesheet" href="uni-css/footer.css">
+  <link rel="stylesheet" href="search.css">
+  <link rel="stylesheet" href="search-media.css">
+  <link rel="stylesheet" href="uni-css/media.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image" href="favicon/library-mini-logo-white.svg">
+</head>
+<body>
+<div class="top-menu">
+  <a class="top-menu-link" href="main.html">Главная</a>
+  <a class="top-menu-link" href="search.html">Каталог</a>
+  <a class="top-menu-link" href="forum.html">Форум</a>
+  <a class="top-menu-link" href="news.html">Новости</a>
+  <a class="top-menu-link" href="account.html">Аккаунт</a>
+</div>
+<div class="top-menu-mobile">
+  <button id="top-btn" class="top-menu-mobile-link">
+    <img id="top-btn-img" class="img-menu" src="images/menu-open.svg">
+  </button>
+  <a class="top-menu-mobile-link img-main" href="main.html"></a>
+  <a class="top-menu-mobile-link img-account" href="account.html"></a>
+</div>
+<div id="top-menu" class="anim">
+  <div id="top-menu-block" class="top-menu-mobile-block">
+    <a class="top-menu-mobile-block-link" href="search.html">Каталог</a>
+    <a class="top-menu-mobile-block-link" href="forum.html">Форум</a>
+    <a class="top-menu-mobile-block-link" href="news.html">Новости</a>
+    <a class="top-menu-mobile-block-link" href="account.html">Аккаунт</a>
+  </div>
+</div>
+  <div class="main-0"></div>
+  <div class="search-block">
+    <input placeholder="найдётся всё" class="input" type="search" id="search">
+    <button class="button">Найти</button>
+    <button class="mobile-button">
+      <img class="img-search" src="/images/search.svg">
+    </button>
+  </div>
+  <div class="table-db">
+    <table class="table">
+      <thead>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="tr-image"></td>
+        <td>ячейка 1</td>
+        <td>ячейка 1</td>
+        <td>2022</td>
+        <td>ячейка 1</td>
+      </tr>
+      <tr>
+        <td>ячейка 2</td>
+        <td>ячейка 2</td>
+        <td>ячейка 2</td>
+        <td>ячейка 2</td>
+        <td>ячейка 2</td>
+      </tr>
+    </table>
+  </div>
+  <div class="mobile-table-db">
+    <div class="d1">
+      <div class="img">
+        <img class="img-book" src="/images/book1.webp" width="100px" height="155px">
+      </div>
+      <div class="text">
+        <h1 class="text-h1">Психология масс и анализ человеческого “Я”</h1>
+        <h5 class="text-h5">Зигмунд Фрейд</h5>
+        <h3 class="text-h2">4,2
+          <img class="star" src="/images/star.svg" width="13px" height="12px">
+        </h3>
+        <h5 class="text-h5">260 страниц</h5>
+        <h5 class="text-h5">1921</h5>
+        <h5 class="text-h5">16+</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-block-logo">
+    </div>
+    <div class="footer-link-group">
+      <a class="footer-link" href="statistics.html">Статистика сайта</a>
+      <a class="footer-link" href="library-map.html">Карта сайта</a>
+      <a class="footer-link" href="help.html">Помощь</a>
+    </div>
+    <a class="sk-link" href="https://sk.ru"></a>
+    <div class="footer-copyright">© 2022 Library</div>
+  </div>
+  <script type="text/javascript" src="/js/mobile-btn.js"></script>
+  <script type="text/javascript" src="/js/database.js"></script>
+</body>
+</html>

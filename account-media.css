@@ -1,0 +1,20 @@
+@media only screen and (max-width: 734px) {
+    .block-1 {
+        display: none;
+    }
+    .block-2 {
+        display: none;
+    }
+    .block-3 {
+        display: none;
+    }
+    .block-1-mobile {
+        display: block;
+    }
+    .block-2-mobile {
+        display: block;
+    }
+    .block-3-mobile {
+        display: block;
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Library</title>
+  <link rel="stylesheet" href="uni-css/css.css">
+  <link rel="stylesheet" href="uni-css/header.css">
+  <link rel="stylesheet" href="uni-css/footer.css">
+  <link rel="stylesheet" href="settings.css">
+  <link rel="stylesheet" href="settings-media.css">
+  <link rel="stylesheet" href="uni-css/media.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image" href="favicon/library-mini-logo-white.svg">
+</head>
+<body>
+  <div id="menu">
+    <div class="top-menu">
+      <a class="top-menu-link" href="main.html">Главная</a>
+      <a class="top-menu-link" href="search.html">Каталог</a>
+      <a class="top-menu-link" href="forum.html">Форум</a>
+      <a class="top-menu-link" href="news.html">Новости</a>
+      <a class="top-menu-link" href="account.html">Аккаунт</a>
+    </div>
+    <div  id="top-menu-m" class="top-menu-mobile">
+      <button id="top-btn" class="top-menu-mobile-link">
+        <img id="top-btn-img" class="img-menu" src="images/menu-open.svg">
+      </button>
+      <a class="top-menu-mobile-link img-main" href="main.html"></a>
+      <a class="top-menu-mobile-link img-account" href="account.html"></a>
+    </div>
+    <div id="top-menu" class="anim">
+      <div id="top-menu-block" class="top-menu-mobile-block">
+        <a class="top-menu-mobile-block-link" href="search.html">Каталог</a>
+        <a class="top-menu-mobile-block-link" href="forum.html">Форум</a>
+        <a class="top-menu-mobile-block-link" href="news.html">Новости</a>
+        <a class="top-menu-mobile-block-link" href="account.html">Аккаунт</a>
+      </div>
+    </div>
+  </div>
+  <div class="block-0"></div>
+  <div class="block-1">Настройки аккаунта</div>
+  <form id="form" class="form">
+    <div>
+      <input class="hidden" id="upload" type="file">
+    </div>
+    <div>
+      <input type="text" name="image" placeholder="Название изображения">
+      <input type="hidden" name="imagename" value="">
+      <input type="text" name="username" value="" placeholder="username">
+    </div>
+    <div>
+      <button class="button">Подтвердить</button>
+    </div>
+    <div>
+      <input type="text">
+    </div>
+  </form>
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/mobile-btn.js"></script>
+  <script type="text/javascript" src="uploadFile.js"></script>
+</body>
+</html>

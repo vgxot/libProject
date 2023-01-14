@@ -1,0 +1,27 @@
+@media only screen and (max-width: 734px) {
+    .block-1 {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+    }
+    .main-text {
+        font-size: 32px;
+        width: 300px;
+        text-align: center;
+    }
+    .button-theme-blur {
+        backdrop-filter: blur(3px);
+        margin-top: 75px;
+        z-index: auto;
+    }
+    .block-relevance {
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
+    .relevance {
+        font-size: 24px;
+        text-align: center;
+    }
+}

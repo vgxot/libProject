@@ -1,0 +1,237 @@
+body, h1, h2, h3, h4, p, a {
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+    font-family: "Nunito", sans-serif;
+    text-decoration: none;
+}
+body {
+    background-color: #f5f5f5;
+}
+button {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+::selection {
+    background: rgba(170, 255, 0, 0.38);
+}
+
+
+            /* основные блоки */
+.block-1 {
+    width: 100%;
+    height: 120vh;
+    background-image: url("images/library2.jpg");
+    background-size: cover;
+
+}
+.block-1-text {
+    position: absolute;
+    top: 45%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 65px;
+    color: #F5F5F5;
+    margin-right: 15px;
+    margin-left: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+
+
+
+
+.block-2 {
+    width: 100%;
+    height: 700px;
+}
+.kav {
+    width: 72px;
+    margin: 150px auto 50px;
+    display: block;
+}
+.block-2-text {
+    width: 900px;
+    margin: auto;
+    text-align: center;
+    font-size: 48px;
+    font-weight: lighter;
+    font-family: "Segoe UI", sans-serif;
+}
+
+
+/* общие элементы */
+
+
+.img-1 {
+    background-image: url("/images/ooditwilight.jpg");
+}
+.img-2 {
+    background-image: url("/images/HAM_Kajsa_JoakimSederholm_2000_esillepano.jpg");
+}
+.img-3 {
+    background-image: url("/images/architectureoodi.jpg");
+}
+.block-button{
+    text-decoration: none;
+    height: 30px;
+    position: relative;
+    border-radius: 17px;
+    background-color: rgba(255, 255, 255, 0);;
+    color: #000000;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 3px solid #000000;
+    transition: background-color 350ms ease-in-out,color 350ms ease-in-out;
+    z-index: 1;
+    font-weight: bold;
+    font-family: Nunito, sans-serif;
+}
+.block-button:hover {
+    background-color: rgb(30, 30, 30);
+    color: #ffffff;
+    border: 3px solid #1d1d1f;
+    transition: background-color 350ms ease-in-out,color 350ms ease-in-out;
+}
+.color-backdrop {
+    color: transparent;
+    -webkit-background-clip: text;
+}
+.color-arch{
+    background-image: linear-gradient(to right, #ff6300, #0048ff);
+}
+.color-art{
+    background-image: linear-gradient(to right, #465cec, #84ab26);
+}
+.color-serv{
+    background-image: linear-gradient(to right, #d2ab93, #d77d09);
+}
+
+
+/* блок 3 для больших экранов */
+
+
+.block-3 {
+    width: 100%;
+}
+.block-3-section {
+    width: 1200px;
+    height: 700px;
+
+    border-radius: 25px;
+    background-size: cover;
+    margin: 150px auto 130px;
+}
+.block-3-section-2 {
+    width: 1200px;
+    margin: 0 auto;
+    height: 700px;
+
+    border-radius: 25px;
+    background-size: cover;
+}
+.block-3-section-3 {
+    width: 1200px;
+    height: 700px;
+    border-radius: 25px;
+    background-size: cover;
+    margin: 130px auto 150px;
+}
+.section-1 {
+    position: relative;
+    margin-left: 100px;
+    width: 600px;
+    height: 430px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.82);
+    border-radius: 25px;
+    top: 150px;
+}
+.section-main-text {
+    top: 25px;
+    position: relative;
+    text-align: center;
+    color: transparent;
+    font-family: "Nunito", sans-serif;
+    font-size: 56px;
+}
+.section-text {
+    width: 500px;
+    text-align: center;
+    font-size: 28px;
+    font-family: Nunito, sans-serif;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    height: 200px;
+    left: 0;
+    right: 0;
+}
+.btn-block-3 {
+    margin-right: 15px;
+    margin-top: 45px;
+    float: right;
+}
+
+
+
+/* блок 3 для смартфонов */
+
+
+.mobile-block-3 {                               /* общий контейнер */
+    display: none;
+}
+.container {                                    /* личный контейнер каждого блока */
+    width: 100%;
+    height: 550px;
+}
+.mobile-block {                                 /* блок с фото */
+    width: 320px;
+    height: 200px;
+    border-radius: 25px;
+    background-size: cover;
+    margin: 25px auto;
+}
+.mobile-section-main-text {                     /* заглавный текст */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 55px;
+    text-align: center;
+}
+.mobile-section-text {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
+    width: 300px;
+    margin: 0 auto;
+}
+.btn-cont {
+    width: 150px;
+    height: 50px;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-mobile-block-3 {
+    border-radius: 30px;
+    width: 120px;
+    height: 35px;
+    padding: 6px 19px 7px;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1E1E1E;
+    margin-left: 15px;
+}

@@ -1,0 +1,38 @@
+@media only screen and (max-width: 734px) {
+    .top-menu {
+        display: none;
+    }
+    .block-1 {
+        background-position: center;
+    }
+    .block-1-text {
+        font-size: 44px;
+        min-width: 320px;
+        width: 270px;
+        left: 10px;
+        top: 354px;
+        margin-left: 15px;
+    }
+    .top-menu-mobile {
+        display: block;
+        height: 62px;
+    }
+    .block-2 {
+        height: 700px;
+    }
+    .kav {
+        margin-top: 75px;
+        width: 48px;
+    }
+    .block-2-text {
+        font-size: 32px;
+        width: 300px;
+        font-family: "Segoe UI Light", sans-serif;
+    }
+    .block-3 {
+        display: none;
+    }
+    .mobile-block-3 {
+        display: block;
+    }
+}
