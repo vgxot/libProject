@@ -8,7 +8,7 @@ body{
     background-color: rgba(0, 0, 0, 0.3);
 }
 .button-theme {
-    background-image: url("../buttons/light_mode.svg");
+    background-image: url("/buttons/light_mode.svg");
     filter: invert(1);
 }
 .main-text{
