@@ -1,0 +1,74 @@
+.block-0 {
+    width: 100%;
+    height: 75px;
+}
+.block-1 {                          /* титульный блок */
+    width: 100%;
+    height: 300px;
+}
+.block-1-section-1 {                          /* первая секция первого блока */
+    width: 100%;
+    height: 130px;
+    font-size: 64px;
+    text-align: center;
+}
+.block-1-section-2 {                          /* вторая секция первого блока */
+    max-width: 1000px;
+    height: 170px;
+    font-size: 24px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+.block-1-section-2-text-2 {                          /* регулирует ширину описания */
+    max-width: 700px;
+}
+.block-2 {
+
+}
+.floors-block-text-1 {                          /* блоки для текста о этажах */
+    max-width: 1200px;
+    margin: 50px auto 20px;
+}
+.floors-block-text-2 {
+    max-width: 1200px;
+    margin: auto auto 20px;
+}
+.floors-block-text-3 {
+    max-width: 1200px;
+    margin: auto auto 50px;
+}
+.floors-text-1 {                          /* номер этажа */
+    margin: 0 auto;
+    font-size: 48px;
+}
+.floors-text-2 {                          /* оглавление этажа */
+    font-size: 36px;
+    max-width: 900px;
+}
+.floors-text-3 {                          /* описание этажа */
+    font-size: 22px;
+    max-width: 900px;
+}
+.floors-img {                               /* схема этажа */
+    max-width: 1300px;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+.floor-1 {                                                  /* отдельно источник картинки */
+    background-image: url("/images/floor_1.jpg");
+    height: 700px;
+}
+.floor-2 {
+    background-image: url("/images/floor_2.jpg");
+    height: 750px;
+}
+.floor-3 {
+    background-image: url("/images/floor_3.jpg");
+    height:800px;
+}
+.block-3 {                               /* заглушка */
+    width: 100%;
+    height: 100px;
+}
