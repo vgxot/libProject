@@ -184,7 +184,7 @@
             });
         }
     }
-    function timer(callback, delay) {
+    function Timer(callback, delay) {
         /* privates properties */
         let timerId, start, remaining = delay;
 
