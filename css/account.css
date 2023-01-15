@@ -92,7 +92,7 @@ body {
     padding-bottom: 10px;
 }
 .block-2-button-left {                  /* левая кнопка */
-    background-image: url("/images/arrow_left.svg");
+    background-image: url("/buttons/arrow_left.svg");
 }
 .block-2-button-right {                  /* правая кнопка */
     position: relative;
@@ -102,7 +102,7 @@ body {
     float: right;
     margin-right: 13px;
     margin-top: 31px;
-    background-image: url("/images/arrow_right.svg");
+    background-image: url("/buttons/arrow_right.svg");
 }
 .img {                                 /* общий стиль картинок */
     float: left;

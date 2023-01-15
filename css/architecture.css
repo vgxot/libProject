@@ -137,3 +137,70 @@
     margin-top: -35px;
     float: right;
 }
+.block-5 {
+    margin-bottom: 150px;
+}
+.carousel-block {
+    margin: 10px auto;
+    max-width: 70%;
+    border-radius: 35px;
+}
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 35px;
+}
+.carousel-button-left,
+.carousel-button-right {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    transform: translateY(-50%) translateZ(0);
+    cursor: pointer;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    filter: invert(1);
+    background-repeat: no-repeat;
+}
+.carousel-button-left {
+    background-image: url("/buttons/arrow_left.svg");
+}
+.carousel-button-right {
+    left: auto;
+    right: 20px;
+    background-image: url("/buttons/arrow_right.svg");
+}
+.carousel-wrap {
+    display: flex;
+    transition: transform 750ms;
+    will-change: transform;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    border-radius: 35px;
+}
+.carousel-item {
+    flex: 0 0 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 35px;
+}
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-size: cover;
+}
+.no-transition {
+    transition: 0s;
+}
