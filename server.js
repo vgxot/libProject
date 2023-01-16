@@ -1,24 +1,12 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-const express = require('express');
-const userRouter = require('/user.routes')
 
-const PORT = 3000;
-
-const app = express();
-
-app.use('/api', userRouter)
-
-app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`));
-
-
-
-/*const server = http.createServer();
+const server = http.createServer();
 server.on('request', (req, res) => {
-    /!*console.log(req.url);
+    /*console.log(req.url);
     console.log(req.method);
-    console.log(req.headers);*!/
+    console.log(req.headers);*/
     if (req.url === '/') {
         sendRes('main.html', 'text/html', res);
     }
@@ -42,7 +30,15 @@ server.on('request', (req, res) => {
 }).listen(3000, () => console.log('server работает'));
 
 function sendRes(url, contentType, res) {
-    let file = path.join(__dirname +'/', url);
+    let folder = path.extname(url);
+    if (folder === ".html") {
+        folder = 'html';
+    }
+    else {
+        folder = '';
+    }
+    let file = path.join(__dirname +'/'+ folder, url);
+    console.log(`отправляю файл: ${file}`)
     fs.readFile(file, (err, content) => {
         if (err) {
              res.writeHead(404);
@@ -70,4 +66,4 @@ function getContentType(url) {
         default:
             return "application/octet-stream";
     }
-}*/
+}
