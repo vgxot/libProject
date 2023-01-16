@@ -29,6 +29,7 @@
     max-width: 2000px;
     margin-right: auto;
     margin-left: auto;
+    box-shadow: 0 -20px 75px 16px #c9782c;
 }
 .block-3 {
     height: 500px;
