@@ -48,7 +48,7 @@
     width: 150px;
 }
 .sk-link{                                       /* ссылка на Сколково */
-    background-image: url("/images/sk.svg");
+    background-image: url("/buttons/sk.svg");
     position: relative;
     float: right;
     background-size: cover;

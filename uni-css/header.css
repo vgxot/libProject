@@ -61,13 +61,13 @@
     margin-left: 35px;
 }
 .button-open {
-    background-image: url("/images/menu-open.svg");
+    background-image: url("/buttons/menu-open.svg");
 }
 .button-close {
-    background-image: url("/images/menu-close.svg");
+    background-image: url("/buttons/menu-close.svg");
 }
 .img-main {
-    background-image: url("/images/library-mini-logo-white.svg");
+    background-image: url("/buttons/library-mini-logo-white.svg");
     position: absolute;
     width: 32px;
     height: 32px;
@@ -81,7 +81,7 @@
     height: 32px;
     position: absolute;
     right:  max(0px,env(safe-area-inset-left));
-    background-image: url("/images/account_circle_FILL0_wght400_GRAD0_opsz48.svg");
+    background-image: url("/buttons/account_circle_FILL0_wght400_GRAD0_opsz48.svg");
     filter: invert(1);
     margin-right: 35px;
     top: 15px;
