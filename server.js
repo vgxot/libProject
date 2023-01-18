@@ -1,5 +1,5 @@
 const express = require('express')
-const userRouter = require('./user.routes/user.routes')
+const userRouter = require('./backend/user.routes/user.routes')
 const path = require("path");
 const PORT = 3000
 
@@ -7,10 +7,10 @@ const app = express()
 
 app.use(express.json())
 app.use("/api", userRouter)
+app.use(express.static(path.resolve(__dirname, 'frontend')))
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/html/main.html')
 })
-app.get('/')
 app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`))
 /*
 const http = require('http');

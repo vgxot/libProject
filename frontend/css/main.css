@@ -23,7 +23,7 @@ button {
 .block-1 {
     width: 100%;
     height: 120vh;
-    background-image: url("/images/library2.jpg");
+    background-image: url("/frontend/images/library2.jpg");
     background-size: cover;
 
 }
@@ -62,13 +62,13 @@ button {
 
 
 .img-1 {
-    background-image: url("/images/ooditwilight.jpg");
+    background-image: url("/frontend/images/ooditwilight.jpg");
 }
 .img-2 {
-    background-image: url("/images/HAM_Kajsa_JoakimSederholm_2000_esillepano.jpg");
+    background-image: url("/frontend/images/HAM_Kajsa_JoakimSederholm_2000_esillepano.jpg");
 }
 .img-3 {
-    background-image: url("/images/architectureoodi.jpg");
+    background-image: url("/frontend/images/architectureoodi.jpg");
 }
 .block-button{
     text-decoration: none;

@@ -1,4 +1,4 @@
-const db = require('../database/database')
+const db = require('../../frontend/database/database')
 function date() {
     let currentDate = new Date();               // проблемы с записью месяца и числа, начинающихся с нуля
     return currentDate.getFullYear() + "-"

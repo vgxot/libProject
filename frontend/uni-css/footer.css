@@ -18,7 +18,7 @@
     margin-right: auto;
     width: 75px;
     height: 70px;
-    background-image: url("/favicon/library-mini-logo-white.svg");
+    background-image: url("/frontend/favicon/library-mini-logo-white.svg");
     background-size: 75px;
 }
 .footer-link-group {                            /* группа ссылок */
@@ -48,7 +48,7 @@
     width: 150px;
 }
 .sk-link{                                       /* ссылка на Сколково */
-    background-image: url("/buttons/sk.svg");
+    background-image: url("/frontend/buttons/sk.svg");
     position: relative;
     float: right;
     background-size: cover;

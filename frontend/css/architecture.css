@@ -23,7 +23,7 @@
     letter-spacing: -1px;
 }
 .block-2 {
-    background-image: url("/images/oodi-arch.jpg");
+    background-image: url("/frontend/images/oodi-arch.jpg");
     background-size: cover;
     min-height: 500px;
     max-width: 2000px;
@@ -65,7 +65,7 @@
     margin: 150px auto 150px;
 }
 .img-1 {
-    background-image: url("/images/architectureoodi.jpg");
+    background-image: url("/frontend/images/architectureoodi.jpg");
     background-size: cover;
 }
 .section-1 {
@@ -172,12 +172,12 @@
     background-repeat: no-repeat;
 }
 .carousel-button-left {
-    background-image: url("/buttons/arrow_left.svg");
+    background-image: url("/frontend/buttonsd/buttons/arrow_left.svg");
 }
 .carousel-button-right {
     left: auto;
     right: 20px;
-    background-image: url("/buttons/arrow_right.svg");
+    background-image: url("/frontend/buttonsd/buttons/arrow_right.svg");
 }
 .carousel-wrap {
     display: flex;
