@@ -1,19 +1,34 @@
+const express = require('express')
+const userRouter = require('./user.routes/user.routes')
+const path = require("path");
+const PORT = 3000
+
+const app = express()
+
+app.use(express.json())
+app.use("/api", userRouter)
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/html/main.html')
+})
+app.get('/')
+app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`))
+/*
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
 
 const server = http.createServer();
 server.on('request', (req, res) => {
-    /*console.log(req.url);
+    /!*console.log(req.url);
     console.log(req.method);
-    console.log(req.headers);*/
+    console.log(req.headers);*!/
     if (req.url === '/') {
         sendRes('main.html', 'text/html', res);
     }
-    else if (/\/uploads\/[^\/]+$/.test(req.url) && req.method === 'POST') {
+/!*    else if (/\/uploads\/[^\/]+$/.test(req.url) && req.method === 'POST') {
         console.log('upload files');
-        saveUploadFile(req, res);
-    }
+        saveUploadFile(req, res); // для сохранения файла на сервере
+    }*!/
     else if (req.url === '/save-form') {
         let body = '';
         req.on('data', chunk => {
@@ -66,4 +81,4 @@ function getContentType(url) {
         default:
             return "application/octet-stream";
     }
-}
+}*/

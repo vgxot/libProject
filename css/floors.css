@@ -57,15 +57,15 @@
     margin-right: auto;
 }
 .floor-1 {                                                  /* отдельно источник картинки */
-    background-image: url("/images/floor_1.jpg");
+    background-image: url("/images/floor-1.jpg");
     height: 700px;
 }
 .floor-2 {
-    background-image: url("/images/floor_2.jpg");
+    background-image: url("/images/floor-2.jpg");
     height: 750px;
 }
 .floor-3 {
-    background-image: url("/images/floor_3.jpg");
+    background-image: url("/images/floor-3.jpg");
     height:800px;
 }
 .block-3 {                               /* заглушка */
