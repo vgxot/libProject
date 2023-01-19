@@ -1,16 +1,40 @@
 const express = require('express')
-const userRouter = require('./backend/user.routes/user.routes')
-const path = require("path");
-const PORT = 3000
+const path = require('path')
+const PORT = 3000;
+const db = require('/backend/database/database')
 
 const app = express()
 
 app.use(express.json())
 app.use("/api", userRouter)
 app.use(express.static(path.resolve(__dirname, 'frontend')))
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/html/main.html')
+
+app.get('/api/users', (req, res) => {
+    const {username, name} = req.body
+    db.none('INSERT INTO users("username", "name", "reg_time", "reg_date") VALUES($1, $2, $3, $4)'
+        , [username, name, time(), date()])
+        .then(() => {
+            console.log('Все круто, в базу записали')
+            res.end('ok');
+        })
+        .catch(() => {
+            console.log('не работает')
+            res.end('error');
+        });
+    res.status(200);
 })
+
+app.post('/api/users', (req, res) => {
+
+})
+
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/frontend/html/main.html')
+})
+
+
+
 app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`))
 /*
 const http = require('http');

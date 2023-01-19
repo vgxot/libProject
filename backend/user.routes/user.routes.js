@@ -1,3 +1,4 @@
+/*
 const Router = require('express')
 const router = new Router()
 const userController = require('../user.control/user.control')
@@ -8,4 +9,4 @@ router.get('/user/:id', userController.getOneUser)
 router.put('/user', userController.updateUser)
 router.delete('/user/:id', userController.deleteUser)
 
-module.exports = router
+module.exports = router*/
