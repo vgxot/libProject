@@ -1,12 +1,14 @@
 const express = require('express')
 const path = require('path')
 const PORT = 3000;
+/*
 const db = require('/backend/database/database')
+*/
 
 const app = express()
 
 app.use(express.json())
-app.use("/api", userRouter)
+/*app.use("/api", userRouter)*/
 app.use(express.static(path.resolve(__dirname, 'frontend')))
 
 app.get('/api/users', (req, res) => {
