@@ -1,30 +1,13 @@
 const express = require('express')
 const path = require('path')
 const PORT = 3000;
-/*
-const db = require('/backend/database/database')
-*/
+
 
 const app = express()
 
 app.use(express.json())
 /*app.use("/api", userRouter)*/
-app.use(express.static(path.resolve(__dirname, 'frontend')))
-
-app.get('/api/users', (req, res) => {
-    const {username, name} = req.body
-    db.none('INSERT INTO users("username", "name", "reg_time", "reg_date") VALUES($1, $2, $3, $4)'
-        , [username, name, time(), date()])
-        .then(() => {
-            console.log('Все круто, в базу записали')
-            res.end('ok');
-        })
-        .catch(() => {
-            console.log('не работает')
-            res.end('error');
-        });
-    res.status(200);
-})
+app.use(express.static(path.resolve('/frontend')))
 
 app.post('/api/users', (req, res) => {
 
