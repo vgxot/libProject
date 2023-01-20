@@ -13,25 +13,25 @@
   <link rel="icon" type="image/svg" href="favicon/library-mini-logo-white.svg">
 </head>
 <body>
-  <div class="block-registration" id="register" v-cloak>
+  <div class="block-registration" id="register">
     <div class="block-reg-0"></div>
       <div class="title-text">Регистрация</div>
-      <form class="form-reg">
+      <form class="form-reg" @submit.prevent="createUser">
           <div class="form-block">
-          <input type="text" class="form-control" id="username" placeholder="Никнейм" v-model="form.name">
+          <input type="text" class="form-control" id="username" placeholder="Никнейм" v-model="form.username">
       </div>
           <div class="form-block">
-          <input type="text" class="form-control" id="name" placeholder="Имя" v-model="form.value">
+          <input type="text" class="form-control" id="name" placeholder="Имя" v-model="form.name">
       </div>
           <div class="form-block">
-          <input type="password" class="form-control" id="password" placeholder="Пароль" v-model="form.value">
+          <input type="password" class="form-control" id="password" placeholder="Пароль" v-model="form.password">
       </div>
 <!--      <div class="login-by">
           <div class="mini-log gosuslugi"></div>
           <div class="mini-log apple"></div>
           <div class="mini-log"></div>
       </div>-->
-          <button class="reg-button" type="submit" :disabled="!canCreate">Зарегистрировать</button>
+          <button class="reg-button" type="submit" :disabled="!canRegister">Зарегистрировать</button>
       </form>
   </div>
   <script type="module" src="js/register.js"></script>

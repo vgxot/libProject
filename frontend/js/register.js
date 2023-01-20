@@ -1,6 +1,6 @@
-const vue = require('vue')
+import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.esm.browser.js'
 
-new vue({
+new Vue({
     el: "#register",
     data() {
         return {
@@ -9,21 +9,18 @@ new vue({
                 name: '',
                 password: ''
             },
-            users: []
         }
     },
     computed: {                     // закрывает доступ к кнопке регистрации пока не будут заполнены все поля
-        canCreate() {
+        canRegister() {
             return this.form.username.trim() && this.form.name.trim() && this.form.password.trim()
         }
     },
     methods: {
         async createUser() {
-            const {user} = this.form                                             //
+            const {...data} = this.form
 
-            const newUser = await request('/api/users', 'POST', user)               //
-
-            this.users.push(newUser)                                                //
+            const newUser = await request('/api/user', 'POST', data)     // отсылает json файл с данным ввода
 
             this.form.username = this.form.name = this.form.password = ''           // убирает значения в полях
         }

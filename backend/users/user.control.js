@@ -16,18 +16,17 @@ function time() {
 class UserControl {
     async createUser(req, res) {
         const {username, name, password} = req.body
-        let salt = crypt.genSaltSync(10);                   // создание соли
+        let salt = crypt.genSaltSync(10);                  // создание соли
         let hash = crypt.hashSync(password, salt);                // хеширование и соление пароля
-        let role = "user";
         const newUser = db.none('INSERT INTO users("username", "name", "password", "reg_date", "reg_time", "role") ' +
             'VALUES($1, $2, $3, $4, $5, $6)'
-            , [username, name, hash, date(), time(), role])
+            , [username, name, hash, date(), time(), "user"])
             .then(() => {
-                console.log('Все круто, в базу записали')
+                console.log('Все круто, в базу записали');
                 res.end('ok');
             })
             .catch(() => {
-                console.log('не работает')
+                console.log('не работает');
                 res.end('error');
             });
     }
