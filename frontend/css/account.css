@@ -12,7 +12,7 @@ body {
 }
 .block-1-mobile-bkgdphto {                  /* фон профиля */
     height: 200px;
-    background-image: url("/frontend/images/blue-abstract-2.jpg");
+    background-image: url("/images/blue-abstract-2.jpg");
     background-size: cover;
 }
 .block-1-mobile-top-1 {                  /* меню профиля */
@@ -30,7 +30,7 @@ body {
     margin-right: auto;
     bottom: 60px;
     border-radius: 35px;
-    background-image: url("/frontend/images/persik-tiger.png");
+    background-image: url("/images/persik-tiger.png");
     background-size: cover;
 }
 .block-1-mobile-top-1-block-text {                  /* блок с именем */
@@ -92,7 +92,7 @@ body {
     padding-bottom: 10px;
 }
 .block-2-button-left {                  /* левая кнопка */
-    background-image: url("/frontend/buttons/arrow_left.svg");
+    background-image: url("/buttons/arrow_left.svg");
 }
 .block-2-button-right {                  /* правая кнопка */
     position: relative;
@@ -102,7 +102,7 @@ body {
     float: right;
     margin-right: 13px;
     margin-top: 31px;
-    background-image: url("/frontend/buttons/arrow_right.svg");
+    background-image: url("/buttons/arrow_right.svg");
 }
 .img {                                 /* общий стиль картинок */
     float: left;
@@ -124,19 +124,19 @@ body {
 /* отдельно каждая картинка */
 
 .block-2-mobile-achievement-1 {
-    background-image: url("/frontend/images/medalKay2.png");
+    background-image: url("/images/medalKay2.png");
 }
 .block-2-mobile-achievement-2 {
-    background-image: url("/frontend/images/forTacticalOperations2.png");
+    background-image: url("/images/forTacticalOperations2.png");
 }
 .block-2-mobile-achievement-3 {
-    background-image: url("/frontend/images/strategicOperations2.png");
+    background-image: url("/images/strategicOperations2.png");
 }
 .block-2-mobile-achievement-4 {
-    background-image: url("/frontend/images/makerOfHistory2.png");
+    background-image: url("/images/makerOfHistory2.png");
 }
 .block-2-mobile-achievement-5 {
-    background-image: url("/frontend/images/heroesOfRassenay.png");
+    background-image: url("/images/heroesOfRassenay.png");
 }
 
 /* блок 3 */

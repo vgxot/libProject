@@ -17,9 +17,11 @@ class UserControl {
     async createUser(req, res) {
         const {username, name, password} = req.body
         let salt = crypt.genSaltSync(10);                   // создание соли
-        let hash = crypt.hashSync(password, salt)                  // хеширование и соление пароля
-        const newUser = db.none('INSERT INTO users("username", "name", "password", "reg_date", "reg_time") VALUES($1, $2, $3, $4, $5)'
-            , [username, name, hash, date(), time()])
+        let hash = crypt.hashSync(password, salt);                // хеширование и соление пароля
+        let role = "user";
+        const newUser = db.none('INSERT INTO users("username", "name", "password", "reg_date", "reg_time", "role") ' +
+            'VALUES($1, $2, $3, $4, $5, $6)'
+            , [username, name, hash, date(), time(), role])
             .then(() => {
                 console.log('Все круто, в базу записали')
                 res.end('ok');
@@ -29,11 +31,17 @@ class UserControl {
                 res.end('error');
             });
     }
-    async getUsers(req, res) {
-
-    }
-    async getOneUser(req, res) {
-
+    async userBeAuthor(req, res) {
+        const {username} = req.body;
+        await db.none(`UPDATE users SET role = 'author' WHERE username LIKE $1`, [username])
+            .then(() => {
+                console.log(`Все круто, ${username} стал автором`)
+                res.end('ok');
+            })
+            .catch(() => {
+                console.log('что-то не так')
+                res.end('error');
+            });
     }
     async updateUser(req, res) {
 

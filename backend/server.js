@@ -9,11 +9,14 @@ app.use(express.json())
 
 app.use('/api', userRouter)
 
-app.use(express.static((path.resolve(__dirname + '/frontend'))))
+app.use(express.static((path.resolve(__dirname + '/../frontend'))))
 
 app.get('/', function (req, res) {
-    res.sendFile(path.resolve(__dirname, '../', 'frontend/html/main.html'))
+    res.sendFile(path.resolve(__dirname, '../frontend/main.html'))
     res.status(200)
+})
+app.get('/register.html', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../frontend/register.html'))
 })
 
 app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`))

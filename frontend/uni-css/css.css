@@ -21,23 +21,23 @@ button {
     font-family: "Nunito";
     font-style: normal;
     font-weight: 400;
-    src: url("/frontend/fonts/Nunito-VariableFont_wght.ttf")
+    src: url("/fonts/Nunito-VariableFont_wght.ttf")
 }
 @font-face {
     font-family: "Raleway";
     font-style: normal;
     font-weight: 400;
-    src: url("/frontend/fonts/Raleway-VariableFont_wght.ttf")
+    src: url("/fonts/Raleway-VariableFont_wght.ttf")
 }
 @font-face {
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 400;
-    src: url("/frontend/fonts/Montserrat-VariableFont_wght.ttf")
+    src: url("/fonts/Montserrat-VariableFont_wght.ttf")
 }
 @font-face {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    src: url("/frontend/fonts/Inter-VariableFont_slnt,wght.ttf")
+    src: url("/fonts/Inter-VariableFont_slnt,wght.ttf")
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+  <link rel="stylesheet" href="uni-css/css.css">
+  <link rel="stylesheet" href="uni-css/header.css">
+  <link rel="stylesheet" href="uni-css/footer.css">
+  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="css/register-media.css">
+  <link rel="stylesheet" href="uni-css/media.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg" href="favicon/library-mini-logo-white.svg">
+</head>
+<body>
+  <div class="block-registration" id="register" v-cloak>
+    <div class="block-reg-0"></div>
+      <div class="title-text">Регистрация</div>
+      <form class="form-reg">
+          <div class="form-block">
+          <input type="text" class="form-control" id="username" placeholder="Никнейм" v-model="form.name">
+      </div>
+          <div class="form-block">
+          <input type="text" class="form-control" id="name" placeholder="Имя" v-model="form.value">
+      </div>
+          <div class="form-block">
+          <input type="password" class="form-control" id="password" placeholder="Пароль" v-model="form.value">
+      </div>
+<!--      <div class="login-by">
+          <div class="mini-log gosuslugi"></div>
+          <div class="mini-log apple"></div>
+          <div class="mini-log"></div>
+      </div>-->
+          <button class="reg-button" type="submit" :disabled="!canCreate">Зарегистрировать</button>
+      </form>
+  </div>
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>

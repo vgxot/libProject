@@ -12,14 +12,14 @@ new vue({
             users: []
         }
     },
-    computed: {                     // закрывает доступ к кнопке регистрации пока не буду заполнены все поля
+    computed: {                     // закрывает доступ к кнопке регистрации пока не будут заполнены все поля
         canCreate() {
             return this.form.username.trim() && this.form.name.trim() && this.form.password.trim()
         }
     },
     methods: {
         async createUser() {
-            const {...user} = this.form                                             //
+            const {user} = this.form                                             //
 
             const newUser = await request('/api/users', 'POST', user)               //
 
