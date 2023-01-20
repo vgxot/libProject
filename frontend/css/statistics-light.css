@@ -37,7 +37,7 @@ body{
     height: 40px;
     background-size: cover;
     cursor: pointer;
-    background-image: url("/frontend/buttonsd/buttons/dark_mode.svg");
+    background-image: url("/frontend/buttons/dark_mode.svg");
     border: 0;
     filter: invert(100%) sepia(9%) saturate(2%) hue-rotate(303deg) brightness(112%) contrast(92%);
 }
