@@ -1,15 +1,19 @@
 const express = require('express')
 const path = require('path')
+const userRouter = require(__dirname + '/routes/user.routes')
 const app = express()           // инициализация экспресса
 
 const PORT = 3000;
 
+app.use(express.json())
 
+app.use('/api', userRouter)
 
 app.use(express.static((path.resolve(__dirname + '/frontend'))))
-app.get('/', (res, req) => {
-    app.sendFile(__dirname + '/frontend/html/main.html')
-})
 
+app.get('/', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../', 'frontend/html/main.html'))
+    res.status(200)
+})
 
 app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`))
