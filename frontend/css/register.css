@@ -1,13 +1,22 @@
 body {
-    background-image: url("/../images/oodi-wall.jpg");
+    background-image: url("/../images/oodi-porch-mobile.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+}
+.block-0 {
+    width: 100%;
+    height: 350px;
 }
 .block-registration {
-    margin-top: 150px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.34);
     backdrop-filter: blur(10px);
-    margin-left: auto;
-    margin-right: auto;
     width: 450px;
     height: 400px;
     border-radius: 50px;
@@ -29,20 +38,17 @@ body {
 }
 .form-block {
     width: 400px;
-    margin-left: auto;
-    margin-right: auto;
 }
-.form-control {
+.form-input {
     background: #1e1e1e;
     color: #ffffff;
     border: 0;
     font-family: Inter, sans-serif;
-    padding: 5px 14px;
+    padding: 0;
     font-size: 16px;
     border-radius: 7px;
     outline: none;
     height: 40px;
-    width: 350px;
     margin: 10px;
 }
 .login-by {
@@ -63,12 +69,29 @@ body {
 .apple {
     background-image: url("../buttons/apple-white.svg");
 }
-.reg-button {
+.login-block {
+    display: none;
+    position: absolute;
+    width: 450px;
+    height: 400px;
+    top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 17px;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+}
+.login-block-open {
+    display: block;
+}
+.button {
     text-decoration: none;
     height: 50px;
     position: relative;
     border-radius: 17px;
-    background-color: rgba(255, 255, 255, 0);;
+    background-color: rgba(255, 255, 255, 0);
     color: #ffffff;
     font-size: 18px;
     text-align: center;
@@ -76,15 +99,29 @@ body {
     padding-top: 0;
     padding-left: 15px;
     padding-right: 15px;
-    border: 4px solid #1e1e1e;
-    float: right;
     transition: background-color 350ms ease-in-out,color 350ms ease-in-out;
     z-index: 1;
     font-family: Nunito, sans-serif;
+    margin-top: 35px;
 }
-.reg-button:hover {
+.button:hover {
     background-color: rgb(30, 30, 30);
     color: #f5f5f5;
-    border: 4px solid #1d1d1f;
     transition: background-color 350ms ease-in-out, color 350ms ease-in-out;
+}
+.log-btn {
+    float: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+.log-btn:hover {
+
+}
+.reg-btn {
+    float: right;
+    background-color: rgb(30, 30, 30);
+    box-shadow: 0 0 20px 7px #5595A0;
+}
+.reg-btn:hover {
+
 }

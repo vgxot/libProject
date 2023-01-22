@@ -57,5 +57,18 @@ class UserControl {
                 res.end('error');
             });
     }
+    async authUser(req, res) {
+        const {username, password} = req.body;
+        let hash = await db.query(`SELECT password FROM users WHERE username LIKE $1`, [username])
+        console.log(hash);
+/*        if (crypt.compareSync(password, hash)) {
+            console.log(`Все круто, ${username} вошел`);
+            res.end('true');
+        }
+        else {
+            console.log('логин или пароль неверный')
+            res.end('false');
+        }*/
+    }
 }
 module.exports = new UserControl()

@@ -20,9 +20,6 @@
         transform: translateY(-150%);
         animation: ani 500ms forwards;
     }
-    .open-block {
-        display: block;
-    }
     .top-menu-mobile-block {
         transform: translateY(-150%);
         animation: ani 750ms forwards;

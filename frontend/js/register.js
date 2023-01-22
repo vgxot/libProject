@@ -46,3 +46,50 @@ new Vue({
             console.warn('Error:', e.message)
         }
     }
+
+new Vue({
+    el: "#login",
+    data() {
+        return {
+            form: {
+                username: '',
+                password: ''
+            },
+        }
+    },
+    computed: {                     // закрывает доступ к кнопке входа пока не будут заполнены все поля
+        canLogin() {
+            return this.form.username.trim() && this.form.password.trim()
+        }
+    },
+    methods: {
+        async authUser() {
+            const {...data} = this.form
+
+            const authUser = await request('/api/user/auth', 'POST', data)     // отсылает json файл с данным ввода
+
+            this.form.username = this.form.password = ''           // убирает значения в полях
+        }
+    }
+})
+
+async function request(url, method = 'GET', data = null) {
+    try {
+        const headers = {}
+        let body
+
+        if (data) {
+            headers['Content-Type'] = 'application/json'
+            body = JSON.stringify(data)
+        }
+
+        const response = await fetch(url, {
+            method,
+            headers,
+            body
+        })
+        return await response.json()
+    } catch (e) {
+        console.warn('Error:', e.message)
+    }
+}
