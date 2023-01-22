@@ -51,32 +51,27 @@
             <div class="form-block">
                 <input type="password" class="form-input" id="password" placeholder="Пароль" v-model="form.password">
             </div>
-            <!--      <div class="login-by">
-                      <div class="mini-log gosuslugi"></div>
-                      <div class="mini-log apple"></div>
-                      <div class="mini-log"></div>
-                  </div>-->
+            <button @click="loginOpen" id="login-btn" class="log-btn button">Уже есть аккаунт?</button>
             <button class="reg-btn button" type="submit" :disabled="!canRegister">Регистрация</button>
+            <div id="login-block" class="login-block"></div>
+        </form>
+        <!--      <div class="login-by">
+          <div class="mini-log gosuslugi"></div>
+          <div class="mini-log apple"></div>
+          <div class="mini-log"></div>
+      </div>-->
+    </div>
+    <div id="login">
+        <form class="form-reg" @submit.prevent="authUser">
+            <div class="form-block">
+                <input type="text" class="form-input login" id="username" placeholder="Никнейм" v-model="form.username">
+            </div>
+            <div class="form-block">
+                <input type="password" class="form-input" id="password" placeholder="Пароль" v-model="form.password">
+            </div>
+            <button class="log-btn button" type="submit" :disabled="!canLogin">Войти</button>
         </form>
     </div>
-      <div id="login">
-          <form class="form-reg" @submit.prevent="authUser">
-              <div class="form-block">
-                  <input type="text" class="form-input" id="username" placeholder="Никнейм" v-model="form.username">
-              </div>
-              <div class="form-block">
-                  <input type="password" class="form-input" id="password" placeholder="Пароль" v-model="form.password">
-              </div>
-              <!--      <div class="login-by">
-                        <div class="mini-log gosuslugi"></div>
-                        <div class="mini-log apple"></div>
-                        <div class="mini-log"></div>
-                    </div>-->
-              <button class="reg-btn button" type="submit" :disabled="!canRegister">Регистрация</button>
-          </form>
-      </div>
-      <div id="login-block" class="login-block"></div>
-      <button id="login-btn" class="log-btn button">Уже есть аккаунт?</button>
   </div>
   <script type="text/javascript" src="js/reg-open-login.js"></script>
   <script type="module" src="js/register.js"></script>

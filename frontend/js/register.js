@@ -20,13 +20,12 @@ new Vue({
         async createUser() {
             const {...data} = this.form
 
-            const newUser = await request('/api/user', 'POST', data)     // отсылает json файл с данным ввода
-
-            this.form.username = this.form.name = this.form.password = ''           // убирает значения в полях
+            const newUser = await requestReg('/api/user', 'POST', data)     // отсылает json файл с данным ввода
         }
+
     }
     })
-    async function request(url, method = 'GET', data = null) {
+    async function requestReg(url, method = 'GET', data = null) {
         try {
             const headers = {}
             let body
@@ -66,14 +65,14 @@ new Vue({
         async authUser() {
             const {...data} = this.form
 
-            const authUser = await request('/api/user/auth', 'POST', data)     // отсылает json файл с данным ввода
+            const authUser = await requestLogin('/api/user/auth', 'POST', data)     // отсылает json файл с данным ввода
 
-            this.form.username = this.form.password = ''           // убирает значения в полях
+            this.form.username = this.form.name = this.form.password = ''           // убирает значения в полях
         }
     }
 })
 
-async function request(url, method = 'GET', data = null) {
+async function requestLogin(url, method = 'GET', data = null) {
     try {
         const headers = {}
         let body
