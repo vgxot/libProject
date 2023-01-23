@@ -1,6 +1,6 @@
 const db = require('../db/database')
 const crypt = require('bcryptjs')
-const tokenControl = require('/token-control')
+/*const tokenControl = require('/token-control')*/
 function date() {
     let currentDate = new Date();               // проблемы с записью месяца и числа, начинающихся с нуля
     return currentDate.getFullYear() + "-"

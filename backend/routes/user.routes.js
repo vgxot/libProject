@@ -7,4 +7,5 @@ router.post('/user/update', userController.userBeAuthor)    // делает юз
 router.delete('/user', userController.deleteUser)              // удаляет юзера
 router.post('/user/auth', userController.authUser)      // аутентификация юзера
 router.post('/user/logout', userController.logoutUser)  //
+
 module.exports = router

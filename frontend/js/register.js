@@ -8,7 +8,7 @@ new Vue({
                 username: '',
                 name: '',
                 password: ''
-            },
+            }
         }
     },
     computed: {                     // закрывает доступ к кнопке регистрации пока не будут заполнены все поля
@@ -20,9 +20,8 @@ new Vue({
         async createUser() {
             const {...data} = this.form
 
-            const newUser = await requestReg('/api/user', 'POST', data)     // отсылает json файл с данным ввода
+            const librarySearch = await requestReg('/api/library/search', 'POST', data)     // отсылает json файл с данным ввода
         }
-
     }
     })
     async function requestReg(url, method = 'GET', data = null) {
