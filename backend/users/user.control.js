@@ -1,5 +1,6 @@
 const db = require('../db/database')
 const crypt = require('bcryptjs')
+const tokenControl = require('/token-control')
 function date() {
     let currentDate = new Date();               // проблемы с записью месяца и числа, начинающихся с нуля
     return currentDate.getFullYear() + "-"
@@ -22,13 +23,12 @@ class UserControl {
             'VALUES($1, $2, $3, $4, $5, $6)'
             , [username, name, hash, date(), time(), "user"])
             .then(() => {
-                console.log('Все круто, в базу записали');
                 res.end('ok');
             })
             .catch(() => {
-                console.log('не работает');
                 res.end('error');
             });
+        const tokens = tokenControl.generateToken()
     }
     async userBeAuthor(req, res) {
         const {username} = req.body;
@@ -64,12 +64,15 @@ class UserControl {
         hash = hash.substr(14, 60);         // выбирает чисто хэш из строки
         if (crypt.compareSync(password, hash)) {
             console.log(`Все круто, ${username} вошел`);
-            res.end('true');
+            res.json('true');
         }
         else {
             console.log('логин или пароль неверный')
             res.end('false');
         }
+    }
+    async logoutUser(req, res) {
+
     }
 }
 module.exports = new UserControl()
