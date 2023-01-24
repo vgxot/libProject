@@ -1,14 +1,13 @@
 const express = require('express')
 const path = require('path')
-const userRouter = require(__dirname + '/routes/user.routes')
+const router = require(__dirname + '/routes/user.routes')
 const app = express()
-
+const cors = require('cors')
 const PORT = 3000;
 
 app.use(express.json())
-
-app.use('/api', userRouter)
-
+app.use(cors())
+app.use('/api', router)
 app.use(express.static((path.resolve(__dirname + '/../frontend'))))
 
 app.get('/', function (req, res) {

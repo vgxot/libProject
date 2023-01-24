@@ -1,4 +1,3 @@
-/*
 const jwt = require('jsonwebtoken')
 const db = require('../db/database')
 class TokenControl {
@@ -21,4 +20,4 @@ class TokenControl {
     }
 }
 
-module.exports = TokenControl();*/
+module.exports = TokenControl();

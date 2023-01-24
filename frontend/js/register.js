@@ -20,7 +20,8 @@ new Vue({
         async createUser() {
             const {...data} = this.form
 
-            const librarySearch = await requestReg('/api/library/search', 'POST', data)     // отсылает json файл с данным ввода
+            // отсылает json файл с данным ввода
+            const newUser = await requestReg('/api/user', 'POST', data)
         }
     }
     })
@@ -45,6 +46,7 @@ new Vue({
         }
     }
 
+/*
 new Vue({
     el: "#login",
     data() {
@@ -90,4 +92,4 @@ async function requestLogin(url, method = 'GET', data = null) {
     } catch (e) {
         console.warn('Error:', e.message)
     }
-}
+}*/

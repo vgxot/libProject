@@ -23,27 +23,12 @@ class UserControl {
             'VALUES($1, $2, $3, $4, $5, $6)'
             , [username, name, hash, date(), time(), "user"])
             .then(() => {
-                res.end('ok');
+                res.json('ok');
             })
             .catch(() => {
                 res.end('error');
             });
         const tokens = tokenControl.generateToken()
-    }
-    async userBeAuthor(req, res) {
-        const {username} = req.body;
-        await db.none(`UPDATE users SET role = 'author' WHERE username LIKE $1`, [username])
-            .then(() => {
-                console.log(`Все круто, ${username} стал автором`)
-                res.end('ok');
-            })
-            .catch(() => {
-                console.log('что-то не так')
-                res.end('error');
-            });
-    }
-    async updateUser(req, res) {
-
     }
     async deleteUser(req, res) {
         const {username} = req.body;
@@ -72,7 +57,24 @@ class UserControl {
         }
     }
     async logoutUser(req, res) {
+        const {username} = req.body;
+    }
+    async userBeAuthor(req, res) {
+        const {username} = req.body;
+        await db.none(`UPDATE users SET role = 'author' WHERE username LIKE $1`, [username])
+            .then(() => {
+                console.log(`Все круто, ${username} стал автором`)
+                res.end('ok');
+            })
+            .catch(() => {
+                console.log('что-то не так')
+                res.end('error');
+            });
+    }
+    async updateUser(req, res) {
 
     }
+
 }
+
 module.exports = new UserControl()
