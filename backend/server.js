@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const router = require(__dirname + '/routes/user.routes')
+const router = require(__dirname + '/routes/routes')
 const app = express()
 const cors = require('cors')
 const PORT = 3000;

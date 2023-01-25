@@ -65,33 +65,53 @@ input[type="search"]::-webkit-search-cancel-button {
 /* таблица */
 
 
+.books {
 
-.table-db {                 /* блок с таблицей */
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    height: 500px;
 }
-.table {
+.book-item {
+    display: flex;
     width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.book-image {
+    flex: 1;
+}
+.book-image-img {
+    margin-left: 25px;
+    height: 180px;
+    margin-right: 25px;
+}
+.text {
+    color: white;
+    font-size: 13px;
+}
+.book-about {
+    display: inline-block;
+    max-width: 200px;
+    margin-right: 25px;
+    float: left;
+    line-height: 19px;
+}
+.book-name {
+    font-size: 18px;
+    line-height: 120%;
+}
+.book-author {
+    font-size: 15px;
+    margin-top: 7px;
+}
+.book-pages {
+    margin-top: 5px;
+}
+.book-year {
 
 }
-.table-head {
-    text-align: center;
-    font-size: 24px;
-    height: 50px;
+.book-age {
+
 }
-.tr-image {
-    background-image: url("/images/6043944957.webp");
-    border-radius: 15px;
-    width: 130px;
-    height: 200px;
-    background-size: cover;
-}
-.year {
-    width: 50px;
-}
+
+
 
 /* конец таблицы */
 

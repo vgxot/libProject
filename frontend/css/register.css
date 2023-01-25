@@ -69,6 +69,13 @@ body {
 .apple {
     background-image: url("../buttons/apple-white.svg");
 }
+.log-block-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+.log-block-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
 .login-block {
     display: none;
     position: absolute;
@@ -108,7 +115,6 @@ body {
     margin-top: 35px;
 }
 .button:hover {
-    background-color: rgb(30, 30, 30);
     color: #f5f5f5;
     transition: background-color 350ms ease-in-out, color 350ms ease-in-out;
 }
@@ -121,10 +127,10 @@ body {
 
 }
 .reg-btn {
-    float: right;
     background-color: rgb(30, 30, 30);
     box-shadow: 0 0 20px 7px #5595A0;
+    float: right;
 }
 .reg-btn:hover {
-
+    background-color: rgb(61, 61, 61);
 }

@@ -10,6 +10,7 @@ router.post('/user/logout', userController.logoutUser)
 router.post('/user/getToken', userController.logoutUser)
 router.post('/user/token', userController.logoutUser)
 router.post('/user/upload', userController.logoutUser)
-router.get('/user/download', userController.logoutUser)//
+router.get('/user/download', userController.logoutUser)
+router.get('/books', userController.books)
 
 module.exports = router
