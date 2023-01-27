@@ -16,5 +16,3 @@ app.get('/', function (req, res) {
 })
 
 app.listen(PORT, () => console.log(`Сервер запущен. Порт ${PORT}`))
-
-// я устал, у меня какое-то выгорание

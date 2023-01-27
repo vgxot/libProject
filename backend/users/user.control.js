@@ -78,7 +78,7 @@ class UserControl {
         let books = await db.none(`SELECT * FROM books ORDER BY year LIMIT 10`)
         console.log('2')
         res.json(books)
-        console.log('2')
+        console.log('8')
     }
 
 }
