@@ -21,4 +21,46 @@
     .mobile-table-db {
         display: block;
     }
+    .book-item {
+        display: flex;
+        width: 100%;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .book-image {
+        flex: 1;
+    }
+    .book-image-img {
+        margin-left: 25px;
+        height: 180px;
+        margin-right: 25px;
+    }
+    .text {
+        color: white;
+        font-size: 13px;
+    }
+    .book-about {
+        display: inline-block;
+        max-width: 200px;
+        margin-right: 25px;
+        float: left;
+        line-height: 19px;
+    }
+    .book-name {
+        font-size: 18px;
+        line-height: 120%;
+    }
+    .book-author {
+        font-size: 15px;
+        margin-top: 7px;
+    }
+    .book-pages {
+        margin-top: 5px;
+    }
+    .book-year {
+
+    }
+    .book-age {
+
+    }
 }

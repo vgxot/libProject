@@ -75,10 +75,9 @@ class UserControl {
 
     }
     async books(req, res) {
-        let books = await db.none(`SELECT * FROM books ORDER BY year LIMIT 10`)
-        console.log('2')
-        res.json(books)
-        console.log('8')
+        let books = await db.query(`SELECT * FROM books ORDER BY popularity LIMIT 10`)
+        books = JSON.stringify(books);
+        res.end(books)
     }
 
 }

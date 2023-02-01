@@ -70,6 +70,5 @@ function stringLength() {
     }
     console.log('9', length)
     console.log(length)
-    console.log(filesBackend)
 }
 stringLength()
