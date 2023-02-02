@@ -1,10 +1,6 @@
 @media only screen and (max-width: 734px) {
-    .top-menu {
-        display: none;
-    }
     .top-menu-mobile {
-        display: block;
-        height: 62px;
+        background-color: rgba(0, 0, 0, 0.55);
     }
     .input{
         width: 265px;
@@ -21,17 +17,21 @@
     .mobile-table-db {
         display: block;
     }
+    .books {
+        grid-template-columns: 1fr;
+    }
     .book-item {
         display: flex;
-        width: 100%;
-        padding-top: 25px;
-        padding-bottom: 25px;
+        width: 330px;
+        padding: 0;
+        margin: 10px auto 25px;
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 35px;
     }
     .book-image {
-        flex: 1;
+
     }
     .book-image-img {
-        margin-left: 25px;
         height: 180px;
         margin-right: 25px;
     }
@@ -41,8 +41,6 @@
     }
     .book-about {
         display: inline-block;
-        max-width: 200px;
-        margin-right: 25px;
         float: left;
         line-height: 19px;
     }

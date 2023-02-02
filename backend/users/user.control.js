@@ -75,8 +75,21 @@ class UserControl {
 
     }
     async books(req, res) {
-        let books = await db.query(`SELECT * FROM books ORDER BY popularity LIMIT 10`)
+        let query = "*";
+        let limit = 30;
+        let books = await db.query(`SELECT ${query} FROM books ORDER BY popularity LIMIT $1`, [limit])
         books = JSON.stringify(books);
+        res.end(books)
+    }
+    async booksSearch(req, res) {
+        console.log("ищем")
+        let query = req.body;
+        console.log(query);
+        query = query.query
+        console.log(query);
+        let books = await db.query(`SELECT * FROM books WHERE "bookName" LIKE $1`, [query])
+        books = JSON.stringify(books);
+        console.log(books);
         res.end(books)
     }
 
