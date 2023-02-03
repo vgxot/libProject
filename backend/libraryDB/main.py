@@ -70,6 +70,7 @@ for link in links:
 
     count += 1
     time.sleep(2)
+    print(f'записали книгу номер', count)
 
 with open(f'book.json', "a", encoding="utf-8") as json_file:
     json.dump(books_info, json_file, ensure_ascii=False)

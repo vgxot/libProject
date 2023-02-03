@@ -1,5 +1,5 @@
 // этот файл содержит цикл для записи всех книг в базу данных
-
+const fs = require('fs')
 const pgp = require('pg-promise')()
 const cn = {
     host: 'localhost',
@@ -10,21 +10,22 @@ const cn = {
 };
 const db = pgp(cn);
 
-const jsonBook =
+let jsonBook = fs.readFileSync('book.json');
+let books = JSON.parse(jsonBook)
 
-for (k in jsonBook) {
+let k;
+for (k in books) {
     console.log(k)
 }
 
+/*
 for (i in books) {
-    db.none('INSERT INTO books("bookName", "isbn", "author", "pages", "year", "age", "photoLink", "resourseLink", "popularity", "rating") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
-        [book[i], isbn[i], author[i], pages[i], year[i], age[i], resourceLink[i], "none"])
+    db.none('INSERT INTO books("bookName", "isbn", "author", "pages", "year", "age", "photoLink", "resourceLink", "popularity", "rating") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+        [books.bookName[i], books.isbn[i], books.author[i], books.info_volume[i], books.info_year[i], books.info_age[i], books.resourceLink[i], "none", books.popularity[i], books.rating[i]])
         .then(() => {
-            console.log(`записали ${book[i]}, ${isbn[i]}, ${author[i]}, ${pages[i]}, ${year[i]}, ${age[i]}`)
+            console.log(`записали`)
         })
         .catch(() => {
             console.log(`что-то не так ${book[i]}, ${isbn[i]}, ${author[i]}, ${pages[i]}, ${year[i]}`)
         });
-}
-
-<script type="text/javascript" src="book.json"></script>
+}*/
