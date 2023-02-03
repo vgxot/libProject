@@ -54,7 +54,7 @@ if count < 10:
 
         downloadIMG = requests.get(resourceLink).content
         img_link = f'imageBook{count}.jpg'
-        with open(f'imageBook{count}.jpg', 'wb') as img:
+        with open(f'img/imageBook{count}.jpg', 'wb') as img:
             img.write(downloadIMG)
 
         books_info.append(
