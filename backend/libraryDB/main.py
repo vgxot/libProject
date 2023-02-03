@@ -1,3 +1,5 @@
+import time
+
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -26,52 +28,49 @@ for i in links:
 count = 1
 books_info = []
 
-if count < 10:
-    for link in links:
-        req = requests.get(url=link, headers=headers)
-        src = req.text
+for link in links:
+    req = requests.get(url=link, headers=headers)
+    src = req.text
 
-        # with open(f"data/book{count}.html", "w", encoding="utf-8") as file:           # записываем файл
-        #     file.write(src)
+    # with open(f"data/book{count}.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
+    #     src = file.read()
 
-        with open(f"data/book{count}.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
-            src = file.read()
+    soup = BeautifulSoup(src, "lxml")
 
-        soup = BeautifulSoup(src, "lxml")
+    bookName = soup.find("h1", itemprop="name").text
+    author = soup.find("a", itemprop="author").find("span").text
+    rating = soup.find("div", class_="rating-number bottomline-rating").text
+    popularity = soup.find("div", class_="votes-count bottomline-rating-count").text
+    resourceLink = soup.find("img", itemprop="image").get("src")
+    info = soup.find("div", class_="biblio_book_info_detailed_left").find_all("dd")
+    info_age = info[0].text
+    info_year = info[2].text
+    info_volume = info[3].text
+    isbn = soup.find("div", class_="biblio_book_info_detailed_right").find("dd").text
 
-        bookName = soup.find("h1", itemprop="name").text
-        author = soup.find("a", itemprop="author").find("span").text
-        rating = soup.find("div", class_="rating-number bottomline-rating").text
-        popularity = soup.find("div", class_="votes-count bottomline-rating-count").text
-        resourceLink = soup.find("img", itemprop="image").get("src")
-        info = soup.find("div", class_="biblio_book_info_detailed_left").find_all("dd")
-        info_age = info[0].text
-        info_year = info[2].text
-        info_volume = info[3].text
-        isbn = soup.find("div", class_="biblio_book_info_detailed_right").find("dd").text
+    resourceLink = resourceLink[:-4]
 
-        resourceLink = resourceLink[:-4]
+    downloadIMG = requests.get(resourceLink).content
+    img_link = f'imageBook{count}.jpg'
+    with open(f'img/imageBook{count}.jpg', 'wb') as img:
+        img.write(downloadIMG)
+    books_info.append(
+        {
+            "bookName": bookName,
+            "author": author,
+            "rating": rating,
+            "popularity": popularity,
+            "resourceLink": img_link,
+            "info_age": info_age,
+            "info_year": info_year,
+            "info_volume": info_volume,
+            "isbn": isbn
+        }
+    )
+    print(resourceLink)
 
-        downloadIMG = requests.get(resourceLink).content
-        img_link = f'imageBook{count}.jpg'
-        with open(f'img/imageBook{count}.jpg', 'wb') as img:
-            img.write(downloadIMG)
-
-        books_info.append(
-            {
-                "bookName": bookName,
-                "author": author,
-                "rating": rating,
-                "popularity": popularity,
-                "resourceLink": resourceLink,
-                "info_age": info_age,
-                "info_year": info_year,
-                "info_volume": info_volume,
-                "isbn": isbn
-            }
-        )
-        print(bookName)
-        count += 1
+    count += 1
+    time.sleep(5)
 
 with open(f'book.json', "a", encoding="utf-8") as json_file:
     json.dump(books_info, json_file, ensure_ascii=False)
