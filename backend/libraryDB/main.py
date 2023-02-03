@@ -1,5 +1,4 @@
 import time
-
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -70,7 +69,7 @@ for link in links:
     print(resourceLink)
 
     count += 1
-    time.sleep(5)
+    time.sleep(2)
 
 with open(f'book.json', "a", encoding="utf-8") as json_file:
     json.dump(books_info, json_file, ensure_ascii=False)

@@ -10,7 +10,11 @@ const cn = {
 };
 const db = pgp(cn);
 
+const jsonBook =
 
+for (k in jsonBook) {
+    console.log(k)
+}
 
 for (i in books) {
     db.none('INSERT INTO books("bookName", "isbn", "author", "pages", "year", "age", "photoLink", "resourseLink", "popularity", "rating") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
@@ -22,3 +26,5 @@ for (i in books) {
             console.log(`что-то не так ${book[i]}, ${isbn[i]}, ${author[i]}, ${pages[i]}, ${year[i]}`)
         });
 }
+
+<script type="text/javascript" src="book.json"></script>
