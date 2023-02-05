@@ -20,8 +20,8 @@ for (k in books) {
 
 /*
 for (i in books) {
-    db.none('INSERT INTO books("bookName", "isbn", "author", "pages", "year", "age", "photoLink", "resourceLink", "popularity", "rating") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
-        [books.bookName[i], books.isbn[i], books.author[i], books.info_volume[i], books.info_year[i], books.info_age[i], books.resourceLink[i], "none", books.popularity[i], books.rating[i]])
+    db.none('INSERT INTO books("bookName", "isbn", "author", "description", "pages", "year", "age", "photoLink", "resourceLink", "popularity", "rating") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
+        [books.bookName[i], books.isbn[i], books.author[i], books.description[i] books.info_volume[i], books.info_year[i], books.info_age[i], books.resourceLink[i], "none", books.popularity[i], books.rating[i]])
         .then(() => {
             console.log(`записали`)
         })

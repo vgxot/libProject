@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import csv
 
-with open(f"data/1.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
+with open(f"html/litresPopular250pages.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
     src = file.read()
 
 links = []
@@ -18,7 +18,7 @@ print(links)
 
 a = -1
 
-for i in links:             # если есть "разное" в ссылке, то пропускаем так как там нет всех атрибутов
+for i in links:             # если есть "разное" в ссылке, то пропускаем так как там иногда нет всех атрибутов
     a += 1
     if 'raznoe' in i:
         print(f'нашли разное', {links[a]})
