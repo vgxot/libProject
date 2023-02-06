@@ -1,6 +1,5 @@
-// этот файл содержит цикл для записи всех книг в базу данных
-const fs = require('fs')
 const pgp = require('pg-promise')()
+const books = require('./books.json')
 const cn = {
     host: 'localhost',
     port: 5432,
@@ -8,24 +7,18 @@ const cn = {
     user: 'postgres',
     password: '00000000'
 };
+
+let count = 0;
 const db = pgp(cn);
-
-let jsonBook = fs.readFileSync('book.json');
-let books = JSON.parse(jsonBook)
-
-let k;
-for (k in books) {
-    console.log(k)
-}
-
-/*
-for (i in books) {
+let k = -1;
+for (let i in books) {
+    k += 1;
     db.none('INSERT INTO books("bookName", "isbn", "author", "description", "pages", "year", "age", "photoLink", "resourceLink", "popularity", "rating") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
-        [books.bookName[i], books.isbn[i], books.author[i], books.description[i] books.info_volume[i], books.info_year[i], books.info_age[i], books.resourceLink[i], "none", books.popularity[i], books.rating[i]])
+        [books[k].bookName, books[k].isbn, books[k].author, books[k].description, books[k].volume, books[k].info_year, books[k].info_age, books[k].resourceLink, "none", books[k].popularity, books[k].rating])
         .then(() => {
-            console.log(`записали`)
+            console.log(`записали книгу номер ${count += 1}`)
         })
         .catch(() => {
-            console.log(`что-то не так ${book[i]}, ${isbn[i]}, ${author[i]}, ${pages[i]}, ${year[i]}`)
+            console.log(`что-то не так, книга номер ${count += 1}`)
         });
-}*/
+}
