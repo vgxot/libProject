@@ -58,7 +58,7 @@
 }
 .floor-1 {                                                  /* отдельно источник картинки */
     background-image: url("../images/floor-1.jpg");
-    height: 700px;
+    height: 1100px
 }
 .floor-2 {
     background-image: url("../images/floor-2.jpg");

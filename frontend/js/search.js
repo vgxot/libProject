@@ -41,7 +41,7 @@ async function bookSearch() {
             list.innerHTML += `
         <div class="book-item">
             <div class="book-image">
-            <img class="book-image-img" src="/images/books/${content[key].photoLink}.webp">
+            <img class="book-image-img" src="/images/books/${content[key].photoLink}">
             </div>
                 <div class="book-about">
                 <a class="book-name text" href="/${content[key].bookLink}.html">${content[key].bookName}</a>
@@ -70,10 +70,10 @@ async function getResponse() {
         list.innerHTML += `
         <div class="book-item">
             <div class="book-image">
-            <img class="book-image-img" src="/images/books/${content[key].photoLink}.webp">
+            <img class="book-image-img" src="/images/img/${content[key].photoLink}">
             </div>
                 <div class="book-about">
-                <a class="book-name text" href="/${content[key].bookLink}.html">${content[key].bookName}</a>
+                <a class="book-name text" href="${content[key].bookLink}.html">${content[key].bookName}</a>
                 <div class="book-author text">${content[key].author}</div>
                 <div class="book-pages text">${content[key].pages} страниц</div>
                 <div class="book-year text">${content[key].year}</div>

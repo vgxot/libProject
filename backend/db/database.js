@@ -1,5 +1,4 @@
 const pgp = require('pg-promise')()
-const express = require('express')
 const cn = {
     host: 'localhost',
     port: 5432,

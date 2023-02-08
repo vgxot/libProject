@@ -47,20 +47,34 @@ body{
 .block-1 {
 
 }
-.text-1{
+.text-1 {
     font-family: Nunito, sans-serif;
     color: #1e1e1e;
-    font-size: 48px;
+    font-size: 32px;
     margin-top: 3px;
 }
-.text-2{
+.text-2 {
     font-family: Nunito, sans-serif;
     color: transparent;
     -webkit-background-clip: text;
-    font-size: 72px;
+    font-size: 32px;
     font-weight: bolder;
     text-align: center;
 }
+.block-grid-1 {
+    background-color: #404040;
+    height: auto;
+    border-radius: 25px;
+
+}
+.text-grid-1 {
+    font-size: 32px;
+}
+
+
+
+
+
 .line-code-text-2{
     background-image: linear-gradient(to right, #ff5a00, #006fff);
 }
@@ -74,7 +88,11 @@ body {
     transition: background-color 275ms ease-in-out;
 }
 .relevance-text {
+    width: 200px;
+    height: 20px;
     color: #1e1e1e;
+    margin-left: auto;
+    margin-right: auto;
 }
 .footer {
     background-color: rgba(0, 0, 0, 0);

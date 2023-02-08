@@ -1,5 +1,6 @@
 const db = require('../db/database')
 const crypt = require('bcryptjs')
+const {stat} = require("fs");
 /*const tokenControl = require('/token-control')*/
 function date() {
     let currentDate = new Date();               // проблемы с записью месяца и числа, начинающихся с нуля
@@ -76,23 +77,25 @@ class UserControl {
     }
     async books(req, res) {
         let query = "*";
-        let limit = 30;
-        let books = await db.query(`SELECT ${query} FROM books ORDER BY popularity LIMIT $1`, [limit])
+        let limit = 51;
+        let books = await db.query(`SELECT * FROM books ORDER BY popularity DESC LIMIT $1`, [limit])
         books = JSON.stringify(books);
         res.end(books)
     }
     async booksSearch(req, res) {
         console.log("ищем")
         let query = req.body;
-        console.log(query);
         query = query.query
-        console.log(query);
         let books = await db.query(`SELECT * FROM books WHERE "bookName" LIKE $1`, [query])
         books = JSON.stringify(books);
         console.log(books);
         res.end(books)
     }
-
+    async statistics(req, res) {
+        let stat = require('../stat/stat.json')
+        stat = JSON.stringify(stat)
+        res.end(stat)
+    }
 }
 
 module.exports = new UserControl()

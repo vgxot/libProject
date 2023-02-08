@@ -13,5 +13,6 @@ router.post('/user/upload', userController.logoutUser)
 router.get('/user/download', userController.logoutUser)
 router.get('/books', userController.books)
 router.post('/books/search', userController.booksSearch)
+router.get('/statistics', userController.statistics)
 
 module.exports = router
