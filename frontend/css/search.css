@@ -104,8 +104,24 @@ input[type="search"]::-webkit-search-cancel-button {
     font-size: 18px;
     margin-top: 7px;
 }
+.rating-block {
+    display: flex;
+}
+.book-rating {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #B3FF66;
+    font-size: 19px;
+}
+.rating-star {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    height: 16px;
+    width: 17px;
+    margin-left: 5px;
+}
 .book-pages {
-    margin-top: 5px;
+
 }
 .book-year {
 

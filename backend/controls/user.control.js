@@ -1,5 +1,6 @@
 const db = require('../db/database')
 const crypt = require('bcryptjs')
+const tokenControl = require('./token.control')
 const {stat} = require("fs");
 /*const tokenControl = require('/token-control')*/
 function date() {
@@ -29,7 +30,10 @@ class UserControl {
             .catch(() => {
                 res.end('error');
             });
-        const tokens = tokenControl.generateToken()
+        const tokens = tokenControl.generateToken(username);
+        await tokenControl.saveToken(username, tokens.refreshToken);
+
+        res.end()
     }
     async deleteUser(req, res) {
         const {username} = req.body;
@@ -72,30 +76,7 @@ class UserControl {
                 res.end('error');
             });
     }
-    async updateUser(req, res) {
 
-    }
-    async books(req, res) {
-        let query = "*";
-        let limit = 51;
-        let books = await db.query(`SELECT * FROM books ORDER BY popularity DESC LIMIT $1`, [limit])
-        books = JSON.stringify(books);
-        res.end(books)
-    }
-    async booksSearch(req, res) {
-        console.log("ищем")
-        let query = req.body;
-        query = query.query
-        let books = await db.query(`SELECT * FROM books WHERE "bookName" LIKE $1`, [query])
-        books = JSON.stringify(books);
-        console.log(books);
-        res.end(books)
-    }
-    async statistics(req, res) {
-        let stat = require('../stat/stat.json')
-        stat = JSON.stringify(stat)
-        res.end(stat)
-    }
 }
 
 module.exports = new UserControl()

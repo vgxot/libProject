@@ -1,18 +1,24 @@
 const Router = require('express')
 const router = new Router()
-const userController = require('../users/user.control')
+const userControl = require('../controls/user.control')
+const tokenControl = require('../controls/token.control')
+const booksControl = require('../controls/books.control')
 
-router.post('/user', userController.createUser)             // создает юзера
-router.post('/user/update', userController.userBeAuthor)    // делает юзера автором
-router.delete('/user', userController.deleteUser)              // удаляет юзера
-router.post('/user/auth', userController.authUser)      // аутентификация юзера
-router.post('/user/logout', userController.logoutUser)
-router.post('/user/getToken', userController.logoutUser)
-router.post('/user/token', userController.logoutUser)
-router.post('/user/upload', userController.logoutUser)
-router.get('/user/download', userController.logoutUser)
-router.get('/books', userController.books)
-router.post('/books/search', userController.booksSearch)
-router.get('/statistics', userController.statistics)
+
+router.post('/user', userControl.createUser)             // создает юзера
+router.post('/user/update', userControl.userBeAuthor)    // делает юзера автором
+router.delete('/user', userControl.deleteUser)              // удаляет юзера
+router.post('/user/auth', userControl.authUser)      // аутентификация юзера
+router.post('/user/logout', userControl.logoutUser)  // logout юзера
+
+router.post('/user/getToken', tokenControl.generateToken)   // generate token
+router.get('/user/token', tokenControl.saveToken)   // save token
+
+router.post('/books/upload', booksControl.booksUpload)
+router.get('/books/download', booksControl.booksDownload)
+router.get('/books', booksControl.books)
+router.post('/books/search', booksControl.booksSearch)
+router.get('/statistics', booksControl.statistics)
+
 
 module.exports = router
