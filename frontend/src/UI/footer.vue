@@ -5,7 +5,7 @@
     <div class="footer-link-group">
       <a class="footer-link" href="../../statistics.html">Статистика сайта</a>
       <a class="footer-link" href="../../library-map.html">Карта сайта</a>
-      <a class="footer-link" href="help.html">Помощь</a>
+      <router-link class="footer-link" to="/help">Помощь</router-link>
     </div>
     <a class="sk-link" href="https://sk.ru"></a>
     <div class="footer-copyright">© 2023 Library</div>

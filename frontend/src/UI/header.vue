@@ -1,25 +1,25 @@
 <template>
   <div id="menu">
     <div class="top-menu">
-      <a class="top-menu-link" href="../../main.html">Главная</a>
-      <a class="top-menu-link" href="../../search.html">Каталог</a>
-      <a class="top-menu-link" href="../../forum.html">Форум</a>
-      <a class="top-menu-link" href="../../news.html">Новости</a>
-      <a class="top-menu-link" href="../../account.html">Аккаунт</a>
+      <router-link class="top-menu-link" to="/">Главная</router-link>
+      <router-link class="top-menu-link" to="/books">Каталог</router-link>
+      <router-link class="top-menu-link" to="/forum">Форум</router-link>
+      <router-link class="top-menu-link" to="/news">Новости</router-link>
+      <router-link class="top-menu-link" to="/account">Аккаунт</router-link>
     </div>
-    <div  id="top-menu-m" class="top-menu-mobile">
+    <div id="top-menu-m" class="top-menu-mobile">
       <button id="top-btn" class="top-menu-mobile-link">
         <img id="top-btn-img" class="img-menu" src="../../buttons/menu-open.svg">
       </button>
-      <a class="top-menu-mobile-link img-main" href="../../main.html"></a>
-      <a class="top-menu-mobile-link img-account" href="../../account.html"></a>
+      <router-link class="top-menu-mobile-link img-main" to="/"></router-link>
+      <router-link class="top-menu-mobile-link img-account" to="@/account"></router-link>
     </div>
     <div id="top-menu" class="anim">
       <div id="top-menu-block" class="top-menu-mobile-block">
-        <a class="top-menu-mobile-block-link" href="../../search.html">Каталог</a>
-        <a class="top-menu-mobile-block-link" href="../../forum.html">Форум</a>
-        <a class="top-menu-mobile-block-link" href="../../news.html">Новости</a>
-        <a class="top-menu-mobile-block-link" href="../../account.html">Аккаунт</a>
+        <router-link class="top-menu-mobile-block-link" to="/books">Каталог</router-link>
+        <router-link class="top-menu-mobile-block-link" to="/forum">Форум</router-link>
+        <router-link class="top-menu-mobile-block-link" to="/news">Новости</router-link>
+        <router-link class="top-menu-mobile-block-link" to="/account">Аккаунт</router-link>
       </div>
     </div>
   </div>
@@ -33,10 +33,6 @@ export default {
 </script>
 
 <style scoped>
-.main-0{
-  height: 60px;
-  width: 100%;
-}
 /* верхнее меню */
 
 .top-menu{
