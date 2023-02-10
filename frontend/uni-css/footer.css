@@ -1,7 +1,4 @@
 /* подвал */
-
-
-
 .footer {                                    /* блок подвала */
     color: #bababa;
     padding: 50px 50px 20px 50px;
@@ -38,7 +35,6 @@
     transition: color 250ms;
     color: #f5f5f5;
 }
-
 .footer-copyright {                             /* копирайт */
     position: relative;
     margin-top: 75px;
