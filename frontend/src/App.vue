@@ -13,7 +13,12 @@ export default {
     components: {
       myHeader, myFooter
     },
-    name: "App"
+    name: "App",
+    data() {
+      return {
+        
+      }
+    }
 }
 
 </script>

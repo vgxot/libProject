@@ -1,6 +1,9 @@
 import main from '@/pages/main.vue'
 import books from '@/pages/books.vue'
 import book from '@/pages/book.vue'
+import news from '@/pages/news.vue'
+import account from '@/pages/account.vue'
+import test from '@/pages/test.vue'
 import {createRouter, createWebHistory} from "vue-router";
 const routes = [
     {
@@ -14,7 +17,24 @@ const routes = [
     {
         path: '/books/:id',
         component: book
+    },
+    {
+        path: '/news',
+        component: news
+    },
+    {
+        path: '/account',
+        component: account
+    },
+    {
+        path: '/forum',
+        component: book
+    },
+    {
+        path: '/test',
+        component: test
     }
+
 ]
 
 const router = createRouter({
