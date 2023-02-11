@@ -1,3 +1,4 @@
+import re
 import time
 import requests
 from bs4 import BeautifulSoup
@@ -9,7 +10,6 @@ headers = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
     "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.1.1135 Yowser/2.5 Safari/537.36'
 }
-
 
 def get_links():
     with open(f"html/litresPopular250pages.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
@@ -66,17 +66,22 @@ def write_books():
         a += 1
         links[a] = ''.join(i)  # переводим элементы в строки
     books_count = 0
-    count = 7001
+    count = 814
     errors = 0
+    json_s = ', '
     for link in links:
         try:
             count += 1
             if count % 50 == 0:
                 print('засыпаю, чтобы замести следы')
-                time.sleep(25)                                     # засыпает на n секунд каждые 50 книг
+                time.sleep(10)                                     # засыпает на n секунд каждые 50 книг
 
             print(f'начинаю писать книгу номер', count)
-            src = attempts(url=links[count])
+            try:
+                src = attempts(url=links[count])
+            except Exception as ex:
+                print(f'что-то не то с src, возможно медленный интернет{ex}')
+                time.sleep(15)
             print('тело получено')
 
             soup = BeautifulSoup(src.text, "lxml")
@@ -94,44 +99,71 @@ def write_books():
             if 'PDF' in check:
                 PDF_count = 1
             author = soup.find("a", itemprop="author").find("span").text
-            rating = soup.find("div", class_="rating-number bottomline-rating").text
-            popularity = soup.find("div", class_="votes-count bottomline-rating-count").text
             resource_link = soup.find("img", itemprop="image").get("src")
             info = soup.find("div", class_="biblio_book_info_detailed_left").find_all("dd")
             info_age = info[0].text
-
             if PDF_count == 0:
                 info_year = info[2].text
             else:
                 info_year = info[3].text
-
-            volume = soup.find("li", class_="volume").text
-            s = volume.split(' ')   # объем книги делит по пробелам и берет 2 элемент, это всегда количество страниц
-            volume = s[1]
             description_form = soup.find("div", class_="biblio_book_descr_publishers").find_all("p")
             description = ''
-
             for i in description_form:
-                description += (' ' + i.text)  # ставит пробелы между описанием, так как они обычно разделены
-
+                description += ('\n' + i.text)  # ставит пробелы между описанием, так как они обычно разделены
             try:
                 isbn = soup.find("dd", itemprop="isbn").text
             except Exception as ex:
                 isbn = '-'
-            print('все элементы найдены')
+            ss = soup.find("div", itemprop="aggregateRating").get("data-options")
+            ss = ss.split(',')
+            for i in range(len(ss)):
+                ss[i] = (re.sub("^\s+|\n|\t|\s+$", '', ss[i]))
+            rating = ss[7]
+            ss = ','.join(ss)
+            ss = ss[ss.find('[') + 1:ss.find(']')]
+            ss = ss.split(',')
+            popularity = rating.split()[1]
+            genre_list = soup.find("div", class_="biblio_book_info").find('ul').find_all("li")
 
-            resource_link = resource_link[:-4]
-            download_IMG = requests.get(resource_link).content
-            img_link = f'imageBook{count - 1}.jpg'
-            with open(f'img/imageBook{count - 1}.jpg', 'wb') as img:
-                img.write(download_IMG)
+            s = genre_list[0].text.split(' ') # объем книги делит по пробелам и берет 2 элемент, это всегда количество страниц
+            volume = s[1]
+
+            s = genre_list[1].text.title()
+            genre = s[6:].split(',')
+            for i in range(len(genre)):
+                genre[i] = genre[i].lstrip()
+
+            tags = []
+            tags_list = soup.find('li', class_="tags_list").find_all('a', class_='biblio_info__link')
+            for i in range(len(tags_list)):
+                tags.append(tags_list[i].text.title())
+
+            one = ss[0]
+            two = ss[1]
+            three = ss[2]
+            four = ss[3]
+            five = ss[4]
+
+            rating = (int(one) * 1) + (int(two) * 2) + (int(three) * 3) + (int(four) * 4) + (int(five) * 5)
+            rating /= int(popularity)
+            rating = round(rating, 1)
+
+            print('все элементы найдены')
+            img_link = f'imageBook{count}.jpg'
             books = (
                 {
                     "bookName": bookName,
                     "author": author,
                     "description": description,
-                    "rating": rating,
                     "popularity": popularity,
+                    "rating": rating,
+                    "genre": genre,
+                    "tags": tags,
+                    "one": one,
+                    "two": two,
+                    "three": three,
+                    "four": four,
+                    "five": five,
                     "info_age": info_age,
                     "info_year": info_year,
                     "volume": volume,
@@ -140,22 +172,18 @@ def write_books():
                 }
             )
             print('элементы обработаны: ')
-            print(bookName, author, rating, popularity, resource_link, info_age, volume, info_year, isbn, "\n", description)
+            print(bookName, author, popularity, rating, genre, tags, one, two, three, four, five, resource_link, info_age, volume, info_year, isbn, "\n", description)
 
             print(f'записали книгу номер', count)
-            if count % 1000 == 0:   # каждую 1000 книг записывает в json, на всякий случай, потом просто убрать квадратные скобки и норм
-                books_count += 1
-                print(f'{count} книга! записываем в json, чтобы не потерять')
-                with open(f'books{books_count}.json', "a", encoding="utf-8") as json_file:
-                    json.dump(books, json_file, ensure_ascii=False)
-
-            with open(f'books.json', "a", encoding="utf-8") as json_file:
+            with open(f'books_add.json', "a", encoding="utf-8") as json_file:
                 json.dump(books, json_file, ensure_ascii=False)
+            time.sleep(1)
 
         except Exception as ex:
             print(f'какая-то ошибка в коде страницы, ссылка: {links[count]}')
             errors += 1
-            time.sleep(3)   # спит если вдруг ошибка, при ошибке 429(503) не поможет
+            print(ex)
+            time.sleep(2)   # спит если вдруг ошибка, при ошибке 429(503) не поможет
             continue
     with open(f'booksCOMPLETE.json', "a", encoding="utf-8") as json_file:
         json.dump(books, json_file, ensure_ascii=False)
