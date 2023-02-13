@@ -8,7 +8,7 @@
       <router-link class="top-menu-link" to="/account">Аккаунт</router-link>
     </div>
     <div id="top-menu-m" class="top-menu-mobile">
-      <button id="top-btn" class="top-menu-mobile-link">
+      <button id="top-btn" @click="openMenu" class="top-menu-mobile-link">
         <img id="top-btn-img" class="img-menu" src="../../buttons/menu-open.svg">
       </button>
       <router-link class="top-menu-mobile-link img-main" to="/"></router-link>
@@ -26,10 +26,19 @@
 </template>
 
 <script>
-
+import auth from '@/UI/auth.vue'
 export default {
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
   name: "my-header"
 }
+
 </script>
 
 <style scoped>
@@ -92,10 +101,10 @@ export default {
   margin-left: 35px;
 }
 .button-open {
-  background-image: url("/buttons/menu-open.svg");
+  background-image: url("@/../buttons/menu-open.svg");
 }
 .button-close {
-  background-image: url("/buttons/menu-close.svg");
+  background-image: url("@/../buttons/menu-close.svg");
 }
 .img-main {
   background-image: url("/buttons/library-mini-logo-white.svg");
