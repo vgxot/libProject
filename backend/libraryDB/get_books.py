@@ -11,14 +11,15 @@ headers = {
     "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.1.1135 Yowser/2.5 Safari/537.36'
 }
 
+
 def get_links():
-    with open(f"html/litresPopular250pages.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
+    with open(f"html/sport15.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
         src = file.read()
 
     links = []  # список со ссылками
 
     soup = BeautifulSoup(src, "lxml")
-    books = soup.find_all('a', class_='Art-module__imageWrapper_2Mm2c')
+    books = soup.find_all('a', class_='Art-module__imageWrapper_3sDLf')
     print('books:', books)
     for book in books:  # ищем все ссылки и записываем их в массив
         links.append(
@@ -28,15 +29,15 @@ def get_links():
     print(links)
 
     for i in links:
-        with open(f'links.csv', "a", newline='', encoding="utf-8") as csv_file:
+        with open(f'15000links.csv', "a", newline='', encoding="utf-8") as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow([i])
 
 
 def attempts(url, retry=3):    # количество попыток
     headers = {
-        "Accept": "*/*",
-        "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.1.1135 Yowser/2.5 Safari/537.36'
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.2.987 Yowser/2.5 Safari/537.36'
     }
 
     try:
@@ -52,10 +53,12 @@ def attempts(url, retry=3):    # количество попыток
         return response
 
 
+
+
 def write_books():
     links = []
-
-    with open('links.csv', 'r') as file:
+    successfully = 0
+    with open('all___links.csv', 'r') as file:
         reader = csv.reader(file, delimiter=',')
         for row in reader:
             links.append(row)  # создает цикл, в котором добавляем в массив все данные из csv файла
@@ -65,47 +68,48 @@ def write_books():
     for i in links:
         a += 1
         links[a] = ''.join(i)  # переводим элементы в строки
-    books_count = 0
-    count = 814
+    count = 7738
     errors = 0
-    json_s = ', '
+    book_check = ''
     for link in links:
         try:
             count += 1
-            if count % 50 == 0:
+            if count % 100 == 0:
                 print('засыпаю, чтобы замести следы')
-                time.sleep(10)                                     # засыпает на n секунд каждые 50 книг
+                print('ошибок на данный момент:', errors)
+                print('удачных записей:', successfully)
+                time.sleep(10)                                     # засыпает на n секунд каждые 100 книг
 
             print(f'начинаю писать книгу номер', count)
             try:
+                print('получаю src')
                 src = attempts(url=links[count])
             except Exception as ex:
-                print(f'что-то не то с src, возможно медленный интернет{ex}')
-                time.sleep(15)
+                print(f'что-то не то с src {ex}')
+                time.sleep(5)
             print('тело получено')
 
             soup = BeautifulSoup(src.text, "lxml")
             print('суп создан')
 
-            bookName = soup.find("h1", itemprop="name").text
-            if 'сборник' in bookName:
+            book_name = soup.find("h1", itemprop="name").text
+            if 'сборник' in book_name:
                 print('пропускаем сборник')
                 continue
+            if book_name == book_check:
+                return ('массив закончился')
+            book_check = book_name
             check = soup.find("div", class_="biblio_book_name").find("span").text
             if 'Черновик' in check:
                 print('пропускаем черновик')
                 continue
-            PDF_count = 0
-            if 'PDF' in check:
-                PDF_count = 1
+
             author = soup.find("a", itemprop="author").find("span").text
-            resource_link = soup.find("img", itemprop="image").get("src")
+            # resource_link = soup.find("img", itemprop="image").get("src")
             info = soup.find("div", class_="biblio_book_info_detailed_left").find_all("dd")
             info_age = info[0].text
-            if PDF_count == 0:
-                info_year = info[2].text
-            else:
-                info_year = info[3].text
+            info_year = info[2].text
+            info_year = info_year.lstrip()
             description_form = soup.find("div", class_="biblio_book_descr_publishers").find_all("p")
             description = ''
             for i in description_form:
@@ -148,11 +152,15 @@ def write_books():
             rating /= int(popularity)
             rating = round(rating, 1)
 
-            print('все элементы найдены')
+            # resource_link = resource_link[:-4]
+            # download_IMG = requests.get(resource_link).content
             img_link = f'imageBook{count}.jpg'
+            # with open(f'img/imageBook{count}.jpg', 'wb') as img:
+            #     img.write(download_IMG)
+            print('все элементы найдены')
             books = (
                 {
-                    "bookName": bookName,
+                    "book_name": book_name,
                     "author": author,
                     "description": description,
                     "popularity": popularity,
@@ -168,22 +176,22 @@ def write_books():
                     "info_year": info_year,
                     "volume": volume,
                     "isbn": isbn,
-                    "resourceLink": img_link
+                    "resource_link": img_link
                 }
             )
             print('элементы обработаны: ')
-            print(bookName, author, popularity, rating, genre, tags, one, two, three, four, five, resource_link, info_age, volume, info_year, isbn, "\n", description)
+            print(book_name, author, popularity, rating, genre, tags, one, two, three, four, five, info_age, volume, info_year, isbn, "\n", description)
 
             print(f'записали книгу номер', count)
             with open(f'books_add.json', "a", encoding="utf-8") as json_file:
                 json.dump(books, json_file, ensure_ascii=False)
-            time.sleep(1)
+            successfully += 1
 
         except Exception as ex:
             print(f'какая-то ошибка в коде страницы, ссылка: {links[count]}')
             errors += 1
             print(ex)
-            time.sleep(2)   # спит если вдруг ошибка, при ошибке 429(503) не поможет
+            print('ошибок:', errors)
             continue
     with open(f'booksCOMPLETE.json', "a", encoding="utf-8") as json_file:
         json.dump(books, json_file, ensure_ascii=False)
