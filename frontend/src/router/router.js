@@ -27,10 +27,6 @@ const routes = [
         component: account
     },
     {
-        path: '/forum',
-        component: book
-    },
-    {
         path: '/test',
         component: test
     }

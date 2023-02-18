@@ -1,24 +1,50 @@
 <template>
-  <div class="main-0"></div>
-  <form class="search-block">
-    <input placeholder="найдётся всё" class="input" type="search" id="search">
-    <button id="button" class="button desktop-button">Найти</button>
-    <button id="button" type="submit" class="button mobile-button">
-      <img class="img-search" src="@/../buttons/search.svg">
-    </button>
-  </form>
   <div class="books">
+    <div class="main-0"></div>
+    <form class="search-block">
+      <input placeholder="найдётся всё" class="input" type="search" id="search">
+      <button id="button" class="button desktop-button">Найти</button>
+      <button id="button" type="submit" class="button mobile-button">
+        <img class="img-search" src="@/../buttons/search.svg">
+      </button>
+    </form>
+    <div class="books-items">
+      <book-item
+          v-for="book in books"
+          :key="books.book_id"
+          v-bind:book_data="book"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import bookItem from "@/UI/book-item.vue";
+import axios from "axios";
 export default {
-  name: "search"
+  name: "search",
+  components: {
+    bookItem
+  },
+  data() {
+    return {
+      books: []
+    }
+  },
+  mounted() {
+    axios
+        .get('http://127.0.0.1:3000/api/books')
+        .then((response) => {
+      this.books = response.data
+    })
+  }
 }
 </script>
 
 <style scoped>
-body {
+.books {
+  width: 100%;
+  height: max-content;
   background-color: #404040;
 }
 .main-0 {
@@ -91,7 +117,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /* таблица */
 
 
-.books {
+.books-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 25px;

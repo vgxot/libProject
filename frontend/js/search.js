@@ -37,7 +37,7 @@ async function bookSearch() {
                            <div class="book-author text">${content[key].author}</div>
                            <div class="rating-block">
                                 <div class="book-rating text">${content[key].rating}</div>
-                                <img class="rating-star" src="../buttons/star.svg"></img>
+                                <img class="rating-star" src="../buttons/star.svg">
                            </div>
                            <div class="book-pages text">${content[key].pages} страниц</div>
                            <div class="book-year text">${content[key].year}</div>
