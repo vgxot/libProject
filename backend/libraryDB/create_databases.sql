@@ -34,16 +34,39 @@ create table users
 create table books_genre
 (
     book_id integer not null,
-    genre   varchar not null
+    genre   varchar not null,
+    constraint book_id___fk
+        foreign key (book_id) references books (book_id)
+);
+create table books_tags
+(
+    book_id integer not null,
+    tags    varchar not null,
+    constraint book_id___fk
+        foreign key (book_id) references books (book_id)
 );
 create table users_rating
 (
     username varchar not null,
     book_id  integer not null,
-    rating   integer not null
+    rating   integer not null,
+    constraint book_id___fk
+        foreign key (book_id) references books (book_id),
+    constraint username___fk
+        foreign key (username) references users (username)
 );
+
+comment on column users_rating.rating is 'оценка книги от 1 до 5';
+
 create table authors
 (
-    username varchar not null
+    username varchar not null,
+    book_id  integer not null,
+    constraint book___fk
+        foreign key (book_id) references books (book_id),
+    constraint username___fk
+        foreign key (username) references users (username)
 );
+
+
 
