@@ -1,5 +1,4 @@
 <template>
-  <div class="block-0"></div>
     <div class="block-1">
       <div class="block-book">
         <div class="book-block-image">
@@ -7,7 +6,8 @@
         </div>
         <div class="book-about">
           <div class="book-title">{{ books.book_name }}</div>
-          <div class="book-author">{{ books.author }}</div>
+<!--          <router-link class="book-name text" :to="suthor"></router-link>-->
+          <div class="book-author">{{books.author}}</div>
           <div class="book-rating">
             <p>{{ books.rating }}</p>
             <svg class="rating-star-svg" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,13 +25,16 @@
       <div class="about-block-additional">
         <div class="block-additional">
           <p class="additional-text">Дополнительная информация</p>
+          <p>Количество страниц: {{ books.pages }}</p>
+          <p>Дата написания: {{ books.year }}</p>
+          <p>Возрастной рейтинг: {{ books.age }}</p>
+          <p>ISBN: {{ books.isbn }}</p>
         </div>
       </div>
       <div class="genre-block">
         <div class="genre"></div>
         <div class="tags"></div>
       </div>
-
     </div>
 </template>
 
@@ -55,7 +58,9 @@ export default {
   },
   methods: {
     downloadBook() {
-      console.log('Загружаю книгу')
+      // console.log('Загружаю книгу')
+      // axios
+      //     .get(`http://127.0.0.1:3000/book/get`)
     },
 
   },
@@ -79,6 +84,9 @@ body {
   padding-left: 100px;
   padding-right: 100px;
   background-color: #1e1e1e;
+  margin: 0 auto;
+  min-width: 750px;
+  max-width: 1500px;
 }
 .block-book {
   display: flex;
@@ -87,13 +95,13 @@ body {
   margin-bottom: auto;
 }
 .book-block-image {
-  position: relative;
   margin-top: auto;
   margin-bottom: auto;
 }
 .book-image {
   height: 550px;
   background-size: cover;
+
 }
 
 .book-about {
@@ -126,6 +134,13 @@ body {
 }
 .book-get {
   margin: 10px 0;
+  font-size: 28px;
+  background-color: #B3FF66;
+  color: #1E1E1E;
+}
+.book-get:hover,
+.book-get:active {
+  background-color: #1e1e1e;
 }
 .book-description {
   margin-top: 5px;
@@ -169,5 +184,120 @@ body {
 }
 .tags {
 
+}
+@media only screen and (max-width: 734px) {
+  .block-1 {
+    display: block;
+    height: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #1e1e1e;
+    margin: 0 auto auto 0;
+    padding-top: 70px;
+    min-width: 300px;
+    max-width: 700px;
+  }
+  .block-book {
+    align-items:center;
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+  .book-block-image {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .book-image {
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    background-size: cover;
+  }
+  .book-about {
+    color: #f5f5f5;
+    margin: 0;
+    text-align: center;
+  }
+  .book-title {
+    font-size: 32px;
+    line-height: 100%;
+    margin-top: 15px;
+  }
+  .book-author {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  .book-rating {
+    margin-top: 10px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+  }
+  .book-rating p {
+    font-size: 24px;
+    color: #B3FF66;
+  }
+  .rating-star-svg {
+    height: 24px;
+    width: 23px;
+    margin-top: 3px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .book-get {
+    margin: 10px 0;
+    font-size: 28px;
+    background-color: #B3FF66;
+    color: #1E1E1E;
+  }
+  .book-get:hover,
+  .book-get:active {
+    background-color: #1e1e1e;
+  }
+  .book-description {
+    margin-top: 5px;
+    font-size: 24px;
+  }
+  .book-description-text {
+    position: relative;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+  .about-block {
+    padding: 30px;
+    display: block;
+    height: auto;
+  }
+  .about-block-additional {
+    height: 190px;
+    width: 100%;
+  }
+  .block-additional {
+    background-color: #1E1E1E;
+    width: 100%;
+    height: 190px;
+    border-radius: 35px;
+    padding: 0;
+  }
+  .additional-text {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+
+  }
+  .genre-block {
+    height: 300px;
+    width: 100%;
+    background-color: #e1e1e1;
+  }
+
+  .genre {
+
+  }
+  .tags {
+
+  }
 }
 </style>

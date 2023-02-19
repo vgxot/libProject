@@ -1,13 +1,16 @@
 <template>
   <div class="books">
     <div class="main-0"></div>
-    <form class="search-block">
-      <input placeholder="найдётся всё" class="input" type="search" id="search">
-      <button id="button" class="button desktop-button">Найти</button>
-      <button id="button" type="submit" class="button mobile-button">
-        <img class="img-search" src="@/../buttons/search.svg">
+    <form @submit.prevent class="search-block">
+      <input v-bind:value="query" @input="inputQuery" placeholder="найдётся всё" class="input" type="search" id="search">
+      <button id="button" @click="bookSearch()" type="submit" class="button search-button">
+        <span class="button-search-text">Найти</span>
+        <img class="img-search" src="@/../buttons/search.svg" alt="search button">
       </button>
     </form>
+    <div class="count-elements">
+      <p class="count-text">найдено элементов: </p>
+    </div>
     <div class="books-items">
       <book-item
           v-for="book in books"
@@ -27,7 +30,9 @@ export default {
     bookItem
   },
   data() {
+    let book_query = '';
     return {
+      book_query,
       books: []
     }
   },
@@ -37,6 +42,21 @@ export default {
         .then((response) => {
       this.books = response.data
     })
+  },
+  methods: {
+    bookSearch() {
+      let book_query = this.book_query
+      axios
+          .post('http://127.0.0.1:3000/api/books/search', {
+            query: book_query
+          })
+          .then((response) => {
+            this.books = response.data
+          })
+    },
+    inputQuery(event) {
+      this.book_query = event.target.value
+    }
   }
 }
 </script>
@@ -81,6 +101,9 @@ export default {
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
+.img-search {
+  display: none;
+}
 .button {
   width: 110px;
   height: 60px;
@@ -97,158 +120,49 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: 150ms ease-in;
   background-color: #252525;
 }
+.count-elements {
+  margin-top: 10px;
+}
+.count-text {
+  text-align: center;
+  font-size: 20px;
+  color: #B5B5B5;
+}
 
 /*            */
 
-.mobile-button {
-  display: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 35px;
-  background-color: #1e1e1e;
-}
 .img-search {
+  display: none;
   height: 30px;
   filter: invert(1);
   margin: 15px;
 }
 
-
 /* таблица */
-
 
 .books-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 25px;
 }
-.book-item {
-  display: flex;
-  width: 400px;
-  padding: 35px;
-  background-color: #1e1e1e;
-  border-radius: 35px;
-  margin: 15px;
-}
-.book-image {
-}
-.book-image-img {
-  height: 250px;
-  margin-right: 25px;
-}
-.text {
-  color: white;
-  font-size: 16px;
-}
-.book-about {
-  display: inline-block;
-  max-width: 200px;
-  float: left;
-  line-height: 19px;
-}
-.book-name {
-  font-size: 20px;
-  line-height: 100%;
-}
-.book-author {
-  font-size: 18px;
-  margin-top: 7px;
-}
-.rating-block {
-  display: flex;
-}
-.book-rating {
-  margin-top: 7px;
-  margin-bottom: 7px;
-  color: #B3FF66;
-  font-size: 19px;
-}
-.rating-star {
-  margin-top: 7px;
-  margin-bottom: 7px;
-  height: 16px;
-  width: 17px;
-  margin-left: 5px;
-}
-.book-pages {
-
-}
-.book-year {
-
-}
-.book-age {
-
-}
-
-
-
-/* конец таблицы */
-
-.mobile-table-db {
-  display: none;
-}
 @media only screen and (max-width: 734px) {
-  .top-menu-mobile {
-    background-color: rgba(0, 0, 0, 0.55);
-  }
   .input{
     width: 265px;
   }
-  .button {
+  .button-search-text {
     display: none;
   }
-  .mobile-button {
-    display: block;
-  }
-  .table-db {
-    display: none;
-  }
-  .mobile-table-db {
-    display: block;
-  }
-  .books {
-    grid-template-columns: 1fr;
-  }
-  .book-item {
-    display: flex;
-    width: 330px;
-    padding: 0;
-    margin: 10px auto 25px;
-    background-color: rgba(0, 0, 0, 0);
+  .search-button {
+    width: 60px;
+    height: 60px;
     border-radius: 35px;
+    background-color: #1e1e1e;
   }
-  .book-image {
-
+  .img-search {
+    display: block;
   }
-  .book-image-img {
-    height: 180px;
-    margin-right: 25px;
-  }
-  .text {
-    color: white;
-    font-size: 13px;
-  }
-  .book-about {
-    display: inline-block;
-    float: left;
-    line-height: 19px;
-  }
-  .book-name {
-    font-size: 18px;
-    line-height: 120%;
-  }
-  .book-author {
-    font-size: 15px;
-    margin-top: 7px;
-  }
-  .book-pages {
-    margin-top: 5px;
-  }
-  .book-year {
-
-  }
-  .book-age {
-
+  .books-items {
+    grid-template-columns: 1fr;
   }
 }
 </style>

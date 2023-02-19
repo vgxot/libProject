@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .button{
   text-decoration: none;
-  height: 50px;
+  height: 55px;
   position: relative;
   border-radius: 21px;
   background-color: rgb(30, 30, 30);;
@@ -23,15 +23,15 @@ export default {
   cursor: pointer;
   padding-left: 20px;
   padding-right: 20px;
-  border: 4px solid #1e1e1e;
+  border: 2px solid #B3FF66;
   transition: background-color 350ms ease-in-out,color 350ms ease-in-out;
   z-index: 1;
   font-family: Nunito, sans-serif;
 }
 .button:hover {
-  background-color: rgb(64, 64, 64);
+  background-color: #1E1E1E;
   color: #ffffff;
-  border: 4px solid #1e1e1e;
+  border: 2px solid #B3FF66;
   transition: background-color 350ms ease-in-out,color 350ms ease-in-out;
 }
 </style>
