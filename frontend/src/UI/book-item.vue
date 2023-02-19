@@ -1,10 +1,11 @@
 <template>
   <div class="book-item">
     <div class="book-image">
-      <img class="book-image-img" :src="'http://127.0.0.1:3000/book/' + book_data.photo_link">
+      <img class="book-image-img" :src="'http://127.0.0.1:3000/book-photo/' + book_data.photo_link">
     </div>
     <div class="book-about">
-      <a class="book-name text" href="">{{book_data.book_name}}</a>
+      <a class="book-name text" :href="'/books/' + book_data.book_id ">{{book_data.book_name}}</a>
+      <router-link class="book-name text" :to="{ name: 'book', params: { id: book_data.book_id } }">{{book_data.book_name}}</router-link>
       <div class="book-author text">{{book_data.author}}</div>
       <div class="rating-block">
         <div class="book-rating text">{{book_data.rating}}</div>
@@ -66,7 +67,7 @@ export default {
   line-height: 19px;
 }
 .book-name {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 100%;
 }
 .book-author {
