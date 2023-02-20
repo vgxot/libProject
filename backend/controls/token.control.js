@@ -2,8 +2,9 @@ const jwt = require('jsonwebtoken')
 const db = require('../db/database')
 class tokenControl {
     generateToken(payload) {    // создает токен авторизации, берет секретный ключ и устанавливает время его жизни
-        const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expireIn:'60m'})
-        const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {expireIn:'60d'})
+        console.log(payload)
+        const accessToken = jwt.sign({name: payload}, '4CB89rnc3gt478yN4C8Ng87vny4t78YNG4c8tht94', {expiresIn: '30m'})
+        const refreshToken = jwt.sign({name: payload}, 'crnGTN2R3H2GQB3T64YIHq80rty34cgT87IGN3R3Cc3', {expiresIn: '30d'})
         return {
             accessToken,
             refreshToken

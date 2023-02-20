@@ -22,6 +22,9 @@ router.get('/books', booksControl.books)
 router.post('/books/search', booksControl.booksSearch)
 router.get('/statistics', booksControl.statistics)
 router.get('/books/:id', booksControl.bookInfo)
+router.get('/genre/books/:id', booksControl.bookGenre)
+router.get('/tags/books/:id', booksControl.bookTags)
+
 
 
 
