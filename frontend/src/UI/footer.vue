@@ -43,7 +43,7 @@ body, h1, h2, h3, h4, p, a {
   margin-right: auto;
   width: 75px;
   height: 70px;
-  background-image: url("/favicon/library-mini-logo-white.svg");
+  background-image: url("/buttons/library-mini-logo-white.svg");
   background-size: 75px;
 }
 .footer-link-group {                            /* группа ссылок */

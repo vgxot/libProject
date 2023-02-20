@@ -7,16 +7,24 @@ class bookControl {
         let limit = 51;
         let books = await db.query(`SELECT * FROM books ORDER BY popularity DESC LIMIT $1`, [limit])
         books = JSON.stringify(books);
+        console.log('отправил книги по запросу')
         res.end(books)
     }
     async booksSearch(req, res) {
-        console.log("ищем")
+
         let query = req.body;
-        console.log(query)
         query = query.query
+        console.log(`ищем ${query}`)
         let books = await db.query(`SELECT * FROM books WHERE author LIKE $1`, [query])
         books = JSON.stringify(books);
         res.end(books)
+    }
+    async bookInfo(req, res) {
+        let query = parseInt(req.params.id);
+        console.log(`ищем книгу с id: ${query}`)
+        let book = await db.query(`SELECT * FROM books WHERE book_id=$1`, [query])
+        book = JSON.stringify(book);
+        res.end(book)
     }
     async booksUpload(req, res) {
 
