@@ -3,11 +3,11 @@
     <div class="footer-block-logo">
     </div>
     <div class="footer-link-group">
-      <a class="footer-link" href="../../statistics.html">Статистика сайта</a>
-      <a class="footer-link" href="../../library-map.html">Карта сайта</a>
+      <router-link class="footer-link" to="/statistics">Статистика сайта</router-link>
+      <router-link class="footer-link" to="/map">Карта сайта</router-link>
       <router-link class="footer-link" to="/help">Помощь</router-link>
     </div>
-    <a class="sk-link" href="https://sk.ru"></a>
+<!--    <a class="sk-link" href="https://sk.ru"></a>-->
     <div class="footer-copyright">© 2023 Library</div>
   </div>
 </template>
@@ -20,13 +20,7 @@ name: "my-footer"
 
 <style scoped>
 /* подвал */
-body, h1, h2, h3, h4, p, a {
-  margin: 0;
-  font-size: 100%;
-  font-weight: normal;
-  font-family: "Nunito", sans-serif;
-  text-decoration: none;
-}
+
 .footer {                                    /* блок подвала */
   color: #bababa;
   padding: 50px 50px 20px 50px;
