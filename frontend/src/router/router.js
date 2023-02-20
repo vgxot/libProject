@@ -5,6 +5,10 @@ import news from '@/pages/news.vue'
 import account from '@/pages/account.vue'
 import test from '@/pages/test.vue'
 import {createRouter, createWebHistory} from "vue-router";
+import map from "@/pages/map.vue";
+import statistics from "@/pages/statistics.vue";
+import help from "@/pages/help.vue";
+import auth from "@/pages/auth.vue";
 const routes = [
     {
         path: '/',
@@ -20,6 +24,18 @@ const routes = [
         component: book
     },
     {
+      path: '/statistics',
+      component: statistics
+    },
+    {
+        path: '/map',
+        component: map
+    },
+    {
+        path: '/help',
+        component: help
+    },
+    {
         path: '/news',
         component: news
     },
@@ -28,9 +44,13 @@ const routes = [
         component: account
     },
     {
-        path: '/test',
-        component: test
-    }
+        path: '/auth',
+        component: auth
+    },
+    // {
+    //     path: '',
+    //     component:
+    // },
 
 ]
 
