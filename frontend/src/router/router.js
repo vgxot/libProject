@@ -3,12 +3,12 @@ import books from '@/pages/books.vue'
 import book from '@/pages/book.vue'
 import news from '@/pages/news.vue'
 import account from '@/pages/account.vue'
-import test from '@/pages/test.vue'
 import {createRouter, createWebHistory} from "vue-router";
 import map from "@/pages/map.vue";
 import statistics from "@/pages/statistics.vue";
 import help from "@/pages/help.vue";
 import auth from "@/pages/auth.vue";
+import architecture from "@/pages/architecture.vue";
 const routes = [
     {
         path: '/',
@@ -47,6 +47,30 @@ const routes = [
         path: '/auth',
         component: auth
     },
+    {
+        path: '/architecture',
+        component: architecture
+    }
+    // {
+    //     path: '',
+    //     component:
+    // },
+    // {
+    //     path: '',
+    //     component:
+    // },
+    // {
+    //     path: '',
+    //     component:
+    // },
+    // {
+    //     path: '',
+    //     component:
+    // },
+    // {
+    //     path: '',
+    //     component:
+    // },
     // {
     //     path: '',
     //     component:
