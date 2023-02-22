@@ -7,13 +7,13 @@
         <router-link class="top-menu-link" to="/news">Новости</router-link>
         <router-link class="top-menu-link" to="/account">Аккаунт</router-link>
       </div>
-    <div id="top-menu-m" class="top-menu-mobile">
-      <button id="top-btn" @click="open = !open" class="top-menu-mobile-link">
-        <img id="top-btn-img" class="img-menu" src="@/../buttons/menu-open.svg">
-      </button>
-      <router-link class="top-menu-mobile-link img-main" to="/"></router-link>
-      <router-link class="top-menu-mobile-link img-account" to="@/account"></router-link>
-    </div>
+      <div id="top-menu-m" class="top-menu-mobile">
+        <button id="top-btn" @click="open = !open" class="top-menu-mobile-link">
+          <img id="top-btn-img" class="img-menu" src="@/../buttons/menu-open.svg">
+        </button>
+        <router-link class="top-menu-mobile-link img-main" to="/"></router-link>
+        <router-link class="top-menu-mobile-link img-account" to="@/account"></router-link>
+      </div>
     <transition name="menu-block">
       <div v-if="open" class="mobile-menu-block">
         <router-link class="menu-block-link" @click="open =!open" to="/">Главная</router-link>
@@ -103,12 +103,11 @@ export default {
   color: white;
 }
 .menu-block-enter-active {
-  transition: all 750ms cubic-bezier(0,1.14,.16,1.01);
+  transition: all 750ms cubic-bezier(0, 1, .15, 1);
 }
 .menu-block-leave-active {
   transition: all 400ms ease-out;
 }
-
 .menu-block-enter-from,
 .menu-block-leave-to {
   opacity: 0;
@@ -123,12 +122,6 @@ export default {
   height: 32px;
   filter: invert(1);
   margin-left: 35px;
-}
-.button-open {
-  background-image: url("/buttons/menu-open.svg");
-}
-.button-close {
-  background-image: url("/buttons/menu-close.svg");
 }
 .img-main {
   background-image: url("/buttons/library-mini-logo-white.svg");
