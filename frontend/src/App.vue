@@ -24,6 +24,7 @@ export default {
 </script>
 
 <style>
+
 body, h1, h2, h3, h4, p, a {
   margin: 0;
   font-size: 100%;
@@ -31,8 +32,12 @@ body, h1, h2, h3, h4, p, a {
   font-family: "Nunito", sans-serif;
   text-decoration: none;
 }
+a {
+  all: unset;
+  cursor: pointer;
+}
 body {
-  background-color: #ffffff;
+  background-color: #404040;
 }
 button {
   background-color: rgba(0, 0, 0, 0);
@@ -43,7 +48,7 @@ button {
 ::selection {
   background: rgba(170, 255, 0, 0.38);
 }
-@font-face {
+/*@font-face {
   font-family: "Nunito";
   font-style: normal;
   font-weight: 400;
@@ -66,5 +71,5 @@ button {
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/Inter-VariableFont_slnt,wght.ttf")
-}
+}*/
 </style>
