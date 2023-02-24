@@ -1,14 +1,15 @@
+import {createRouter, createWebHistory} from "vue-router";
 import main from '@/pages/main.vue'
 import books from '@/pages/books.vue'
 import book from '@/pages/book.vue'
 import news from '@/pages/news.vue'
 import account from '@/pages/account.vue'
-import {createRouter, createWebHistory} from "vue-router";
 import map from "@/pages/map.vue";
 import statistics from "@/pages/statistics.vue";
 import help from "@/pages/help.vue";
 import auth from "@/pages/auth.vue";
 import architecture from "@/pages/architecture.vue";
+import users from "@/pages/users.vue";
 const routes = [
     {
         path: '/',
@@ -50,11 +51,11 @@ const routes = [
     {
         path: '/architecture',
         component: architecture
-    }
-    // {
-    //     path: '',
-    //     component:
-    // },
+    },
+    {
+        path: '/users',
+        component: users
+    },
     // {
     //     path: '',
     //     component:

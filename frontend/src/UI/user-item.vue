@@ -1,10 +1,10 @@
 <template>
-  <div>fkf</div>
+
 </template>
 
 <script>
 export default {
-  name: "auth"
+  name: "user-item"
 }
 </script>
 

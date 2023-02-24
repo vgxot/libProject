@@ -23,3 +23,7 @@ app.get(`/book/get`, function (req, res) {
     let file = `${__dirname}/libraryDB/book.txt`
     res.download(file);
 });
+app.get(`/user-avatar/:id`, function (req, res) {
+    let username = req.params.id
+    res.sendFile(__dirname + `/libraryDB/img/${username}.jpg`);
+});
