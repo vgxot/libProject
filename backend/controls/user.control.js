@@ -17,30 +17,15 @@ function time() {
         + currentTime.getSeconds();
 }
 class UserControl {
-    async testRequest(req, res) {
-        const {test} = req.body;
-        console.log(test)
-        let text = 'Данные получили'
-        text = JSON.stringify(text)
-        res.end(text)
-    }
-    async testResponse(req, res) {
-        const {test} = req.body;
-        console.log(test)
-        let text = 'Данные получили'
-        text = JSON.stringify(text)
-        res.end(text)
-    }
     async createUser(req, res) {
         const {username, name, password} = req.body
-        // await db.query('SELECT username FROM users WHERE username LIKE $1', [username])
-        //     .then(() => {
-        //         res.json({message: "username is busy"})
-        //         res.end()
-        //     })
+        await db.query('SELECT username FROM users WHERE username LIKE $1', [username])
+            .then(() => {
+                res.json({message: "username is busy"})
+                res.end()
+            })
         let salt = crypt.genSaltSync(5);                  // создание соли
         let hash = crypt.hashSync(password, salt);                // хеширование и соление пароля
-
         const newUser = await db.none('INSERT INTO users("username", "name", "password", "reg_date", "reg_time", "role", "photo_link", "background_link") VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [username, name, hash, date(), time(), "user", "0", "0"])
             .then(() => {
                 res.json({message: "Пользователь зарегистрировался"})
@@ -81,6 +66,11 @@ class UserControl {
     }
     async logoutUser(req, res) {
         const {username} = req.body;
+    }
+    async getUsers(req, res) {
+        await db.query(
+
+        )
     }
     async userBeAuthor(req, res) {
         const {username} = req.body;

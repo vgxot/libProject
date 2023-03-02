@@ -33,7 +33,4 @@ export default {
   background-color: rgba(0, 0, 0, 0.55);
   transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 }
-.button:active {
-  top: 1px;
-}
 </style>

@@ -11,12 +11,21 @@ class bookControl {
         res.end(books)
     }
     async booksSearch(req, res) {
-        let query = req.body;
-        query = query.query
+        let {query, sorting, sortColumn, limit} = req.body;
         console.log(`ищем ${query}`)
-        let books = await db.query(`SELECT * FROM books WHERE author LIKE $1`, [query])
-        books = JSON.stringify(books);
-        res.end(books)
+        if (query === '') {
+            let books = await db.query(`SELECT * FROM books ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting])
+            books = JSON.stringify(books);
+            res.end(books)
+        }
+        else {
+            let books = await db.query(`SELECT * FROM books WHERE author LIKE $3
+                        OR book_name LIKE $3 OR year LIKE $3 ORDER BY $1 ${sorting} LIMIT ${limit}`, [sortColumn, sorting, query])
+            books = JSON.stringify(books);
+            res.end(books)
+        }
+
+
     }
     async bookInfo(req, res) {
         let query = parseInt(req.params.id);

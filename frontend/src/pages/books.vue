@@ -39,7 +39,6 @@
                 </div>
             </transition>
         </form>
-
         <div class="books-items">
             <book-item
                 v-for="book in books"
@@ -67,7 +66,7 @@ export default {
     let limit = 30;
     let sorting = "DESC"
     let sortColumn = "popularity"
-    let book_query = '*';
+    let book_query = '';
     return {
       isActive30: true,
       isActive50: false,
@@ -93,7 +92,7 @@ export default {
   methods: {
     getBooks() {
       axios
-          .post('http://127.0.0.1:3000/api/booksTest', {
+          .post('http://127.0.0.1:3000/api/books/search', {
             query: this.book_query,
             sorting: this.sorting,
             sortColumn: this.sortColumn,
@@ -101,12 +100,12 @@ export default {
           })
           .then((response) => {
             this.books = response.data
+            let count = 1;
+            for (let i in this.books) {
+              count++
+            }
+            this.booksCount = count
           })
-      let count = 1;
-      for (let i in this.books) {
-        count++
-      }
-      this.booksCount = count
     },
     bookSearch() {
       this.getBooks()
@@ -295,9 +294,9 @@ input[type="search"]::-webkit-search-cancel-button {                        /* �
 /* таблица */
 
 .books-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 @media only screen and (max-width: 734px) {
   .input{

@@ -4,8 +4,8 @@ create table books
     book_name   varchar not null,
     author      varchar not null,
     isbn        varchar not null,
-    pages       integer not null,
-    year        integer not null,
+    pages       varchar not null,
+    year        varchar not null,
     age         varchar not null,
     description varchar not null,
     photo_link  varchar not null,
@@ -18,18 +18,6 @@ create table books
     one         integer not null,
     constraint books_pk
         primary key (book_id)
-);
-create table users
-(
-    username        varchar not null,
-    name            integer not null,
-    password        varchar not null,
-    role            varchar not null,
-    token           varchar,
-    photo_link      varchar not null,
-    background_link varchar not null,
-    constraint users_pk
-        primary key (username)
 );
 create table books_genre
 (
@@ -44,6 +32,18 @@ create table books_tags
     tags    varchar not null,
     constraint book_id___fk
         foreign key (book_id) references books (book_id)
+);
+create table users
+(
+    username        varchar not null,
+    name            integer not null,
+    password        varchar not null,
+    role            varchar not null,
+    token           varchar,
+    photo_link      varchar not null,
+    background_link varchar not null,
+    constraint users_pk
+        primary key (username)
 );
 create table users_rating
 (
