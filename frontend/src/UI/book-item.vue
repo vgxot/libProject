@@ -68,6 +68,11 @@ export default {
 .book-name {
   font-size: 22px;
   line-height: 100%;
+  transition: color 150ms ease-in-out;
+}
+.book-name:hover {
+  color: #dadada;
+  transition: color 150ms ease-in-out;
 }
 .book-author {
   font-size: 18px;
