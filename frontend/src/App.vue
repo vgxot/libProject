@@ -3,7 +3,6 @@
   <div class="app">
     <router-view></router-view>
   </div>
-  <my-footer></my-footer>
 </template>
 
 <script>
