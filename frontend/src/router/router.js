@@ -10,6 +10,7 @@ import help from "@/pages/help.vue";
 import auth from "@/pages/auth.vue";
 import architecture from "@/pages/architecture.vue";
 import users from "@/pages/users.vue";
+import user from "@/pages/user.vue";
 const routes = [
     {
         path: '/',
@@ -53,8 +54,13 @@ const routes = [
         component: architecture
     },
     {
-        path: '/users',
+        path: '/forum',
         component: users
+    },
+    {
+        path: '/users/:id',
+        name: 'user',
+        component: user
     },
     // {
     //     path: '',

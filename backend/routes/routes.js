@@ -9,7 +9,8 @@ router.post('/user/update', userControl.userBeAuthor)    // делает юзе�
 router.delete('/user', userControl.deleteUser)              // удаляет юзера
 router.post('/user/auth', userControl.authUser)      // аутентификация юзера
 router.post('/user/logout', userControl.logoutUser)  // logout юзера
-router.post('/users', userControl.getUsers)
+router.get('/users', userControl.getUsers)
+router.post('/users/search', userControl.searchUsers)
 
 router.post('/user/getToken', tokenControl.generateToken)   // generate token
 router.get('/user/token', tokenControl.saveToken)   // save token
