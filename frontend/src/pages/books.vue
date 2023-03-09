@@ -26,7 +26,7 @@
                         <my-button @click="Active100" class="button-choice" :class="{ active: isActive100 }">100</my-button>
                     </div>
                     <div class="count-elements">
-                        <p class="count-text">найдено элементов: {{ booksCount - 1 }}</p>
+                      <p class="count-text">найдено элементов: <span class="count-text-color">{{ booksCount - 1 }}</span></p>
                     </div>
                     <my-button @click="sortFunction" class="sort-button">
                       <transition name="sort">
@@ -281,6 +281,9 @@ input[type="search"]::-webkit-search-cancel-button {                        /* �
   text-align: center;
   font-size: 20px;
   color: #B5B5B5;
+}
+.count-text-color {
+  color: #B3FF66;
 }
 .sort-button {
   width: 48px;

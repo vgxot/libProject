@@ -2,14 +2,14 @@
     <div class="block-1">
       <div class="block-book">
         <div class="book-block-image">
-          <img class="book-image" :src="'http://127.0.0.1:3000/book-photo/' + books.photo_link">
+          <img class="book-image" :src="'http://127.0.0.1:3000/img/book/mid/' + book.photo_link">
         </div>
         <div class="book-about">
-          <div class="book-title">{{ books.book_name }}</div>
+          <div class="book-title">{{ book.book_name }}</div>
 <!--          <router-link class="book-name text" :to="suthor"></router-link>-->
-          <div class="book-author">{{books.author}}</div>
+          <div class="book-author">{{book.author}}</div>
           <div class="book-rating">
-            <p>{{ books.rating }}</p>
+            <p>{{ book.rating }}</p>
             <svg class="rating-star-svg" width="17" height="16" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.75291 13.8242L8.5 11.6142L12.2471 13.8477L11.2447 9.66284L14.5383 6.84157L10.1945
                6.4654L8.5 2.51563L6.80546 6.44189L2.46169 6.81806L5.75531 9.63933L4.75291 13.8242ZM8.5 13.26L4.06077
@@ -27,10 +27,11 @@
                            15.948 13.4882 15.9911 13.345 15.9989C13.2018 16.0068 13.0665 15.9715 12.9392 15.8931L8.5
                             13.26Z" fill="#B3FF66"/>
             </svg>
+            <rating-block></rating-block>
           </div>
           <button-buy v-on:click="downloadBook" class="book-get">Скачать</button-buy>
           <div class="book-description">Описание
-            <div class="book-description-text">{{ books.description }}</div>
+            <div class="book-description-text">{{ book.description }}</div>
           </div>
         </div>
       </div>
@@ -40,13 +41,13 @@
         <div class="block-additional">
           <p class="additional-title">Дополнительная информация</p>
           <p class="pages additional-text">
-            Количество страниц: <span class="additional-value additional-text">{{ books.pages }}</span></p>
+            Количество страниц: <span class="additional-value additional-text">{{ book.pages }}</span></p>
           <p class="year additional-text">
-            Дата написания: <span class="additional-value additional-text">{{ books.year }}</span></p>
+            Дата написания: <span class="additional-value additional-text">{{ book.year }}</span></p>
           <p class="age additional-text">
-            Возрастной рейтинг: <span class="additional-value additional-text">{{ books.age }}</span></p>
+            Возрастной рейтинг: <span class="additional-value additional-text">{{ book.age }}</span></p>
           <p class="isbn additional-text">
-            ISBN: <span class="additional-value additional-text">{{ books.isbn }}</span></p>
+            ISBN: <span class="additional-value additional-text">{{ book.isbn }}</span></p>
         </div>
       </div>
       <div class="about-block-genre">
@@ -71,11 +72,12 @@
 <script>
 import buttonBuy from "@/UI/button-buy.vue";
 import axios from 'axios'
+import RatingBlock from "@/UI/rating-block.vue";
 
 export default {
   data() {
     return {
-      books: [],
+      book: [],
       genres: [],
       tags: []
     }
@@ -85,7 +87,7 @@ export default {
     await axios
         .get(`http://127.0.0.1:3000/api${url}`)
         .then((response) => {
-          this.books = response.data[0]
+          this.book = response.data[0]
         })
     await axios
         .get(`http://127.0.0.1:3000/api/genre${url}`)
@@ -109,6 +111,7 @@ export default {
 
   },
   components: {
+    RatingBlock,
     buttonBuy
   },
   name: "book"
