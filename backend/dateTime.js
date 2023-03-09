@@ -1,16 +1,7 @@
-function date() {
-    let currentDate = new Date();               // проблемы с записью месяца и числа, начинающихся с нуля
-    return currentDate.getFullYear() + "-"
-        + (currentDate.getMonth()+1 < 10 ? "" : "")
-        + currentDate.getMonth()+1 + "-" +
-        + currentDate.getDate();
-}
-function time() {
-    let currentTime = new Date();
-    return currentTime.getHours() + "-"
-        + currentTime.getMinutes() + "-"
-        + currentTime.getSeconds();
-}
 
-module.exports = date();
-module.exports = time();
+function datetime() {
+    let datetime = new Date().toISOString().slice(0, 10)
+    datetime += ' ' + new Date().toTimeString().slice(0, 8) + ' '
+    return datetime
+}
+module.exports = datetime();
