@@ -2,20 +2,9 @@ const db = require('../db/database')
 const crypt = require('bcryptjs')
 const tokenControl = require('./token.control')
 const {stat} = require("fs");
+const fs = require("fs");
+const date = require("../dateTime");
 
-function date() {
-    let currentDate = new Date();               // проблемы с записью месяца и числа, начинающихся с нуля
-    return currentDate.getFullYear() + "-"
-        + (currentDate.getMonth()+1 < 10 ? "" : "")
-        + currentDate.getMonth()+1 + "-" +
-        + currentDate.getDate();
-}
-function time() {
-    let currentTime = new Date();
-    return currentTime.getHours() + "-"
-        + currentTime.getMinutes() + "-"
-        + currentTime.getSeconds();
-}
 class UserControl {
     async createUser(req, res) {
         const {username, name, password} = req.body
@@ -26,7 +15,7 @@ class UserControl {
             })
         let salt = crypt.genSaltSync(5);                  // создание соли
         let hash = crypt.hashSync(password, salt);                // хеширование и соление пароля
-        const newUser = await db.none('INSERT INTO users("username", "name", "password", "reg_date", "reg_time", "role", "photo_link", "background_link") VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [username, name, hash, date(), time(), "user", "0", "0"])
+        const newUser = await db.none('INSERT INTO users("username", "name", "password", "reg_date", "reg_time", "role", "avatar_link", "background_link") VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [username, name, hash, date(), time(), "user", "0", "0"])
             .then(() => {
                 res.json({message: "Пользователь зарегистрировался"})
             })
@@ -68,9 +57,31 @@ class UserControl {
         const {username} = req.body;
     }
     async getUsers(req, res) {
-        await db.query(
+        let users = await db.query(`SELECT * FROM users ORDER BY username LIMIT 100`)
+        users = JSON.stringify(users);
+        res.end(users)
+    }
+    async getUser(req, res) {
+        let query = req.params.id;
+        let user = await db.query(`SELECT * FROM users WHERE username=$1`, [query])
+        user = JSON.stringify(user);
+        fs.appendFileSync("./server.log", `${date}запрошены данные для юзера ${query}\n`, function (err) {
+            if (err) console.log('Ошибка при записи server.log', err)})
+        res.end(user)
+    }
+    async searchUsers(req, res) {
+        let {query, sorting, sortColumn, limit} = req.body;
+        if (query === '') {
+            let users = await db.query(`SELECT * FROM users ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting])
+            users = JSON.stringify(users);
+            res.end(users)
 
-        )
+        }
+        else {
+            let users = await db.query(`SELECT * FROM users WHERE username LIKE $3 OR name LIKE $3 OR role LIKE $3 ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting, query])
+            users = JSON.stringify(users);
+            res.end(users)
+        }
     }
     async userBeAuthor(req, res) {
         const {username} = req.body;

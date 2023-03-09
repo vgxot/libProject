@@ -61,7 +61,7 @@ export default {
     let userCount = 101;
     let limit = 100;
     let sorting = "DESC"
-    let sortColumn = "popularity"
+    let sortColumn = "username"
     let userQuery = '*';
     return {
       isActive100: true,
@@ -82,15 +82,16 @@ export default {
         .get('http://127.0.0.1:3000/api/users')
         .then((response) => {
           this.users = response.data
-          console.log(response.data)
         })
 
   },
   methods: {
     getUsers() {
       axios
-          .post('http://127.0.0.1:3000/api/users', {
+          .post('http://127.0.0.1:3000/api/users/search', {
             query: this.userQuery,
+            sorting: this.sorting,
+            sortColumn: this.sortColumn,
             limit: this.limit
           })
           .then((response) => {
