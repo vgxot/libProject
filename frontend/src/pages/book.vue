@@ -6,7 +6,7 @@
         </div>
         <div class="book-about">
           <div class="book-title">{{ book.book_name }}</div>
-<!--          <router-link class="book-name text" :to="suthor"></router-link>-->
+<!--          <router-link class="book-name text" :to="suthor"></router-link> тут будет ссылка на книги автора-->
           <div class="book-author">{{book.author}}</div>
           <div class="book-rating">
             <p>{{ book.rating }}</p>
@@ -27,7 +27,7 @@
                            15.948 13.4882 15.9911 13.345 15.9989C13.2018 16.0068 13.0665 15.9715 12.9392 15.8931L8.5
                             13.26Z" fill="#B3FF66"/>
             </svg>
-            <rating-block></rating-block>
+<!--            <rating-block></rating-block> а тут будет блок с рейтингом, открывающийся по нажатию на рейтинг-->
           </div>
           <button-buy v-on:click="downloadBook" class="book-get">Скачать</button-buy>
           <div class="book-description">Описание

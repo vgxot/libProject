@@ -54,7 +54,7 @@ const routes = [
         component: architecture
     },
     {
-        path: '/forum',
+        path: '/users',
         component: users
     },
     {

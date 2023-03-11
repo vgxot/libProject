@@ -11,9 +11,10 @@ headers = {
     "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.1.1135 Yowser/2.5 Safari/537.36'
 }
 
+# работает со своими особенностями, но работает, желательно использовать vpn с динамической сменой ip адреса
 
 def get_links():
-    with open(f"html/sport15.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
+    with open(f"html/file.html", encoding="utf-8") as file:  # читаем файл и добавляем его в src
         src = file.read()
 
     links = []  # список со ссылками
@@ -183,7 +184,7 @@ def write_books():
             print(book_name, author, popularity, rating, genre, tags, one, two, three, four, five, info_age, volume, info_year, isbn, "\n", description)
 
             print(f'записали книгу номер', count)
-            # with open(f'books_1-8.json', "a", encoding="utf-8") as json_file:
+            # with open(f'books.json', "a", encoding="utf-8") as json_file:
             #     json.dump(books, json_file, ensure_ascii=False)
             # successfully += 1
 

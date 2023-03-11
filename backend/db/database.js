@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')()
 const cn = {
-    host: 'localhost',
+    host: 'localhost',  // тут настраиваем подключение ноды к базе
     port: 5432,
     database: 'libraryDB',
     user: 'postgres',

@@ -3,7 +3,7 @@
       <div class="top-menu">
         <router-link class="top-menu-link" to="/">Главная</router-link>
         <router-link class="top-menu-link" to="/books">Каталог</router-link>
-        <router-link class="top-menu-link" to="/forum">Форум</router-link>
+        <router-link class="top-menu-link" to="/users">Форум</router-link>
         <router-link class="top-menu-link" to="/news">Новости</router-link>
         <router-link class="top-menu-link" to="/account">Аккаунт</router-link>
       </div>

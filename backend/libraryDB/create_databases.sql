@@ -1,9 +1,9 @@
 create table books
 (
     book_id     serial,
-    book_name   varchar not null,
-    author      varchar not null,
-    isbn        varchar not null,
+    book_name   varchar not null, -- использую почти везде varchar, так как не все данные на своих местах
+    author      varchar not null, -- в основном проблема с годом выхода книги
+    isbn        varchar not null, -- на литрес его иногда нет, а я решил что у меня он будет
     pages       varchar not null,
     year        varchar not null,
     age         varchar not null,
