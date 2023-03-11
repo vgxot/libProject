@@ -29,7 +29,7 @@ def get_links():
     print(links)
 
     for i in links:
-        with open(f'15000links.csv', "a", newline='', encoding="utf-8") as csv_file:
+        with open(f'links.csv', "a", newline='', encoding="utf-8") as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow([i])
 
@@ -58,7 +58,7 @@ def attempts(url, retry=3):    # количество попыток
 def write_books():
     links = []
     successfully = 0
-    with open('all___links.csv', 'r') as file:
+    with open('links.csv', 'r') as file:
         reader = csv.reader(file, delimiter=',')
         for row in reader:
             links.append(row)  # создает цикл, в котором добавляем в массив все данные из csv файла
@@ -68,7 +68,7 @@ def write_books():
     for i in links:
         a += 1
         links[a] = ''.join(i)  # переводим элементы в строки
-    count = 7738
+    count = 0
     errors = 0
     book_check = ''
     for link in links:
@@ -78,7 +78,7 @@ def write_books():
                 print('засыпаю, чтобы замести следы')
                 print('ошибок на данный момент:', errors)
                 print('удачных записей:', successfully)
-                time.sleep(10)                                     # засыпает на n секунд каждые 100 книг
+                time.sleep(5)                                     # засыпает на n секунд каждые 100 книг
 
             print(f'начинаю писать книгу номер', count)
             try:
@@ -105,7 +105,7 @@ def write_books():
                 continue
 
             author = soup.find("a", itemprop="author").find("span").text
-            # resource_link = soup.find("img", itemprop="image").get("src")
+            resource_link = soup.find("img", itemprop="image").get("src")
             info = soup.find("div", class_="biblio_book_info_detailed_left").find_all("dd")
             info_age = info[0].text
             info_year = info[2].text
@@ -152,11 +152,11 @@ def write_books():
             rating /= int(popularity)
             rating = round(rating, 1)
 
-            # resource_link = resource_link[:-4]
-            # download_IMG = requests.get(resource_link).content
             img_link = f'imageBook{count}.jpg'
-            # with open(f'img/imageBook{count}.jpg', 'wb') as img:
-            #     img.write(download_IMG)
+            resource_link = resource_link[:-4]
+            download_IMG = requests.get(resource_link).content
+            with open(f'img/imageBook{count}.jpg', 'wb') as img:
+                img.write(download_IMG)
             print('все элементы найдены')
             books = (
                 {
@@ -183,9 +183,9 @@ def write_books():
             print(book_name, author, popularity, rating, genre, tags, one, two, three, four, five, info_age, volume, info_year, isbn, "\n", description)
 
             print(f'записали книгу номер', count)
-            with open(f'books_add.json', "a", encoding="utf-8") as json_file:
-                json.dump(books, json_file, ensure_ascii=False)
-            successfully += 1
+            # with open(f'books_1-8.json', "a", encoding="utf-8") as json_file:
+            #     json.dump(books, json_file, ensure_ascii=False)
+            # successfully += 1
 
         except Exception as ex:
             print(f'какая-то ошибка в коде страницы, ссылка: {links[count]}')

@@ -5,6 +5,9 @@ const {stat} = require("fs");
 const fs = require("fs");
 const date = require("../dateTime");
 
+// так-то функции работают, создают юзера и могут его удалить, даже роль ему меняют, правда на фронте это реализовано только на 30%
+
+
 class UserControl {
     async createUser(req, res) {
         const {username, name, password} = req.body
@@ -24,13 +27,16 @@ class UserControl {
             });
         const tokens = tokenControl.generateToken(username);
         await tokenControl.saveToken(username, tokens.refreshToken);
+
+        // функция должна отправлять JWT в куки файлы браузера, но это еще не реализовано, изучаю
+
         res.end({s: "d"})
     }
     async authUser(req, res) {
         const {username, password} = req.body;
         let hash = await db.query(`SELECT password FROM users WHERE username LIKE $1`, [username])
         hash = JSON.stringify(hash);
-        hash = hash.substr(14, 60);         // выбирает чисто хэш из строки
+        hash = hash.substr(14, 60);         // выбирает чисто хэш из строки, upd: писал когда не умел работать с json
         if (crypt.compareSync(password, hash)) {
             console.log(`Все круто, ${username} вошел`);
             const token = tokenControl.generateToken(username)
@@ -65,9 +71,13 @@ class UserControl {
         let query = req.params.id;
         let user = await db.query(`SELECT * FROM users WHERE username=$1`, [query])
         user = JSON.stringify(user);
-        fs.appendFileSync("./server.log", `${date}запрошены данные для юзера ${query}\n`, function (err) {
-            if (err) console.log('Ошибка при записи server.log', err)})
         res.end(user)
+    }
+    async getUserRatings(req, res) {
+        let query = req.params.id;
+        let ratings = await db.query(`SELECT * FROM users_rating WHERE username=$1`, [query])
+        ratings = JSON.stringify(ratings);
+        res.end(ratings)
     }
     async searchUsers(req, res) {
         let {query, sorting, sortColumn, limit} = req.body;
@@ -75,7 +85,6 @@ class UserControl {
             let users = await db.query(`SELECT * FROM users ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting])
             users = JSON.stringify(users);
             res.end(users)
-
         }
         else {
             let users = await db.query(`SELECT * FROM users WHERE username LIKE $3 OR name LIKE $3 OR role LIKE $3 ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting, query])

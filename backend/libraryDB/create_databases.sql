@@ -36,11 +36,13 @@ create table books_tags
 create table users
 (
     username        varchar not null,
-    name            integer not null,
+    name            varchar not null,
     password        varchar not null,
     role            varchar not null,
     token           varchar,
-    photo_link      varchar not null,
+    reg_date        varchar not null,
+    reg_time        varchar not null,
+    avatar_link     varchar not null,
     background_link varchar not null,
     constraint users_pk
         primary key (username)

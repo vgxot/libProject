@@ -7,7 +7,6 @@ const cn = {
     user: 'postgres',
     password: '00000000'
 };
-let count = 0;
 const db = pgp(cn);
 let k = -1;
 for (let i in books) {
