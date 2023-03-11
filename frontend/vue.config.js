@@ -7,6 +7,7 @@ module.exports = {
     open: process.platform === 'darwin',
     host: '0.0.0.0',
     port: 8080,
-    https: true,
+    https: true, // дает использовать https, не пугайтесь, если браузер будет ругаться, сертификата нет
+    http2: true
   }
 }
