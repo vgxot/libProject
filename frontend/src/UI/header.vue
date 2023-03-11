@@ -9,7 +9,7 @@
       </div>
       <div id="top-menu-m" class="top-menu-mobile">
         <button id="top-btn" @click="open = !open" class="top-menu-mobile-link">
-          <img id="top-btn-img" class="img-menu" src="@/../buttons/menu-open.svg">
+          <img id="top-btn-img" class="img-menu" src="@/../buttons/menu-open.svg" alt="">
         </button>
         <router-link class="top-menu-mobile-link img-main" to="/"></router-link>
         <router-link class="top-menu-mobile-link img-account" to="@/account"></router-link>

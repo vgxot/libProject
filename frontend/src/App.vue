@@ -15,7 +15,6 @@ export default {
     name: "App",
     data() {
       return {
-        
       }
     }
 }
@@ -47,6 +46,9 @@ button {
 ::selection {
   background: rgba(170, 255, 0, 0.38);
 }
+
+/* шрифты не подгружаются, еще не разобрался почему, поэтому убрал в комменты */
+
 /*@font-face {
   font-family: "Nunito";
   font-style: normal;

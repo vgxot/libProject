@@ -1,7 +1,7 @@
 <template>
   <div class="block-1">
     <p class="block-1-title-text">Искусство в Library</p>
-    <img class="block-1-image" src="@/../images/HAM_Kajsa_JoakimSederholm_2000_esillepano.jpg">
+    <img class="block-1-image" src="@/../images/HAM_Kajsa_JoakimSederholm_2000_esillepano.webp">
   </div>
   <div class="block-2">
     <div class="block-2-text">
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="art-object-photo-block">
-        <img class="art-object-photo" src="@/../images/oodi-stairs-2.jpg">
+        <img class="art-object-photo" src="@/../images/oodi-stairs-2.webp">
       </div>
     </div>
   </div>

@@ -10,7 +10,6 @@
           <my-button class="log-btn">Вход</my-button>
           <my-button class="reg-btn" type="submit" :disabled="!canRegister">Регистрация</my-button>
         </div>
-
       </form>
     </div>
   </div>
@@ -36,7 +35,7 @@ export default {
 
 <style scoped>
   .block-1 {
-    background-image: url("@/../images/vincent-guth-MAxHEAaAukI-unsplash.jpg");
+    background-image: url("@/../images/vincent-guth-MAxHEAaAukI-unsplash.webp");
     background-size: cover;
     width: 100%;
     height: 100vh;
