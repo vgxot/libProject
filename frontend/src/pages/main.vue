@@ -17,7 +17,7 @@
           <h4 class="section-text">В дополнение к плавной архитектуре, посетители могут полюбоваться
             произведениями современного искусства. Приходите посмотреть на увлекательные
             произведения в Library!</h4>
-          <a class="block-button btn-block-3" href="art.html">подробнее</a>
+          <router-link class="block-button btn-block-3" to="/art">подробнее</router-link>
         </div>
       </div>
       <div class="block-3-section img-2">
@@ -25,7 +25,7 @@
           <h3 class="section-main-text color-arch color-backdrop">Архитектура</h3>
           <h4 class="section-text">Library - это поразительное здание с его стеклянными и стальными конструкциями
             и деревянным фасадом, в его дизайне сочетаются традиционные и современные вкусы</h4>
-          <a class="block-button btn-block-3" href="architecture.html">подробнее</a>
+          <router-link class="block-button btn-block-3" to="/architecture">подробнее</router-link>
         </div>
       </div>
       <div class="block-3-section img-3">
@@ -33,7 +33,7 @@
           <h3 class="section-main-text color-serv color-backdrop">Услуги</h3>
           <h4 class="section-text">Library - это не просто библиотека. Это место для развлечений
             и досуга, место для встреч и конечно чтения. Посмотрите что Library может вам предложить</h4>
-          <a class="block-button btn-block-3" href="services.html">подробнее</a>
+          <router-link class="block-button btn-block-3" to="/services">подробнее</router-link>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
         <h4 class="mobile-section-text">Library - это поразительное здание с его стеклянными и
           стальными конструкциями и деревянным фасадом, в его дизайне сочетаются традиционные и современные вкусы</h4>
         <div class="btn-cont">
-          <a class="block-button btn-mobile-block-3" href="architecture.html">подробнее</a>
+          <router-link class="block-button btn-mobile-block-3" to="/architecture">подробнее</router-link>
         </div>
       </div>
       <div class="container">
@@ -53,7 +53,7 @@
         <h4 class="mobile-section-text">В дополнение к плавной архитектуре, посетители могут полюбоваться
           произведениями современного искусства. Приходите посмотреть на увлекательные произведения в Library!</h4>
         <div class="btn-cont">
-          <a class="block-button btn-mobile-block-3" href="art.html">подробнее</a>
+          <router-link class="block-button btn-mobile-block-3" to="/art">подробнее</router-link>
         </div>
       </div>
       <div class="container">
@@ -62,7 +62,7 @@
         <h4 class="mobile-section-text">Library - это не просто библиотека. Это место для развлечений и досуга,
           место для встреч и конечно чтения. Посмотрите что Library может вам предложить</h4>
         <div class="btn-cont">
-          <a class="block-button btn-mobile-block-3" href="services.html">подробнее</a>
+          <router-link class="block-button btn-mobile-block-3" to="/services">подробнее</router-link>
         </div>
       </div>
     </div>

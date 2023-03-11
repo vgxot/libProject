@@ -11,6 +11,7 @@ import auth from "@/pages/auth.vue";
 import architecture from "@/pages/architecture.vue";
 import users from "@/pages/users.vue";
 import user from "@/pages/user.vue";
+import art from "@/pages/art.vue";
 const routes = [
     {
         path: '/',
@@ -62,26 +63,26 @@ const routes = [
         name: 'user',
         component: user
     },
-    // {
-    //     path: '',
-    //     component:
-    // },
-    // {
-    //     path: '',
-    //     component:
-    // },
-    // {
-    //     path: '',
-    //     component:
-    // },
-    // {
-    //     path: '',
-    //     component:
-    // },
-    // {
-    //     path: '',
-    //     component:
-    // },
+    {
+        path: '/art',
+        component: art
+    },
+    //{
+    //    path: '',
+    //    component:
+    //},
+    //{
+    //    path: '',
+    //    component:
+    //},
+    //{
+    //    path: '',
+    //    component:
+    //},
+    //{
+    //    path: '',
+    //    component:
+    //},
 
 ]
 

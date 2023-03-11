@@ -1,14 +1,6 @@
-const pgp = require('pg-promise')()
+const db = require('./../db/database')
 const books = require('./books_add.json')
-const cn = {
-    host: 'localhost',
-    port: 5432,
-    database: 'libraryDB',
-    user: 'postgres',
-    password: '00000000'
-};
 // запись тегов - долгий процесс, у меня занял больше минуты
-const db = pgp(cn);
 count = 0;
 let j = 0;
 let countGenre = 0;

@@ -5,7 +5,7 @@
         <router-link class="top-menu-link" to="/books">Каталог</router-link>
         <router-link class="top-menu-link" to="/users">Форум</router-link>
         <router-link class="top-menu-link" to="/news">Новости</router-link>
-        <router-link class="top-menu-link" to="/account">Аккаунт</router-link>
+        <router-link class="top-menu-link" to="/auth">Аккаунт</router-link>
       </div>
       <div id="top-menu-m" class="top-menu-mobile">
         <button id="top-btn" @click="open = !open" class="top-menu-mobile-link">
@@ -18,9 +18,9 @@
       <div v-if="open" class="mobile-menu-block">
         <router-link class="menu-block-link" @click="open =!open" to="/">Главная</router-link>
         <router-link class="menu-block-link" @click="open =!open" to="/books">Каталог</router-link>
-        <router-link class="menu-block-link" @click="open =!open" to="/forum">Форум</router-link>
+        <router-link class="menu-block-link" @click="open =!open" to="/users">Форум</router-link>
         <router-link class="menu-block-link" @click="open =!open" to="/news">Новости</router-link>
-        <router-link class="menu-block-link" @click="open =!open" to="/account">Аккаунт</router-link>
+        <router-link class="menu-block-link" @click="open =!open" to="/auth">Аккаунт</router-link>
       </div>
     </transition>
   </div>
