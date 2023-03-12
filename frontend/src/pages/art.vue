@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "architecture"
+  name: "art"
 }
 </script>
 

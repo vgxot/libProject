@@ -13,19 +13,19 @@
     <div class="block-3 white">
       <div class="block-3-section img-1">
         <div class="section-1">
+          <h3 class="section-main-text color-arch color-backdrop">Архитектура</h3>
+          <h4 class="section-text">Library - это поразительное здание с его стеклянными и стальными конструкциями
+            и деревянным фасадом, в его дизайне сочетаются традиционные и современные вкусы</h4>
+          <router-link class="block-button btn-block-3" to="/architecture">подробнее</router-link>
+        </div>
+      </div>
+      <div class="block-3-section img-2">
+        <div class="section-1">
           <h3 class="section-main-text color-art color-backdrop">Искусство</h3>
           <h4 class="section-text">В дополнение к плавной архитектуре, посетители могут полюбоваться
             произведениями современного искусства. Приходите посмотреть на увлекательные
             произведения в Library!</h4>
           <router-link class="block-button btn-block-3" to="/art">подробнее</router-link>
-        </div>
-      </div>
-      <div class="block-3-section img-2">
-        <div class="section-1">
-          <h3 class="section-main-text color-arch color-backdrop">Архитектура</h3>
-          <h4 class="section-text">Library - это поразительное здание с его стеклянными и стальными конструкциями
-            и деревянным фасадом, в его дизайне сочетаются традиционные и современные вкусы</h4>
-          <router-link class="block-button btn-block-3" to="/architecture">подробнее</router-link>
         </div>
       </div>
       <div class="block-3-section img-3">
