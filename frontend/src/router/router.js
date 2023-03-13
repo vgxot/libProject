@@ -12,6 +12,7 @@ import architecture from "@/pages/architecture.vue";
 import users from "@/pages/users.vue";
 import user from "@/pages/user.vue";
 import art from "@/pages/art.vue";
+import floors from "@/pages/floors.vue";
 const routes = [
     {
         path: '/',
@@ -67,10 +68,10 @@ const routes = [
         path: '/art',
         component: art
     },
-    //{
-    //    path: '',
-    //    component:
-    //},
+    {
+        path: '/floors',
+        component: floors
+    },
     //{
     //    path: '',
     //    component:
