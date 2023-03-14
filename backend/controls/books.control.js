@@ -59,11 +59,6 @@ class bookControl {
     async booksDownload(req, res) {
 
     }
-    async statistics(req, res) {
-        let stat = require('../stat/stat.json')
-        stat = JSON.stringify(stat)
-        res.end(stat)
-    }
 }
 
 module.exports = new bookControl()
