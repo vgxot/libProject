@@ -7,7 +7,6 @@
       <router-link class="footer-link" to="/map">Карта сайта</router-link>
       <router-link class="footer-link" to="/help">Помощь</router-link>
     </div>
-<!--    <a class="sk-link" href="https://sk.ru"></a>-->
     <div class="footer-copyright">© 2023 Library</div>
   </div>
 </template>
@@ -65,15 +64,6 @@ name: "my-footer"
   margin-right: auto;
   width: 150px;
 }
-.sk-link{                                       /* ссылка на Сколково */
-  background-image: url("/buttons/sk.svg");
-  position: relative;
-  float: right;
-  background-size: cover;
-  width: 77px;
-  height: 55px;
-  margin-right: 25px;
-}
 @media only screen and (max-width: 734px) {
 .footer {
   border-top-left-radius: 35px;
@@ -82,9 +72,6 @@ name: "my-footer"
 }
 .footer-copyright {
   margin-top: 75px;
-}
-.sk-link {
-  margin-right: 0;
 }
 }
 </style>
