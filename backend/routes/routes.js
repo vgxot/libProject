@@ -3,6 +3,8 @@ const router = new Router()
 const userControl = require('../controls/user.control')
 const tokenControl = require('../controls/token.control')
 const booksControl = require('../controls/books.control')
+const other = require('../controls/other')
+
 
 router.post('/user', userControl.createUser)             // создает юзера
 router.post('/user/update', userControl.userBeAuthor)    // делает юзера автором
@@ -24,8 +26,9 @@ router.post('/books/search', booksControl.booksSearch)               // поис
 router.get('/books/:id', booksControl.bookInfo)               // получить данные о какой-то книге
 router.get('/genre/books/:id', booksControl.bookGenre)               // получить жанр книги
 router.get('/tags/books/:id', booksControl.bookTags)               // получить теги книги
-router.get('/statistics', booksControl.statistics)               // получение статистики (beta)
 
-
+router.get('/statistics', other.statistics)               // получение статистики (beta)
+router.get('/datetime', other.dateTime)
+router.get('/date', other.date)
 
 module.exports = router
