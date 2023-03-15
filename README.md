@@ -32,9 +32,11 @@ https://www.figma.com/file/P2lylnUpIqzebDzsOq0aUF/libProject
 		4. Оценки у пользователей
 			1. add_users_rating.js, лучше не ставить, пока что нет логики для их отображения
 4. Добавление картинок (обложки книг)
-		1. Картинки весят 3ГБ, и находятся на яндекс.диске:<br>
-		   https://disk.yandex.ru/d/xumnLUiShk0ovg.<br>
-			Скачать архив и распаковать по пути<br>
+		1. Картинки весят 4ГБ, и находятся на яндекс.диске:<br>
+		   https://disk.yandex.ru/d/xumnLUiShk0ovg<br>
+			Скачать архив libProject_IMG_1080p.zip и распаковать по пути<br>
 			 libProject/backend/img/books/<br>
 			 должно получиться: .../img/books/1080p/xxx.webp<br>
+			 архив libProject_IMG_360p.zip распаковать точно так-же
+	
 5. Готово
