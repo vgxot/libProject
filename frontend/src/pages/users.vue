@@ -303,5 +303,8 @@ input[type="search"]::-webkit-search-cancel-button {                        /* Ñ
   }
   .users-items {
   }
+  .button.open-sort-block {
+    display: none;
+  }
 }
 </style>

@@ -13,7 +13,7 @@
     <div class="block-3 white">
       <div class="block-3-section img-1">
         <div class="section-1">
-          <h3 class="section-main-text color-arch color-backdrop">Архитектура</h3>
+          <h3 class="section-main-text color-backdrop color-arch">Архитектура</h3>
           <h4 class="section-text">Library - это поразительное здание с его стеклянными и стальными конструкциями
             и деревянным фасадом, в его дизайне сочетаются традиционные и современные вкусы</h4>
           <router-link class="block-button btn-block-3" to="/architecture">подробнее</router-link>
@@ -21,7 +21,7 @@
       </div>
       <div class="block-3-section img-2">
         <div class="section-1">
-          <h3 class="section-main-text color-art color-backdrop">Искусство</h3>
+          <h3 class="section-main-text color-backdrop color-art">Искусство</h3>
           <h4 class="section-text">В дополнение к плавной архитектуре, посетители могут полюбоваться
             произведениями современного искусства. Приходите посмотреть на увлекательные
             произведения в Library!</h4>
@@ -30,7 +30,7 @@
       </div>
       <div class="block-3-section img-3">
         <div class="section-1">
-          <h3 class="section-main-text color-serv color-backdrop">Услуги</h3>
+          <h3 class="section-main-text color-backdrop color-serv">Услуги</h3>
           <h4 class="section-text">Library - это не просто библиотека. Это место для развлечений
             и досуга, место для встреч и конечно чтения. Посмотрите что Library может вам предложить</h4>
           <router-link class="block-button btn-block-3" to="/services">подробнее</router-link>
@@ -86,7 +86,7 @@ export default {
 .block-1 {
   width: 100%;
   height: 120vh;
-  background-image: url("/images/library2.webp");
+  background-image: url("/images/library2-max.webp");
   background-size: cover;
 }
 .block-1-text {
@@ -124,13 +124,13 @@ export default {
 
 
 .img-1 {
-  background-image: url("/images/ooditwilight.webp");
+  background-image: url("/images/ooditwilight-max.webp");
 }
 .img-2 {
-  background-image: url("/images/HAM_Kajsa_JoakimSederholm_2000_esillepano.webp");
+  background-image: url("/images/art-oodi-main-max.webp");
 }
 .img-3 {
-  background-image: url("/images/architectureoodi.webp");
+  background-image: url("/images/architectureoodi-mobile.webp");
 }
 .block-button{
   text-decoration: none;
@@ -181,7 +181,6 @@ export default {
 .block-3-section {
   width: 1200px;
   height: 700px;
-
   border-radius: 25px;
   background-size: cover;
   margin: 150px auto 130px;
@@ -296,6 +295,16 @@ export default {
 @media only screen and (max-width: 734px) {
   .block-1 {
     background-position: center;
+    background-image: url("/images/library2-mobile-max.webp");
+  }
+  .img-1 {
+    background-image: url("/images/ooditwilight-mobile-max.webp");
+  }
+  .img-2 {
+    background-image: url("/images/art-oodi-main-mobile-max.webp");
+  }
+  .img-3 {
+    background-image: url("/images/architectureoodi-mobile.webp");
   }
   .block-1-text {
     font-size: 44px;

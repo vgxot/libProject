@@ -1,12 +1,13 @@
 <template>
   <div class="floors">
     <div class="block-1">
-      <div class="block-1-section-1">Этажи Library</div>
+      <div class="block-1-title">Этажи Library</div>
       <div class="block-1-section-2">
-        <p class="block-1-section-2-text-2">
+        <p class="block-1-text">
           Каждый этаж в Library имеет свой собственный характер, основанный на возможностях,
           которые он предлагает.<br> В Library есть место как для тихих, так и для более шумных мероприятий.
-        </p></div>
+        </p>
+      </div>
     </div>
     <div class="block-2">
       <div class="floors-block-text-1">
@@ -21,7 +22,10 @@
           Оживленный вестибюль образует этаж transition and partners, а также содержит быстрые библиотечные услуги:
           здесь вы можете вернуть вещи, которые вы позаимствовали, и взять последние книги.</p>
       </div>
-      <div class="floors-img floor-1"></div>
+      <picture>
+        <source media="(max-width: 734px)" srcset="@/../images/floor-1-max-mobile.webp">
+        <img class="floors-img" src="@/../images/floor-1-max.webp" alt="">
+      </picture>
       <div class="floors-block-text-1">
         <p class="floors-text-1">2 этаж</p>
       </div>
@@ -33,7 +37,10 @@
           взаимодействия и совместного времяпрепровождения с другими людьми, здесь есть студии,
           игровые комнаты, городские мастерские, рабочие и конференц-залы, а также помещения для групповой работы.</p>
       </div>
-      <div class="floors-img floor-2"></div>
+      <picture>
+        <source media="(max-width: 734px)" srcset="@/../images/floor-2-max-mobile.webp">
+        <img class="floors-img" src="@/../images/floor-2-max.webp" alt="">
+      </picture>
       <div class="floors-block-text-1">
         <p class="floors-text-1">3 этаж</p>
       </div>
@@ -46,7 +53,10 @@
           и полюбоваться видом с балкона для граждан. Этот этаж больше всего напоминает
           традиционную библиотеку. Здесь же находится и детская секция.</p>
       </div>
-      <div class="floors-img floor-3"></div>
+      <picture>
+        <source media="(max-width: 734px)" srcset="@/../images/floor-3-max-mobile.webp">
+        <img class="floors-img" src="@/../images/floor-3-max.webp" alt="">
+      </picture>
     </div>
     <div class="block-3"></div>
   </div>
@@ -67,7 +77,7 @@ export default {
   width: 100%;
   height: 300px;
 }
-.block-1-section-1 {                          /* первая секция первого блока */
+.block-1-title {                          /* первая секция первого блока */
   width: 100%;
   height: 130px;
   font-size: 64px;
@@ -81,7 +91,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
-.block-1-section-2-text-2 {                          /* регулирует ширину описания */
+.block-1-text {                          /* регулирует ширину описания */
   max-width: 660px;
 }
 .block-2 {
@@ -101,7 +111,7 @@ export default {
 }
 .floors-text-1 {                          /* номер этажа */
   margin: 0 auto;
-  font-size: 48px;
+  font-size: 64px;
 }
 .floors-text-2 {                          /* оглавление этажа */
   font-size: 36px;
@@ -112,31 +122,36 @@ export default {
   max-width: 900px;
 }
 .floors-img {                               /* схема этажа */
-  max-width: 1300px;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
 }
-.floor-1 {                                                  /* отдельно источник картинки */
-  background-image: url("/images/floor-1-.webp");
-  height: 1000px;
-  object-fit: cover;
-  background-size: cover;
-}
-.floor-2 {
-  background-image: url("/images/floor-2-.webp");
-  height: 1000px;
-  object-fit: cover;
-  background-size: cover;
-}
-.floor-3 {
-  background-image: url("/images/floor-3-.webp");
-  height:1000px;
-  object-fit: cover;
-  background-size: cover;
-}
 .block-3 {                               /* заглушка */
   width: 100%;
   height: 100px;
+}
+@media only screen and (max-width: 734px) {
+  .block-1-title {
+    height: 75px;
+    font-size: 48px;
+  }
+  .block-1-section-2 {
+    max-width: 734px;
+    height: max-content;
+  }
+  .floors-text-1, .block-1-text, .floors-text-2, .floors-text-3 {
+    text-align: center;
+    margin: 0 15px;
+  }
+  .floors-block-text-1 {
+    max-width: 734px;
+  }
+  .floors-img {
+    height: 300px;
+    width: 100%;
+  }
 }
 </style>

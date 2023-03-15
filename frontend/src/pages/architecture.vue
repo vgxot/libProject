@@ -1,11 +1,15 @@
 <template>
   <div class="block-1">
     <p class="block-1-title-text">Архитектура Library</p>
-    <img class="block-1-image" src="@/../images/oodi-arch.webp">
+    <picture>
+      <source media="(max-width: 734px)" srcset="@/../images/oodi-arch-mobile.webp">
+      <img class="block-1-image" src="@/../images/oodi-arch-max.webp">
+    </picture>
   </div>
   <div class="block-2">
     <div class="block-2-text">
-      <p class="block-2-text-title">Визитная карточка Финской архитектуры</p>
+      <p class="block-2-text-title">Визитная карточка
+        <span class="block-2-text-title-color">Финской </span>архитектуры</p>
       <p>Здание библиотеки в центре Хельсинки почти полностью состоит из общественных пространств
         и предлагает широкий спектр услуг. Это новый центр впечатляющей сети публичных библиотек города.
         Дизайн делит функции библиотеки на три различных уровня: активный первый этаж, тихий верхний
@@ -15,7 +19,7 @@
         вдохновляющим и очень функциональным дополнением к городской жизни. Энергоэффективная
         библиотека — впечатляющая и привлекательная визитная карточка финской архитектуры. За
         исключением верхнего этажа, фасад Oodi полностью сделан из дерева, что смягчает общий
-        вид архитектуры вокруг залива Тёёлё. Древесина, используемая для внешней стены, - ель. </p>
+        вид архитектуры вокруг залива Тёёлё.<br>Древесина, используемая для внешней стены, - ель.</p>
     </div>
     <div class="block-2-logo">
       <img class="block-2-logo-svg" src="@/../buttons/library-mini-logo-white.svg">
@@ -67,6 +71,12 @@ export default {
   font-size: 42px;
   margin-bottom: 25px;
 }
+.block-2-text-title-color {
+  background-image: linear-gradient(to right, #586bcc, #8b60ec);
+  color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+}
 .block-2-logo {
   margin: auto;
 }
@@ -78,5 +88,30 @@ export default {
 .block-3 {
   background-color: white;
 }
-
+@media only screen and (max-width: 734px) {
+  .block-1 {
+    height: 600px;
+  }
+  .block-1-title-text {
+    font-size: 42px;
+    position: absolute;
+    left: 25px;
+    right: 0;
+    text-align: left;
+    top: 290px;
+    line-height: 1.15;
+  }
+  .block-2-logo {
+    display: none;
+  }
+  .block-2-text {
+    margin: 35px 15px;
+    width: 100%;
+    text-align: center;
+  }
+  .block-2-text-title {
+    font-size: 32px;
+    width: 100%;
+  }
+}
 </style>

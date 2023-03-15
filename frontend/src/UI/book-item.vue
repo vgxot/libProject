@@ -1,7 +1,7 @@
 <template>
   <div class="book-item">
     <div class="book-image">
-      <img class="book-image-img" :src="'http://127.0.0.1:3000/img/book/mid/' + book_data.photo_link">
+      <img class="book-image-img" :src="'http://127.0.0.1:3000/img/book/min/' + book_data.photo_link" alt="">
     </div>
     <div class="book-about">
       <router-link class="book-name text" :to="{ name: 'book', params: { id: book_data.book_id } }">{{book_data.book_name}}</router-link>
