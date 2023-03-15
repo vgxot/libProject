@@ -8,11 +8,11 @@
         <router-link class="top-menu-link" to="/auth">Аккаунт</router-link>
       </div>
       <div id="top-menu-m" class="top-menu-mobile">
-        <button id="top-btn" @click="open = !open" class="top-menu-mobile-link">
+        <button name="button to open mobile menu" id="top-btn" @click="open = !open" class="top-menu-mobile-link">
           <img id="top-btn-img" class="img-menu" src="@/../buttons/menu-open.svg" alt="">
         </button>
-        <router-link class="top-menu-mobile-link img-main" to="/"></router-link>
-        <router-link class="top-menu-mobile-link img-account" to="@/account"></router-link>
+        <router-link class="top-menu-mobile-link img-main" to="/" aria-label="main"></router-link>
+        <router-link class="top-menu-mobile-link img-account" to="/auth" aria-label="account"></router-link>
       </div>
     <transition name="menu-block">
       <div v-if="open" class="mobile-menu-block">
