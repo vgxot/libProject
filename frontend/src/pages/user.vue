@@ -15,10 +15,16 @@
     </div>
     <div class="block-0"></div>
     <div class="block-2">
-      <div v-for="rating in ratings">
-        <book-item></book-item>
+      <div class="block-2-title">Оценки пользователя:</div>
+      <div class="block-2-for-rating">
+        <book-item-rating class="aaa"
+            v-for="rating in ratings"
+            :key="ratings.book_id"
+            v-bind:ratings_data="rating">
+        </book-item-rating>
       </div>
-      <div v-for="rating in ratings">{{rating.rating}}</div>
+      <div class="block-2-for-book-name">
+      </div>
     </div>
   </div>
 </template>
@@ -26,12 +32,13 @@
 <script>
 import axios from "axios";
 import BookItem from "@/UI/book-item.vue";
+import BookItemRating from "@/UI/book-item-rating.vue";
 export default {
-  components: {BookItem},
+  components: {BookItemRating, BookItem},
   data() {
     return {
       user: [],
-      ratings: []
+      ratings: [],
     }
   },
   async mounted() {
@@ -111,10 +118,17 @@ export default {
   margin: 0 auto;
 }
 .block-2 {
-  display: flex;
-  flex-direction: column;
-  height: 1000px;
-  padding: 25px 150px;
+  height: max-content;
+  padding: 25px 75px;
   background-color: #bababa;
+}
+.block-2-for-book-name {
+  margin: 0 25px;
+}
+.block-2-for-rating {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>

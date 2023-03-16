@@ -34,6 +34,7 @@ class UserControl {
     }
     async authUser(req, res) {
         const {username, password} = req.body;
+        console.log(req.body)
         let hash = await db.query(`SELECT password FROM users WHERE username LIKE $1`, [username])
         hash = JSON.stringify(hash);
         hash = hash.substr(14, 60);         // выбирает чисто хэш из строки, upd: писал когда не умел работать с json
@@ -75,7 +76,9 @@ class UserControl {
     }
     async getUserRatings(req, res) {
         let query = req.params.id;
-        let ratings = await db.query(`SELECT * FROM users_rating WHERE username=$1`, [query])
+        let ratings = await db.query(`SELECT usr.rating, bks.author, bks.book_name, bks.book_id, bks.photo_link
+                                      FROM users_rating AS usr
+                                               JOIN books AS bks ON bks.book_id=usr.book_id WHERE usr.username=$1`, [query])
         ratings = JSON.stringify(ratings);
         res.end(ratings)
     }
