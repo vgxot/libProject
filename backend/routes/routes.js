@@ -30,5 +30,6 @@ router.get('/tags/books/:id', booksControl.bookTags)               // получ
 router.get('/statistics', other.statistics)               // получение статистики (beta)
 router.get('/datetime', other.dateTime)
 router.get('/date', other.date)
+router.post('/test', other.test)
 
 module.exports = router

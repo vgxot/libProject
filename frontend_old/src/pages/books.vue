@@ -7,7 +7,7 @@
                         <path d="M0.350299 22.9434C0.127308 22.7001 0.0107441 22.4163 0.000608159 22.092C-0.00952782 21.7676 0.107036 21.4838 0.350299 21.2406L9.9288 11.6621L0.350299 2.08355C0.127308 1.86056 0.0107441 1.58182 0.000608159 1.24733C-0.00952782 0.912846 0.107036 0.623971 0.350299 0.380707C0.573291 0.137444 0.85203 0.0107441 1.18652 0.000608158C1.52101 -0.00952782 1.80988 0.107036 2.05314 0.3503L12.7263 11.0235C12.8277 11.1248 12.8986 11.2262 12.9392 11.3276C12.9797 11.4289 13 11.5404 13 11.6621C13 11.7837 12.9797 11.8952 12.9392 11.9965C12.8986 12.0979 12.8277 12.1993 12.7263 12.3006L2.05314 22.9738C1.83015 23.1968 1.55141 23.3083 1.21693 23.3083C0.882438 23.3083 0.593563 23.1867 0.350299 22.9434Z" fill="white"/>
                     </svg>
                 </my-button>
-                <input v-bind:value="searchQuery" @input="inputQuery" placeholder="найдётся всё" class="input" type="search" id="search">
+                <input @input="inputQuery" placeholder="найдётся всё" class="input" type="search" id="search">
                 <button id="button" @click="bookSearch()" type="submit" class="button-search search-button">
                     <span class="button-search-text">Найти</span>
                     <img class="img-search" src="@/../buttons/search.svg" alt="search button">
@@ -87,7 +87,6 @@ export default {
         .then((response) => {
       this.books = response.data
     })
-
   },
   methods: {
     getBooks() {
@@ -319,6 +318,12 @@ input[type="search"]::-webkit-search-cancel-button {                        /* �
   }
   .books-items {
     grid-template-columns: 1fr;
+  }
+  .open-sort-block {
+    display: none;
+  }
+  .categories-button {
+    display: none;
   }
 }
 </style>

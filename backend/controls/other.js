@@ -2,6 +2,10 @@ const stat = require("../stat/stat.json");
 
 
 class other {
+    test(req, res) {
+        console.log(req.body)
+        res.end()
+    }
     async statistics(req, res) {
         let stat = require('../stat/stat.json')
         stat = JSON.stringify(stat)

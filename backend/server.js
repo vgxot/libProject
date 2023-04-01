@@ -3,16 +3,12 @@ const router = require(__dirname + '/routes/routes')
 const app = express()
 const cors = require('cors')
 const PORT = 3000;
-const path = require('path')
-const fs = require("fs");
-const date = require("./dateTime")
 
 app.use(express.json())
 app.use(cors())
 app.use('/api', router)
 app.listen(PORT, () =>
     console.log(`сервер запущен. Порт ${PORT}`))
-
 
 
 app.get(`/img/book/min/:id`, function (req, res) {
