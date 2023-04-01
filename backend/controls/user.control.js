@@ -9,7 +9,6 @@ const date = require("../dateTime");
 
 
 class UserControl {
-
     async createUser(req, res) {
         const {username, name, password} = req.body
         await db.query('SELECT username FROM users WHERE username LIKE $1', [username])

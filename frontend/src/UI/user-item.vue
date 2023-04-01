@@ -80,12 +80,4 @@ background-image: linear-gradient(var(--chip-gradient-angle),#FBF4EC var(--ultra
   --ultra-gradient-stop-6: 76.5%;
   --ultra-gradient-stop-7: 90%;
 }
-@media only screen and (max-width: 734px) {
-  .user-item {
-    max-width: 370px;
-  }
-  .username.text {
-    max-width: 150px;
-  }
-}
 </style>
