@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" version="1.0" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+    <clipPath id="id0" clip-rule="nonzero">
+     <path d="M499.5 49.5c-248.53,0 -450,201.47 -450,450 0,248.53 201.47,450 450,450 248.53,0 450,-201.47 450,-450 0,-248.53 -201.47,-450 -450,-450z"/>
+    </clipPath>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+   <g clip-path="url(#id0)">
+    <polygon fill="whitesmoke" fill-rule="nonzero" points="49.5,49.5 724.5,49.5 724.5,949.5 49.5,949.5 "/>
+    <polygon id="_1" fill="black" fill-rule="nonzero" points="499.5,49.5 949.5,49.5 949.5,949.5 499.5,949.5 "/>
+   </g>
+   <path id="_2" fill="none" fill-rule="nonzero" stroke="whitesmoke" stroke-width="75" stroke-miterlimit="22.9256" d="M499.5 49.5c-248.53,0 -450,201.47 -450,450 0,248.53 201.47,450 450,450 248.53,0 450,-201.47 450,-450 0,-248.53 -201.47,-450 -450,-450z"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="250px" height="250px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 250 250"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#444444;stroke-width:20;stroke-miterlimit:22.9256}
+    .fil2 {fill:none}
+    .fil1 {fill:#1E1E1E}
+    .fil0 {fill:#444444}
+   ]]>
+  </style>
+    <clipPath id="id0">
+     <path d="M125 10c63,0 115,51 115,115 0,63 -51,115 -115,115 -63,0 -115,-51 -115,-115 0,-63 51,-115 115,-115z"/>
+    </clipPath>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+   <g style="clip-path:url(#id0)">
+    <polygon class="fil0" points="10,10 182,10 182,240 10,240 "/>
+    <polygon id="_1" class="fil1" points="125,10 240,10 240,240 125,240 "/>
+   </g>
+   <path id="_2" class="fil2 str0" d="M125 10c63,0 115,51 115,115 0,63 -51,115 -115,115 -63,0 -115,-51 -115,-115 0,-63 51,-115 115,-115z"/>
+  </g>
+ </g>
+</svg>
