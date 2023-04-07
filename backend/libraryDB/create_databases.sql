@@ -11,11 +11,6 @@ create table books
     photo_link  varchar not null,
     popularity  integer not null,
     rating      varchar not null,
-    five        integer not null,
-    four        integer not null,
-    three       integer not null,
-    two         integer not null,
-    one         integer not null,
     constraint books_pk
         primary key (book_id)
 );
@@ -58,7 +53,7 @@ create table users_rating
         foreign key (username) references users (username)
 );
 
-comment on column users_rating.rating is 'оценка книги от 1 до 5';
+comment on column users_rating.rating is 'пользовательская оценка книги от 1 до 5';
 
 create table authors
 (
@@ -68,6 +63,17 @@ create table authors
         foreign key (book_id) references books (book_id),
     constraint username___fk
         foreign key (username) references users (username)
+);
+create table book_ratings
+(
+    book_id integer not null,
+    five    integer not null,
+    four    integer not null,
+    three   integer not null,
+    two     integer not null,
+    one     integer not null,
+    constraint book_ratings_books__fk
+        foreign key (book_id) references books (book_id)
 );
 
 
