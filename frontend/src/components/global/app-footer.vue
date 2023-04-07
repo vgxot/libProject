@@ -1,43 +1,37 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="footer">
-    <div class="footer-block-logo">
-    </div>
+    <img class="footer-block-logo" src="@/assets/buttons/library-mini-logo-white.svg" alt="logo">
     <div class="footer-link-group">
-      <router-link class="footer-link" to="/statistics">Статистика сайта</router-link>
-      <router-link class="footer-link" to="/map">Карта сайта</router-link>
-      <router-link class="footer-link" to="/help">Помощь</router-link>
+      <router-link class="footer-link fs-24" to="/statistics">Статистика сайта</router-link>
+      <router-link class="footer-link fs-24" to="/map">Карта сайта</router-link>
+      <router-link class="footer-link fs-24" to="/help">Помощь</router-link>
     </div>
     <div class="footer-copyright">© 2023 Library</div>
   </div>
 </template>
 
-<script>
-export default {
-name: "my-footer"
-}
-</script>
-
 <style scoped>
-/* подвал */
-
 .footer {                                    /* блок подвала */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #bababa;
   padding: 50px 50px 20px 50px;
   line-height: 32px;
   user-select: none;
-  text-align: left;
   background-color: #1e1e1e;
   font-family: Inter, sans-serif;
   border-top-left-radius: 75px;
   border-top-right-radius: 75px;
+  text-align: center;
 }
 .footer-block-logo {                            /* лого */
-  margin-left: auto;
-  margin-right: auto;
-  width: 75px;
-  height: 70px;
-  background-image: url("/buttons/library-mini-logo-white.svg");
-  background-size: 75px;
+  width: 95px;
 }
 .footer-link-group {                            /* группа ссылок */
   display: flex;
@@ -46,9 +40,6 @@ name: "my-footer"
 }
 .footer-link {                                  /* ссылки */
   color: #bababa;
-  margin-right: auto;
-  margin-left: auto;
-  font-size: 20px;
   margin-bottom: 10px;
   transition: color 250ms;
 }
@@ -58,10 +49,7 @@ name: "my-footer"
 }
 .footer-copyright {                             /* копирайт */
   position: relative;
-  margin-top: 75px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 35px;
   width: 150px;
 }
 @media only screen and (max-width: 734px) {
