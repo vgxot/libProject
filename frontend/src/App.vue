@@ -1,6 +1,8 @@
 <script setup>
+import "@/assets/style/main.scss"
 import { RouterView } from 'vue-router'
 import AppHeader from "@/components/global/app-header.vue";
+import AppFooter from "@/components/global/app-footer.vue";
 </script>
 
 <template>
@@ -10,4 +12,5 @@ import AppHeader from "@/components/global/app-header.vue";
       <component :is="Component" />
     </transition>
   </router-view>
+  <app-footer></app-footer>
 </template>
