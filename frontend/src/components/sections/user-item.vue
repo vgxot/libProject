@@ -17,11 +17,11 @@ export default {
     user_data: {
       type: Object,
       default() {
-        return {}
+        return {
+
+        }
       }
     }
-  },
-  data() {
   }
 }
 </script>
@@ -30,7 +30,7 @@ export default {
 .user-item {
   color: white;
   display: flex;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   border-radius: 45px;
   margin: 10px;
   height: 128px;
@@ -56,7 +56,6 @@ export default {
 }
 .role {
   text-align: center;
-  float: bottom;
 }
 .gradient {
   -webkit-background-clip: text;

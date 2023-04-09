@@ -26,16 +26,11 @@ export default {
     book_data: {
       type: Object,
       default() {
-        return {}
+        return {
+          
+        }
+      }
     }
-  }
-},
-  data() {
-  return {
-
-    }
-  },
-  computed: {
   }
 }
 </script>
