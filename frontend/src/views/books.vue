@@ -1,5 +1,5 @@
 <script setup>
-import Search from "@/views/search.vue";
+import Search from "@/components/sections/search.vue";
 const page = 'books'
 
 </script>

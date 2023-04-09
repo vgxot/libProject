@@ -11,7 +11,7 @@ const date = require("../dateTime");
 class bookControl {
     async books(req, res) {
         let query = "*";
-        let limit = 30;
+        let limit = 50;
         let books = await db.query(`SELECT * FROM books ORDER BY popularity DESC LIMIT $1`, [limit])
         books = JSON.stringify(books);
         console.log('отправил книги по запросу')
@@ -19,8 +19,8 @@ class bookControl {
     }
     async booksSearch(req, res) {
         let {query, sorting, sortColumn, limit} = req.body;
-        console.log(`ищем ${query}`)
-        if (query === '') {
+        console.log(req.body)
+        if (query === '*') {
             let books = await db.query(`SELECT * FROM books ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting])
             books = JSON.stringify(books);
             res.end(books)

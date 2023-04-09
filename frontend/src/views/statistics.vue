@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import MyFooter from "@/components/global/footer.vue";
+import MyFooter from "@/components/global/app-footer.vue";
 import axios from "axios";
 import StatItem from "@/components/sections/stat-item.vue";
 
