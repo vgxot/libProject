@@ -7,7 +7,20 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
   <div class="main">
     <div class="main-head">
       <h1 class="head-title fs-72 white">Welcome to the<br>Library</h1>
-      <img class="head-image" src="@/assets/images/library2-max.webp" alt="library image">
+      <picture>
+        <source
+            type="image/webp"
+            media="(max-width: 734px)"
+            srcset="@/assets/images/library2-mobile-max.webp 320w"
+        />
+        <source
+            type="image/webp"
+            media="(min-width: 734px)"
+            srcset="@/assets/images/library2-max.webp 734w,
+                    @/assets/images/library2-max.webp 2160w"
+        />
+        <img class="head-image" src="@/assets/images/library2-max.webp" alt="" />
+      </picture>
     </div>
     <div class="main-body">
       <div class="body-description">
@@ -50,7 +63,8 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@use "@/assets/style/main.scss";
 .main {
   background-color: white;
 }
@@ -66,6 +80,7 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
 .head-image {
   width: 100%;
   height: 120vh;
+  object-fit: cover;
 }
 .body-description {
   width: 100%;
@@ -103,6 +118,7 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
 .section-img {
   width: 100%;
   border-radius: 35px;
+  background-size: cover;
 }
 .section-description {
   margin: 25px 0 15px 0;
@@ -117,6 +133,9 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
   background-image: linear-gradient(to right, #d2ab93, #d77d09);
 }
 @media only screen and (max-width: 734px) {
+  .head-title {
+    font-size: 64px !important;
+  }
   .body-section {
     width: unset;
     padding: 0 25px;
