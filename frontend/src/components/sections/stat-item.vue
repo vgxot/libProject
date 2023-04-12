@@ -25,7 +25,7 @@ export default {
 .stat-block {
   width: max-content;
   height: max-content;
-  padding: 10px 25px;
+  padding: 15px 25px;
   background-color: #1E1E1E;
   border-radius: 25px;
   margin: 10px;
@@ -35,7 +35,7 @@ export default {
   font-size: 36px;
 }
 .stat-value {
-  font-size: 48px;
+  font-size: 64px;
   font-weight: bold;
   background-image: linear-gradient(90deg, #d0b1fa,#ad68ff 40%,#9d4dff);
   -webkit-background-clip: text;

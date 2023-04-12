@@ -28,8 +28,6 @@ const db = require('./db/database')
     let data = '';
     for (let i in filesHTML) {
         data = fs.readFileSync('../frontend/' + filesHTML[i]).toString();
-        length += data.split('\n').length;
-    }
     for (let i in filesCSS) {
         data = fs.readFileSync('../frontend/css/' + filesCSS[i]).toString();
         length += data.split('\n').length;

@@ -94,13 +94,16 @@ const open = ref(false)
 }
 .open-menu-block.close {
 }
+.open-menu--top, .open-menu--bottom {
+  transition: all 750ms cubic-bezier(0, 1, .15, 1);
+}
 .open-menu--top.close {
   transform: rotate(45deg) translateY(8px) ;
-  transition: all 750ms cubic-bezier(0, 1, .15, 1);;
+  transition: all 750ms cubic-bezier(0, 1, .15, 1);
 }
 .open-menu--bottom.close {
   transform: rotate(-45deg) translateY(-9px);
-  transition: all 750ms cubic-bezier(0, 1, .15, 1);;
+  transition: all 750ms cubic-bezier(0, 1, .15, 1);
 }
 .header-mobile-menu {
   display: flex;

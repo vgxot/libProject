@@ -10,7 +10,6 @@
 
 <style scoped>
 .app-button {
-  position: relative;
   border-radius: 20px;
   background-color: #1e1e1e;
   color: #ffffff;
@@ -24,6 +23,13 @@
   padding: 10px 20px;
   z-index: 1;
   margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .app-button:hover {
