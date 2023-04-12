@@ -1,90 +1,106 @@
+<script setup>
+import Register from "@/components/sections/register.vue";
+import Login from "@/components/sections/login.vue";
+import {ref} from "vue";
+import AppButton from "@/components/UI/buttons/app-button.vue";
+
+const regLog = ref(true)
+
+function auth(name, username, password) {
+  console.log(name.value, username.value, password.value)
+}
+function change() {
+  regLog.value = !regLog.value
+}
+</script>
+
 <template>
-  <div class="block-1">
+  <div class="auth">
     <div class="auth-block">
-      <form @submit.prevent="createUser" class="form-auth">
-        <p class="form-title">Регистрация</p>
-        <input type="text" class="form-input" id="username" placeholder="Никнейм" v-model="user.username">
-        <input type="text" class="form-input" id="name" placeholder="Имя" v-model="user.name">
-        <input type="password" class="form-input" id="password" placeholder="Пароль" v-model="user.password">
-        <div class="block-btn">
-          <app-button class="log-btn">Вход</app-button>
-          <app-button class="reg-btn" type="submit" :disabled="!canRegister">Регистрация</app-button>
-        </div>
-      </form>
+      <div class="auth-input-block">
+        <transition name="auth" mode="out-in">
+          <register v-if="regLog" @change="change"></register>
+          <login v-else @change="change"></login>
+        </transition>
+      </div>
+      <div class="auth-block-btn">
+
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-import AppButton from "@/components/UI/buttons/app-button.vue";
-
-export default {
-  components: {AppButton},
-  data() {
-    return {
-      user: {
-        username: '',
-        name: '',
-        password: ''
-      }
-    }
-  },
-  name: "auth"
+<style lang="scss">
+@use "@/assets/style/main.scss";
+.auth {
+  width: 100%;
+  height: 100vh;
+  background-image: url("@/assets/images/ooditwilight.webp");
+  background-size: cover;
 }
-</script>
+.auth-block {
+  height: max-content;
+  width: max-content;
+  padding: 25px;
+  display: flex;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  border-radius: 25px;
+  margin: auto;
+  background-color: #00000075;
+  @include main.blur;
+  flex-direction: column;
+  align-items: center;
+}
+.auth-input-block-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.auth-block-btn {
+  display: flex;
+}
 
-<style scoped>
-  .block-1 {
-    background-image: url("@/../images/vincent-guth-MAxHEAaAukI-unsplash.webp");
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-  }
-  .form-auth {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    min-width: 200px;
-    max-width: 500px;
-  }
-  .form-title {
-    margin-bottom: 15px;
-    font-size: 48px;
-    color: white;
-    text-align: center;
-  }
-  .auth-block {
-    margin: 0 auto;
-    padding: 150px 75px 75px 75px;
-  }
-  .form-input {
-    background: #1e1e1e;
-    color: #ffffff;
-    border: 0;
-    font-family: Inter, sans-serif;
-    padding: 5px 20px;
-    font-size: 20px;
-    border-radius: 17px;
-    outline: none;
-    height: 50px;
-    margin: 10px 0;
-    max-width: 500px;
-  }
-  .block-btn {
-    display: flex;
-  }
-  .log-btn {
-    margin: 25px auto 0 0;
-    background-color: rgba(0, 0, 0, 0.70);
-    backdrop-filter: blur(5px);
-  }
-  .reg-btn {
-    position: relative;
-    margin: 25px 0 0 auto;
-  }
-  @media only screen and (max-width: 734px) {
-    .auth-block {
-      padding: 100px 25px 25px;
-    }
-  }
+
+
+
+
+
+
+
+
+.form-input {
+  background-color: main.$dark;
+  color: main.$light;
+  border: 0;
+  margin: 10px;
+  padding: 5px 14px;
+  font-size: 24px;
+  border-radius: 1em;
+  outline: none;
+  height: 60px;
+  width: 350px;
+  text-indent: 15px;
+}
+.btn-block-side {
+  display: flex;
+  justify-content: space-between;
+}
+.auth-enter-active {
+  transition: all 500ms cubic-bezier(.2, 1, .15, 1);
+}
+
+.auth-leave-active {
+  transition: all 500ms cubic-bezier(1, 1, .15, 1);
+}
+
+.auth-enter-from {
+  opacity: 1;
+  transform: translateX(-150%);
+}
+
+.auth-leave-to {
+  opacity: 0;
+  transform: translateX(+150%);
+}
 </style>
