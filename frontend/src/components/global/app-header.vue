@@ -15,7 +15,14 @@ const open = ref(false)
     </div>
     <div class="header-mobile" :class="{hide: open}">
       <button class="header-mobile-link" name="button to open mobile menu" @click="open = !open">
-        <img class="link-img" src="@/assets/buttons/menu-open.svg" alt="">
+          <div class="open-menu-block" :class="{close: open}">
+            <svg class="open-menu--top" :class="{close: open}" width="24" height="2" viewBox="0 0 24 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.283333 1.71667C0.472222 1.90556 0.711111 2 1 2H23C23.2889 2 23.5278 1.90556 23.7167 1.71667C23.9056 1.52778 24 1.28889 24 1C24 0.711111 23.9056 0.472222 23.7167 0.283333C23.5278 0.0944446 23.2889 0 23 0H1C0.711111 0 0.472222 0.0944446 0.283333 0.283333C0.0944446 0.472222 0 0.711111 0 1C0 1.28889 0.0944446 1.52778 0.283333 1.71667Z" fill="white"/>
+            </svg>
+            <svg class="open-menu--bottom" :class="{close: open}" width="24" height="2" viewBox="0 0 24 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.283333 1.71667C0.472222 1.90556 0.711111 2 1 2H23C23.2889 2 23.5278 1.90556 23.7167 1.71667C23.9056 1.52778 24 1.28889 24 1C24 0.711111 23.9056 0.472222 23.7167 0.283333C23.5278 0.0944446 23.2889 0 23 0H1C0.711111 0 0.472222 0.0944446 0.283333 0.283333C0.0944446 0.472222 0 0.711111 0 1C0 1.28889 0.0944446 1.52778 0.283333 1.71667Z" fill="white"/>
+            </svg>
+          </div>
       </button>
       <router-link class="header-mobile-link" to="/" aria-label="main">
         <img class="link-img"  src="@/assets/buttons/library-mini-logo-white.svg" alt="">
@@ -45,7 +52,7 @@ const open = ref(false)
   background-color: #00000075;
   z-index: 3;
   backdrop-filter: blur(10px);
-  height: 70px;
+  height: 66px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -72,10 +79,28 @@ const open = ref(false)
 }
 .header-mobile-link {
   margin: auto 35px;
-  height: 42px;
+  display: flex;
 }
 .link-img {
   width: 42px;
+}
+.open-menu-block {
+  width: 42px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.open-menu-block.close {
+}
+.open-menu--top.close {
+  transform: rotate(45deg) translateY(8px) ;
+  transition: all 750ms cubic-bezier(0, 1, .15, 1);;
+}
+.open-menu--bottom.close {
+  transform: rotate(-45deg) translateY(-9px);
+  transition: all 750ms cubic-bezier(0, 1, .15, 1);;
 }
 .header-mobile-menu {
   display: flex;
