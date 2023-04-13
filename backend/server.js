@@ -6,8 +6,10 @@ const PORT = 3000;
 const path = require('path')
 const fs = require("fs");
 const date = require("./dateTime")
+const cookieParser = require('cookie-parser')
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
 app.use('/api', router)
 app.listen(PORT, () =>
