@@ -75,6 +75,13 @@ create table book_ratings
     constraint book_ratings_books__fk
         foreign key (book_id) references books (book_id)
 );
+create table tokens
+(
+    username varchar not null,
+    token    varchar,
+    constraint tokens___fk
+        foreign key (username) references users (username)
+);
 
 
 
