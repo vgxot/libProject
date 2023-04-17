@@ -88,19 +88,14 @@ class UserControl {
     async searchUsers(req, res) {
         let {query, sorting, sortColumn, limit} = req.body;
         console.log(req.body)
-        if (query === '*') {
-            let users = await db.query(`SELECT * FROM users ORDER BY ${sortColumn} ${sorting} LIMIT
-                            ${limit}`, [sortColumn, sorting])
-            users = JSON.stringify(users);
-            res.end(users)
-        }
-        else if (query.length > 3){
+        if (query.length > 3) {
             let users = await db.query(`SELECT * FROM users WHERE username LIKE $3 OR name LIKE $3 OR
                           role LIKE $3 ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting, query])
             users = JSON.stringify(users);
             res.end(users)
         } else {
-            let users = await db.query(`SELECT * FROM users ORDER BY username LIMIT 100`)
+            let users = await db.query(`SELECT * FROM users ORDER BY ${sortColumn} ${sorting} LIMIT
+              ${limit}`, [sortColumn, sorting])
             users = JSON.stringify(users);
             console.log(req.body)
             res.end(users)

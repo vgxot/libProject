@@ -1,5 +1,6 @@
 <script setup>
 import AppButton from "@/components/UI/buttons/app-button.vue";
+import $api from "@/http";
 import {onMounted, reactive, ref} from "vue";
 import FilterBlock from "@/components/sections/filter-block.vue";
 import UserItem from "@/components/sections/user-item.vue";
@@ -27,19 +28,22 @@ let values = ref([50, 100, 250])
 let elCount = reactive({count: 51})
 let limit = ref(50)
 let sorting = ref('DESC')
-let userQuery = ref('*')
+let userQuery = ref('')
 let items = reactive({data: []})
 
 onMounted(() => {
-  axios
-    .get(`http://127.0.0.1:3000/api/${ url }`)
+  $api.post(`/${ url }/search`, {
+    query: queryInput.value,
+    sorting: sorting.value,
+    sortColumn: sortColumn.value,
+    limit: limit.value
+  })
     .then((response) => {
       items.data = response.data
     })
 })
-function searchUsers() {
-  axios
-    .post(`http://127.0.0.1:3000/api/${ url }/search`, {
+function search() {
+  $api.post(`${ url }/search`, {
       query: queryInput.value,
       sorting: sorting.value,
       sortColumn: sortColumn.value,
@@ -87,7 +91,7 @@ function changeSort(val) {
     <form class="search-block">
       <div class="query-block">
         <input :placeholder="placeholder.count" class="input" type="search" v-model="queryInput">
-        <app-button @submit.prevent @click="searchUsers" type="submit" class="button-search">
+        <app-button @submit.prevent @click="search" type="submit" class="button-search">
           <p class="button-search-text">Найти</p>
           <img class="img-search" src="@/assets/buttons/search.svg" alt="search button">
         </app-button>
