@@ -3,15 +3,17 @@ const router = new Router()
 const userControl = require('../controls/userControl')
 const booksControl = require('../controls/booksControl')
 const other = require('../controls/other')
+const auth = require("../middlewares/auth")
 
 router.post('/user', userControl.createUser)
 router.delete('/user', userControl.deleteUser)
 router.post('/user/update', userControl.userBeAuthor)
 router.post('/user/login', userControl.loginUser)
-router.post('/user/logout', userControl.logoutUser)
-router.post('/user/refresh', userControl.refreshToken)
-router.post('/users/:id', userControl.getUser)
-router.post('/users/ratings/:id', userControl.getUserRatings)
+router.post('/user/logout', auth, userControl.logoutUser)
+router.get('/user/refresh', userControl.refreshToken)
+router.get('/user/account', auth, userControl.getAccount)
+router.get('/users/:id', userControl.getUser)
+router.get('/ratings/users/:id', userControl.getUserRatings)
 router.post('/users/search', userControl.searchUsers)
 
 router.post('/books/upload', booksControl.booksUpload)               // загрузка книги на сервер
@@ -19,7 +21,7 @@ router.get('/books/download', booksControl.booksDownload)               // за�
 router.get('/books', booksControl.books)               // получить книги
 router.post('/books/search', booksControl.booksSearch)               // поиск книги
 router.get('/books/:id', booksControl.bookInfo)               // получить данные о какой-то книге
-router.get('/genre/books/:id', booksControl.bookGenre)               // получить жанр книги
+router.get('/genre/books/:id', auth, booksControl.bookGenre)               // получить жанр книги
 router.get('/tags/books/:id', booksControl.bookTags)               // получить теги книги
 
 router.get('/statistics', other.statistics)               // получение статистики (beta)
