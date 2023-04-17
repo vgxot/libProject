@@ -3,7 +3,7 @@ const express = require('express')
 const router = require(__dirname + '/routes/routes')
 const app = express()
 const cors = require('cors')
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const path = require('path')
 const fs = require("fs");
 const date = require("./dateTime")
@@ -11,7 +11,10 @@ const cookieParser = require('cookie-parser')
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+}));
 app.use('/api', router)
 app.listen(PORT, () =>
     console.log(`сервер запущен. Порт ${PORT}`))
