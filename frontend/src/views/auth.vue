@@ -1,11 +1,19 @@
 <script setup>
 import Register from "@/components/sections/register.vue";
 import Login from "@/components/sections/login.vue";
-import {ref} from "vue";
+import router from "@/router";
+import {onMounted, ref} from "vue";
 import AppButton from "@/components/UI/buttons/app-button.vue";
 
 const regLog = ref(true)
 
+onMounted(() => {
+  if (localStorage.getItem('token') !== null) {
+    router.push({path: "/account"})
+  } else {
+    console.log('')
+  }
+})
 function auth(name, username, password) {
   console.log(name.value, username.value, password.value)
 }
@@ -35,8 +43,7 @@ function change() {
 .auth {
   width: 100%;
   height: 100vh;
-  background-image: url("@/assets/images/ooditwilight.webp");
-  background-size: cover;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);  background-size: cover;
 }
 .auth-block {
   height: max-content;

@@ -8,16 +8,20 @@
   const password = ref('')
   const emit = defineEmits(['change'])
   function register() {
-    axios
-      .post(`http://127.0.0.1:3000/api/register`, {
-        name: name.value,
-        username: username.value,
-        password: password.value
-      }).then((response) => {
-      console.log(response.data)
-    }).catch((reason) => {
-      console.log(reason)
-    })
+    if (name.value !== '' && username.value !== '' && password.value !== '') {
+      axios
+        .post(`http://127.0.0.1:3000/api/user`, {
+          name: name.value,
+          username: username.value,
+          password: password.value
+        }).then((response) => {
+        console.log(response.data)
+      }).catch((reason) => {
+        console.log(reason)
+      })
+    } else {
+      console.log('заполни все')
+    }
   }
   function changeAuth() {
     emit('change')
@@ -27,9 +31,9 @@
 <template>
     <form @submit.prevent class="auth-input-block-flex">
       <p class="fs-42 white">Регистрация</p>
-      <input class="form-input" autocomplete="name" placeholder="Имя" type="text" v-model="name">
-      <input class="form-input" placeholder="Никнейм" type="text" v-model="username">
-      <input class="form-input" placeholder="Пароль" type="password" v-model="password">
+      <input autocomplete="name" class="form-input" placeholder="Имя" type="text" v-model="name">
+      <input autocomplete="nickname" class="form-input" placeholder="Никнейм" type="text" v-model="username">
+      <input autocomplete="new-password" class="form-input" placeholder="Пароль" type="password" v-model="password">
       <div class="btn-block-side">
         <app-button @click="changeAuth">Уже есть аккаунт?</app-button>
         <app-button @click="register">Регистрация</app-button>
