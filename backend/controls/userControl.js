@@ -103,10 +103,9 @@ class UserControl {
     }
     async getUser(req, res) {
         let query = req.params.id;
-        console.log(query)
-        let user = await db.query(`SELECT * FROM users WHERE username=$1`, [query])
-        user = JSON.stringify(user)
-        res.end(user)
+        let user = await db.one(`SELECT (username, name, avatar_link, background_link) FROM users WHERE username=$1`, [query])
+        res
+          .json(user['row'].substr(1, user['row'].length -2).split(',')) // гигастринг ахаххаха
     }
     async getAccount(req, res) {
         const username = req.user['username']
