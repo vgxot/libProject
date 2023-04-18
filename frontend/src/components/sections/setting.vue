@@ -1,37 +1,56 @@
 <script setup>
 import AppButton from "@/components/UI/buttons/app-button.vue";
+import ButtonBuy from "@/components/UI/buttons/button-buy.vue";
+import router from "@/router";
 import {ref} from "vue";
 import PopUpBlock from "@/components/UI/pop-up-s/popUpBlock.vue";
-import axios from "axios";
+import $api from "@/http";
 
 const logoutAlert = ref(false)
+const deleteAlert = ref(false)
 const emit = defineEmits(['close'])
 
-
-
-
-
-
 function logout() {
+  $api.post(`/user/logout`)
+    .then((response) => {
+    if (response.status === 200) {
+      localStorage.removeItem('token')
+      router.push({path: "/auth"})
+    }
+  })
+}
+function deleteAccount() {
+
+}
+function cancel() {
+  logoutAlert.value = false
+  deleteAlert.value = false
 }
 </script>
 
 <template>
   <div class="setting">
     <transition name="ok">
-      <pop-up-block v-if="logoutAlert" class="alert-block">
-        <div class="white fs-32">Вы уверены, что хотите удалить аккаунт?</div>
+      <pop-up-block v-if="deleteAlert" class="alert-block">
+        <div class="white fs-32">Вы уверены, что хотите <span class="red-text bold">удалить</span> аккаунт?</div>
+        <div class="alert-btn-block">
+          <AppButton class="alert-button" type="button" @click="deleteAccount">Да</AppButton>
+          <AppButton class="alert-button" type="button" @click="cancel">Нет</AppButton>
+        </div>
+      </pop-up-block>
+      <pop-up-block v-else-if="logoutAlert" class="alert-block">
+        <div class="white fs-32">Вы уверены, что хотите <span class="red-text bold">выйти</span> из аккаунта?</div>
         <div class="alert-btn-block">
           <AppButton class="alert-button" type="button" @click="logout">Да</AppButton>
-          <AppButton class="alert-button" type="button" @click="logoutAlert = !logoutAlert">Нет</AppButton>
+          <AppButton class="alert-button" type="button" @click="cancel">Нет</AppButton>
         </div>
       </pop-up-block>
     </transition>
     <div class="setting-title fs-42">
       Настройки
-      <div class="setting-close" @click="emit('close')">
+      <button class="setting-close" @click="emit('close')">
         <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 26.1 13.5 36.6q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05L21.9 24 11.4 13.5q-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45L24 21.9l10.5-10.5q.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05L26.1 24l10.5 10.5q.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45-.6 0-1.05-.45Z" fill="blace"/></svg>
-      </div>
+      </button>
     </div>
     <div class="setting-block">
       <div class="block-left">
@@ -41,18 +60,18 @@ function logout() {
         </div>
         <div class="setting-section">
           <div class="setting-key">Сменить пароль</div>
-          <div class="setting-key">Выйти из аккаунта</div>
+          <button class="setting-key" @click="logoutAlert = !logoutAlert">Выйти из аккаунта</button>
         </div>
-          <div class="setting-key c4b80" @click="logoutAlert = !logoutAlert">Удалить аккаунт</div>
+          <button class="setting-key red-text" @click="deleteAlert = !deleteAlert">Удалить аккаунт</button>
       </div>
       <div class="block-right">
         <label class="input-file">
           <input id="qr-input-file" name="file" type="file">
-          <AppButton class="input-file-btn">Выбрать файл</AppButton>
+          <AppButton class="input-file-btn bkgd-dark">Выбрать файл</AppButton>
         </label>
         <label class="input-file">
           <input id="qr-input-file" name="file" type="file">
-          <AppButton class="input-file-btn">Выбрать файл</AppButton>
+          <AppButton class="input-file-btn bkgd-dark">Выбрать файл</AppButton>
         </label>
       </div>
     </div>
@@ -72,6 +91,8 @@ function logout() {
   display: flex;
   flex-direction: column;
   border-radius: 25px;
+  z-index: 2;
+  box-shadow: 0 0 20px 8px #1e1e1e;
 }
 .setting-title {
   text-align: center;
@@ -91,6 +112,7 @@ function logout() {
 .block-left {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .block-right {
   display: flex;
@@ -131,17 +153,17 @@ function logout() {
   background-color: #1e1e1e;
   align-items: center;
   justify-content: center;
+  max-width: 50%;
+  padding: 35px 35px 25px 35px;
 }
 .alert-btn-block {
   display: flex;
 }
 .alert-button {
   background-color: main.$gray;
-  margin: 25px 15px 0 15px;
+  margin: 25px 10px 0 15px;
 }
-.c4b80 {
-  color: #f52222;
-}
+
 
 
 
