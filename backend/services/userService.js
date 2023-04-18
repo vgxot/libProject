@@ -1,21 +1,21 @@
 const tokenService = require("./tokenService")
 const db = require("../db/database");
+const ApiError = require("../exceptions/apiError");
 
 class userService {
   async refresh(refreshToken) {
     if (!refreshToken) {
-      console.log(__filename)
+      return ApiError.UnauthorizedError();
     }
-    const userData = tokenService.validateRefreshToken(refreshToken);
+    let userData = tokenService.validateRefreshToken(refreshToken);
+    const username = userData.username
     const tokenFromDb = await tokenService.findToken(refreshToken);
     if (!userData || !tokenFromDb) {
-      console.log(__filename)
+      return ApiError.UnauthorizedError();
     }
-    const user = await db.query(`SELECT username FROM users WHERE username LIKE $1`, [userData.username])
-    const tokens = tokenService.generateTokens({user});
-
+    const tokens = tokenService.generateTokens({username});
     await tokenService.saveToken(userData.username, tokens.refreshToken);
-    return {...tokens, username: userData.username}
+    return {userData, tokens}
   }
   async logout(refreshToken) {
     await db.none('DELETE FROM tokens WHERE token LIKE $1', [refreshToken])

@@ -3,9 +3,8 @@ const jwt = require("jsonwebtoken");
 
 class tokenService {
   generateTokens(payload) {    // создает токен авторизации, берет секретный ключ и устанавливает время его жизни
-    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expiresIn: '30m'})
+    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expiresIn: '15s'})
     const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {expiresIn: '30d'})
-    console.log('a:', accessToken, '\nr:', refreshToken)
     return {
       accessToken,
       refreshToken
@@ -19,6 +18,7 @@ class tokenService {
       .catch(() => {
         console.log('токен не записан')
       });
+
   }
   refreshToken(payload) {
 
@@ -44,7 +44,7 @@ class tokenService {
   }
 
   async findToken(refreshToken) {
-
+    return await db.query(`SELECT * FROM tokens WHERE token LIKE $1`, [refreshToken])
   }
 }
 

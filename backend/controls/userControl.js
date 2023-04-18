@@ -52,6 +52,7 @@ class UserControl {
         hash = JSON.stringify(hash);
         hash = hash.substr(14, 60);         // выбирает чисто хэш из строки, upd: писал когда не умел работать с json
         if (crypt.compareSync(password, hash)) {
+            console.log(crypt.compareSync(password, hash))
             console.log(`Все круто, ${username} вошел`);
             const tokens = tokenService.generateTokens({username})
             await tokenService.saveToken(username, tokens.refreshToken);
@@ -59,10 +60,11 @@ class UserControl {
               .cookie('refreshToken', tokens.refreshToken, {maxAge: 2592000000, httpOnly: true})
               .json(tokens.accessToken)
               .end()
-        }
-        else {
+        } else {
             console.log('логин или пароль неверный')
-            res.end('false');
+            res
+              .status(409)
+              .end()
         }
     }
     async logoutUser(req, res) {
@@ -76,11 +78,9 @@ class UserControl {
     async refreshToken(req, res, next) {
         try {
             const {refreshToken} = req.cookies;
-            console.log("обновляю токен: ", refreshToken)
-            const userData = await userService.refresh(refreshToken);
-            console.log(userData)
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 2592000000, httpOnly: true})
-            return res.json(userData);
+            const data = await userService.refresh(refreshToken);
+            res.cookie('refreshToken', data.tokens.refreshToken, {maxAge: 2592000000, httpOnly: true})
+            return res.json(data.tokens.accessToken)
         } catch (e) {
             next(e);
         }
@@ -105,7 +105,7 @@ class UserControl {
         let query = req.params.id;
         console.log(query)
         let user = await db.query(`SELECT * FROM users WHERE username=$1`, [query])
-        user = JSON.stringify(user);
+        user = JSON.stringify(user)
         res.end(user)
     }
     async getAccount(req, res) {
@@ -117,7 +117,7 @@ class UserControl {
         let query = req.params.id;
         let ratings = await db.query(`SELECT usr.rating, bks.author, bks.book_name, bks.book_id, bks.photo_link
                                       FROM users_rating AS usr
-                                               JOIN books AS bks ON bks.book_id=usr.book_id WHERE usr.username=$1`, [query])
+                                      JOIN books AS bks ON bks.book_id=usr.book_id WHERE usr.username=$1`, [query])
         ratings = JSON.stringify(ratings);
         res.end(ratings)
     }

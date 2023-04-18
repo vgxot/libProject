@@ -11,8 +11,8 @@ module.exports = function (req, res, next) {
       return next(ApiError.UnauthorizedError());
     }
     const accessToken = authHeader.split(' ')[1];
-    if (!accessToken) {
-      console.log('пустой токен в header')
+    if (!accessToken || accessToken === 'undefined') {
+      console.log('пустой или неизвестный токен в header')
       return next(ApiError.UnauthorizedError());
     }
     const userData = tokenService.validateAccessToken(accessToken);
