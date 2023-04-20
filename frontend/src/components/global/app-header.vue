@@ -5,13 +5,13 @@ const open = ref(false)
 </script>
 
 <template>
-  <div class="app-header">
+  <div id="appheader" class="app-header">
     <div class="header-desktop">
       <router-link class="header-link" to="/">Главная</router-link>
       <router-link class="header-link" to="/books">Каталог</router-link>
       <router-link class="header-link" to="/users">Форум</router-link>
       <router-link class="header-link" to="/news">Новости</router-link>
-      <router-link class="header-link" to="/auth">Аккаунт</router-link>
+      <router-link class="header-link" to="/account">Аккаунт</router-link>
     </div>
     <div class="header-mobile" :class="{hide: open}">
       <button class="header-mobile-link" name="button to open mobile menu" @click="open = !open">
@@ -43,16 +43,13 @@ const open = ref(false)
   </div>
 </template>
 <style scoped>
-.app-header {
-
-}
 .header-desktop {
   position: fixed;
   width: 100%;
   background-color: #00000075;
   z-index: 3;
   backdrop-filter: blur(10px);
-  height: 66px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -69,7 +66,7 @@ const open = ref(false)
 }
 .header-link {
   color: white;
-  font-size: 28px;
+  font-size: 24px;
   margin: auto 10px;
   transition: 150ms ease-in;
 }
