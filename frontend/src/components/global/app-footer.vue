@@ -1,16 +1,23 @@
 <script setup>
+import {ref} from "vue";
 
+let show = ref(false)
+setTimeout(() => {
+  show.value = true
+}, 1500)
 </script>
 
 <template>
-  <div class="footer">
-    <img class="footer-block-logo" src="@/assets/buttons/library-mini-logo-white.svg" alt="logo">
-    <div class="footer-link-group">
-      <router-link class="footer-link fs-24" to="/statistics">Статистика сайта</router-link>
-      <router-link class="footer-link fs-24" to="/map">Карта сайта</router-link>
-      <router-link class="footer-link fs-24" to="/help">Помощь</router-link>
+  <div class="footer-block">
+    <div class="footer">
+      <img class="footer-block-logo" src="@/assets/buttons/library-mini-logo-white.svg" alt="logo">
+      <div class="footer-link-group">
+        <router-link class="footer-link fs-24" to="/statistics">Статистика сайта</router-link>
+        <router-link class="footer-link fs-24" to="/map">Карта сайта</router-link>
+        <router-link class="footer-link fs-24" to="/help">Помощь</router-link>
+      </div>
+      <div class="footer-copyright">© 2023 Library</div>
     </div>
-    <div class="footer-copyright">© 2023 Library</div>
   </div>
 </template>
 
@@ -53,13 +60,19 @@
   width: 150px;
 }
 @media only screen and (max-width: 734px) {
-.footer {
-  border-top-left-radius: 35px;
-  border-top-right-radius: 35px;
-  padding: 50px 20px 20px 20px;
-}
-.footer-copyright {
-  margin-top: 75px;
-}
+  .footer {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding: 50px 20px 20px 20px;
+  }
+  .footer-copyright {
+    margin-top: 35px;
+  }
+  .footer-block-logo {
+    width: 72px;
+  }
+  .footer-link {
+    font-size: 20px;
+  }
 }
 </style>
