@@ -1,5 +1,5 @@
-const books = require('./books_add.json')
-const db = require('./../db/database')
+const books = require('../books/books_add.json')
+const db = require('../../db/database')
 const {errors} = require("pg-promise");
 let k = -1;
 for (let i in books) {

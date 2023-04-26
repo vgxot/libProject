@@ -1,5 +1,5 @@
-const users = require('./users1.json')
-const db = require('./../db/database')
+const users = require('../users/users1.json')
+const db = require('../../db/database')
 const {errors} = require("pg-promise");
 let count = 0;
 let i = 0;

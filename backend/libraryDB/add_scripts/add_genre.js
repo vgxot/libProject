@@ -1,5 +1,5 @@
-const db = require('./../db/database')
-const books = require('./books_add.json')
+const db = require('../../db/database')
+const books = require('../books/books_add.json')
 // запись тегов - долгий процесс, у меня занял больше минуты
 count = 0;
 let j = 0;

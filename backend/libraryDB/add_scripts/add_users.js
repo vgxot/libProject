@@ -1,6 +1,6 @@
-const users = require('./users1.json')
+const users = require('../users/users1.json')
 const crypt = require("bcryptjs");
-const db = require('./../db/database')
+const db = require('../../db/database')
 const {errors} = require("pg-promise");
 function date() {
     return new Date().toISOString().slice(0, 10)
