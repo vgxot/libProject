@@ -27,7 +27,7 @@ const open = ref(false)
       <router-link class="header-mobile-link" to="/" aria-label="main">
         <img class="link-img"  src="@/assets/buttons/library-mini-logo-white.svg" alt="">
       </router-link>
-      <router-link class="header-mobile-link" to="/auth" aria-label="account">
+      <router-link class="header-mobile-link" to="/account" aria-label="account">
         <img class="link-img" src="@/assets/buttons/account.svg" alt="">
       </router-link>
     </div>
@@ -37,7 +37,7 @@ const open = ref(false)
         <router-link class="header-link" @click="open =!open" to="/books">Каталог</router-link>
         <router-link class="header-link" @click="open =!open" to="/users">Форум</router-link>
         <router-link class="header-link" @click="open =!open" to="/news">Новости</router-link>
-        <router-link class="header-link" @click="open =!open" to="/auth">Аккаунт</router-link>
+        <router-link class="header-link" @click="open =!open" to="/account">Аккаунт</router-link>
       </div>
     </transition>
   </div>
