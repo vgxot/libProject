@@ -35,22 +35,10 @@ class bookControl {
         let query = parseInt(req.params.id);
         console.log(`ищем книгу с id: ${query}`)
         let book = await db.query(`SELECT * FROM books WHERE book_id=$1`, [query])
-        book = JSON.stringify(book);
-        res.end(book)
-    }
-    async bookGenre(req, res) {
-        let query = parseInt(req.params.id);
-        console.log(`ищем жанры для книги с id: ${query}`)
         let genre = await db.query(`SELECT genre FROM books_genre WHERE book_id=$1`, [query])
-        genre = JSON.stringify(genre);
-        res.end(genre)
-    }
-    async bookTags(req, res) {
-        let query = parseInt(req.params.id);
-        console.log(`ищем теги для книги с id: ${query}`)
         let tags = await db.query(`SELECT tags FROM books_tags WHERE book_id=$1`, [query])
-        tags = JSON.stringify(tags);
-        res.end(tags)
+        const test = [book, genre, tags]
+        res.json(test)
     }
     async booksUpload(req, res) {
 

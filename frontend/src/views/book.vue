@@ -1,4 +1,36 @@
+<script setup>
+import Ratings from "@/components/UI/pop-up-s/ratings.vue";
+import ButtonBuy from "@/components/UI/buttons/button-buy.vue";
+import $api, {apiUrl} from "@/http";
+import axios from "axios";
+import {onMounted, ref} from "vue";
+
+let book = ref([])
+let genres = ref([])
+let tags = ref([])
+let ratingShow = ref(false)
+
+onMounted( async ()=> {
+  const id = window.location.pathname.split('/')[2]
+  await $api.get(`${apiUrl}/books/info/${id}`)
+    .then((response) => {
+      console.log(id)
+      book.value = response.data[0][0]
+      genres.value = response.data[1][0]
+      tags.value = response.data[2][0]
+    })
+})
+
+function ratingOpen() {
+  ratingShow.value = !ratingShow.value
+}
+function downloadBook() {
+  console.log('загружаю книгу')
+}
+</script>
+
 <template>
+  <div class="book">
     <div class="block-1">
       <div class="block-book">
         <div class="book-block-image">
@@ -6,28 +38,11 @@
         </div>
         <div class="book-about">
           <div class="book-title">{{ book.book_name }}</div>
-<!--          <index-link class="book-name text" :to="suthor"></index-link> тут будет ссылка на книги автора-->
           <div class="book-author">{{book.author}}</div>
-          <div class="book-rating">
+          <div class="book-rating" @click="ratingOpen">
             <p>{{ book.rating }}</p>
-            <svg class="rating-star-svg" width="17" height="16" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.75291 13.8242L8.5 11.6142L12.2471 13.8477L11.2447 9.66284L14.5383 6.84157L10.1945
-               6.4654L8.5 2.51563L6.80546 6.44189L2.46169 6.81806L5.75531 9.63933L4.75291 13.8242ZM8.5 13.26L4.06077
-                15.8931C3.93348 15.9715 3.79823 16.0068 3.65503 15.9989C3.51183 15.9911 3.38454 15.948 3.27316
-                 15.8696C3.16179 15.7913 3.07825 15.6894 3.02256 15.564C2.96687 15.4386 2.95494 15.2975 2.98676
-                  15.1408L4.15624 10.1566L0.242078 6.79455C0.114788 6.68483 0.0392098 6.56336 0.0153429
-                   6.43014C-0.00852388 6.29691 -0.00454603 6.1676 0.0272764 6.04221C0.0590988 5.91682 0.130699
-                    5.81103 0.242078 5.72482C0.353456 5.63861 0.488702 5.58768 0.647814 5.572L5.82691 5.1253L7.83173
-                     0.42319C7.89537 0.282126 7.99084 0.176329 8.11813 0.105797C8.24542 0.0352656 8.37271 0 8.5
-                      0C8.62729 0 8.75458 0.0352656 8.88187 0.105797C9.00916 0.176329 9.10462 0.282126 9.16827
-                       0.42319L11.1731 5.1253L16.3522 5.572C16.5113 5.58768 16.6465 5.63861 16.7579 5.72482C16.8693
-                        5.81103 16.9409 5.91682 16.9727 6.04221C17.0045 6.1676 17.0085 6.29691 16.9847 6.43014C16.9608
-                         6.56336 16.8852 6.68483 16.7579 6.79455L12.8438 10.1566L14.0132 15.1408C14.0451 15.2975
-                          14.0331 15.4386 13.9774 15.564C13.9217 15.6894 13.8382 15.7913 13.7268 15.8696C13.6155
-                           15.948 13.4882 15.9911 13.345 15.9989C13.2018 16.0068 13.0665 15.9715 12.9392 15.8931L8.5
-                            13.26Z" fill="#B3FF66"/>
-            </svg>
-<!--            <rating-block></rating-block> а тут будет блок с рейтингом, открывающийся по нажатию на рейтинг-->
+            <img width="24" src="@/assets/buttons/starADF.svg" alt="">
+            <ratings v-if="ratingShow"></ratings>
           </div>
           <button-buy v-on:click="downloadBook" class="book-get">Скачать</button-buy>
           <div class="book-description">Описание
@@ -67,68 +82,14 @@
         </div>
       </div>
     </div>
+  </div>
 </template>
 
-<script>
-import buttonBuy from "@/components/UI/buttons/button-buy.vue";
-import axios from 'axios'
-import RatingBlock from "@/components/sections/rating-block.vue";
-
-export default {
-  data() {
-    return {
-      book: [],
-      genres: [],
-      tags: []
-    }
-  },
-  async mounted() {
-    let url = window.location.pathname
-    await axios
-        .get(`http://127.0.0.1:3000/api${url}`)
-        .then((response) => {
-          this.book = response.data[0]
-        })
-    await axios
-        .get(`http://127.0.0.1:3000/api/genre${url}`)
-        .then((response) => {
-          this.genres = response.data
-          console.log(response.data)
-        })
-    await axios
-        .get(`http://127.0.0.1:3000/api/tags${url}`)
-        .then((response) => {
-          this.tags = response.data
-          console.log(response.data)
-        })
-  },
-  methods: {
-    downloadBook() {
-      // console.log('Загружаю книгу')
-      // axios
-      //     .get(`http://127.0.0.1:3000/book/get`)
-    },
-
-  },
-  components: {
-    RatingBlock,
-    buttonBuy
-  },
-  name: "book"
-}
-
-
-</script>
-
 <style scoped>
-body {
-  background: #404040;
-}
 .block-1 {
   display: flex;
   height: 100vh;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding: 50px 100px;
   background-color: #1e1e1e;
   margin: 0 auto;
   min-width: 750px;
@@ -307,7 +268,7 @@ body {
     width: 70px;
   }
   .book-rating p {
-    font-size: 24px;
+    font-size: 32px;
     color: #B3FF66;
   }
   .rating-star-svg {
@@ -340,6 +301,10 @@ body {
     padding: 30px;
     display: block;
     height: auto;
+  }
+  .about-block-genre {
+    padding: 15px;
+    width: 85%;
   }
   .about-block-additional {
     height: 190px;
