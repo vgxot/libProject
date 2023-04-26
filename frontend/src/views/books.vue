@@ -12,11 +12,5 @@ const page = 'books'
 </template>
 
 <style lang="scss" scoped>
-@use "@/assets/style/main.scss";
-.items {
-    @include main.wrap;
-    height: max-content;
-    width: 100%;
-    background-color: main.$gray;
-}
+
 </style>

@@ -36,7 +36,7 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
           <img class="section-img" src="@/assets/images/arch.webp" alt="">
             <p class="section-description fs-24">Library - это поразительное здание с его стеклянными и стальными конструкциями
               и деревянным фасадом, в его дизайне сочетаются традиционные и современные вкусы</p>
-          <app-button>
+          <app-button class="bkgd-dark">
             <router-link to="/architecture">подробнее</router-link>
           </app-button>
         </div>
@@ -45,7 +45,7 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
           <img class="section-img" src="@/assets/images/art-oodi-main-max.webp" alt="">
           <p class="section-description fs-24">В дополнение к плавной архитектуре, посетители могут полюбоваться
             произведениями современного искусства. Приходите посмотреть на увлекательные произведения в Library!</p>
-          <app-button>
+          <app-button class="bkgd-dark">
             <router-link to="/art">подробнее</router-link>
           </app-button>
         </div>
@@ -54,7 +54,7 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
           <img class="section-img" src="@/assets/images/architectureoodi-mobile.webp" alt="">
           <p class="section-description fs-24">Library - это не просто библиотека. Это место для развлечений и досуга,
             место для встреч и конечно чтения. Посмотрите что Library может вам предложить</p>
-          <app-button>
+          <app-button class="bkgd-dark">
             <router-link to="/services">подробнее</router-link>
           </app-button>
         </div>

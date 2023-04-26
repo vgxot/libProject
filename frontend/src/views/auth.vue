@@ -10,8 +10,9 @@ const regLog = ref(true)
 onMounted(() => {
   if (localStorage.getItem('token') !== null) {
     router.push({path: "/account"})
+    console.log('токен есть')
   } else {
-    console.log('')
+    console.log('токена нет, войдите')
   }
 })
 function auth(name, username, password) {

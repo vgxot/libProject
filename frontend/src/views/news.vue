@@ -1,12 +1,12 @@
-<template>
+<script setup>
 
-</template>
-
-<script>
-export default {
-  name: "news"
-}
 </script>
+
+<template>
+  <div class="news">
+
+  </div>
+</template>
 
 <style scoped>
 

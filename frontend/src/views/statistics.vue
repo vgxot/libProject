@@ -1,17 +1,19 @@
 <template>
-  <div class="title">
-    <h1 class="title-text text">Статистика</h1>
-  </div>
-  <div class="stat">
-    <stat-item
-        v-for="stat in stats"
-        :key="stat.value"
-        v-bind:stat="stat">
-    </stat-item>
-  </div>
-  <div class="bottom">
-    <p class="actual-text text">Данные актуальны на<br>
-      <span class="datetime">{{ datetime }}</span></p>
+  <div class="statistics">
+    <div class="title">
+      <h1 class="title-text text">Статистика</h1>
+    </div>
+    <div class="stat">
+      <stat-item
+          v-for="stat in stats"
+          :key="stat.value"
+          v-bind:stat="stat">
+      </stat-item>
+    </div>
+    <div class="bottom">
+      <p class="actual-text text">Данные актуальны на<br>
+        <span class="datetime">{{ datetime }}</span></p>
+    </div>
   </div>
 </template>
 
