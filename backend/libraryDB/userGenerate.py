@@ -1,7 +1,7 @@
 import json
 import random
 
-# рандом используется обычный, не криптографический, для правильного рандом нужно использовать библиотеку secrets
+# рандом используется обычный, не криптографический, для правильного рандома нужно использовать библиотеку secrets
 
 def random_rating():    # распределение вероятности по оценке
     if float(books[book_id]['rating']) >= 4.9:
@@ -87,7 +87,7 @@ for i in range(multiplier):
         usernames.append(username)
         name = names[random.randrange(len(names))]  # создает имя
         password = ''
-        avatar_link = random.randrange(16)
+        avatar_link = random.randrange(4)
         background_link = avatar_link
         for _ in range(33):  # генерирует пароль
             password += random.choice(chars)

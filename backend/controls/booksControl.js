@@ -19,7 +19,7 @@ class bookControl {
     async booksSearch(req, res) {
         let {query, sorting, sortColumn, limit} = req.body;
         console.log(req.body)
-        if (query.length > 3) {
+        if (query.length > 0) {
             let books = await db.query(`SELECT * FROM books WHERE author LIKE $3
                         OR book_name LIKE $3 OR year LIKE $3 ORDER BY ${sortColumn} ${sorting} LIMIT ${limit}`, [sortColumn, sorting, query])
             books = JSON.stringify(books);

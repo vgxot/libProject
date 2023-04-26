@@ -184,9 +184,9 @@ def write_books():
             print(book_name, author, popularity, rating, genre, tags, one, two, three, four, five, info_age, volume, info_year, isbn, "\n", description)
 
             print(f'записали книгу номер', count)
-            # with open(f'books.json', "a", encoding="utf-8") as json_file:
-            #     json.dump(books, json_file, ensure_ascii=False)
-            # successfully += 1
+             with open(f'books.json', "a", encoding="utf-8") as json_file:
+                 json.dump(books, json_file, ensure_ascii=False)
+             successfully += 1
 
         except Exception as ex:
             print(f'какая-то ошибка в коде страницы, ссылка: {links[count]}')

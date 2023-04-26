@@ -1,9 +1,9 @@
 create table books
 (
     book_id     serial,
-    book_name   varchar not null, -- использую почти везде varchar, так как не все данные на своих местах
-    author      varchar not null, -- в основном проблема с годом выхода книги
-    isbn        varchar not null, -- на литрес его иногда нет, а я решил что у меня он будет
+    book_name   varchar not null,
+    author      varchar not null,
+    isbn        varchar not null,
     pages       varchar not null,
     year        varchar not null,
     age         varchar not null,
@@ -34,7 +34,6 @@ create table users
     name            varchar not null,
     password        varchar not null,
     role            varchar not null,
-    token           varchar,
     reg_date        varchar not null,
     reg_time        varchar not null,
     avatar_link     varchar not null,
@@ -55,12 +54,19 @@ create table users_rating
 
 comment on column users_rating.rating is 'пользовательская оценка книги от 1 до 5';
 
-create table authors
+create table author_books
 (
     username varchar not null,
     book_id  integer not null,
     constraint book___fk
         foreign key (book_id) references books (book_id),
+    constraint username___fk
+        foreign key (username) references users (username)
+);
+create table author
+(
+    username varchar not null,
+    pseudonym  varchar not null,
     constraint username___fk
         foreign key (username) references users (username)
 );
@@ -82,6 +88,3 @@ create table tokens
     constraint tokens___fk
         foreign key (username) references users (username)
 );
-
-
-

@@ -19,8 +19,6 @@ app.use('/api', router)
 app.listen(PORT, () =>
     console.log(`сервер запущен. Порт ${PORT}`))
 
-
-
 app.get(`/img/book/min/:id`, function (req, res) {
     let book_id = req.params.id
     res.sendFile(__dirname + `/img/books/360p/${book_id}`);
@@ -33,9 +31,6 @@ app.get(`/img/book/max/:id`, function (req, res) {
     let book_id = req.params.id
     res.sendFile(__dirname + `/img/books/2160p/${book_id}`);
 });
-
-
-
 app.get(`/book/get`, function (req, res) {
     let book_id = req.params.id
     let file = `${__dirname}/libraryDB/book.txt`
@@ -43,9 +38,9 @@ app.get(`/book/get`, function (req, res) {
 });
 app.get(`/img/user/:id`, function (req, res) {
     let id = req.params.id
-    res.sendFile(__dirname + `/img/users/avatars/${id}.jpg`);
+    res.sendFile(__dirname + `/img/users/avatars/${id}.webp`);
 });
 app.get(`/img/background/:id`, function (req, res) {
     let id = req.params.id
-    res.sendFile(__dirname + `/img/users/backgrounds/${id}.jpg`);
+    res.sendFile(__dirname + `/img/users/backgrounds/${id}.webp`);
 });
