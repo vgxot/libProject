@@ -31,10 +31,10 @@ import AppHeader from "@/components/global/app-header.vue";
   opacity: 1;
 }
 .fade-leave-active {
-  transition: all 150ms;
+  transition: all 210ms;
 }
 .fade-leave-to {
-  opacity: 0;
+  opacity: .1;
 }
 
 .right-enter-from {
