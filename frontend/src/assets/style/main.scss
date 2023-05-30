@@ -55,6 +55,7 @@ body {
 button {
   background-color: rgba(0, 0, 0, 0);
   padding: 0;
+  cursor: pointer;
 }
 .mrg-25 {
   margin: 25px 0;
@@ -107,7 +108,21 @@ button {
 .white {
   color: white;
 }
-
+.red-text {
+  color: #ea1b1b;
+}
+.bkgd-gray {
+  background-color: $gray;
+}
+.bkgd-gray:hover {
+  background-color: #606060;
+}
+.bkgd-dark {
+  background-color: $dark;
+}
+.bkgd-dark:hover {
+  background-color: #282828;
+}
 .clr-bkdp {
   color: transparent;
   -webkit-background-clip: text;
