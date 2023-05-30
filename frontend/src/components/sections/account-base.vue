@@ -3,13 +3,17 @@ import BookItemRating from "@/components/sections/book-item-rating.vue";
 import $api from "@/http";
 import {gsap} from "gsap";
 import {onMounted, reactive, ref, watch} from "vue";
-const props = defineProps({userData: 'userData', username: 'username'})
+const props = defineProps({username: 'username'})
+
+console.log(props.username)
+
 const userData = ref([])
 let ratings = ref([])
 let openRatings = ref(false)
 let username = ref('')
 let countMarks = reactive({number: 1})
 const number = ref(1)
+
 watch(number, (n) => {
   gsap.to(countMarks, {duration: 2, number: Number(n) || 0})
 })
@@ -17,17 +21,16 @@ watch(number, (n) => {
 onMounted(() => {
   $api.get(`/users/${props.username}`)
     .then((response) => {
-      userData.value = response.data
-      console.log(userData.value[0])
-
+      userData.value = JSON.parse(response.data)
     })
-  $api.get(`/ratings/${props.username}`)
+  $api.get(`/ratings/users/${props.username}`)
     .then((response) => {
       ratings.value = response.data
       let count = 0
       for (let i in response.data) {
         count += 1
       }
+      console.log(props.username)
       number.value += count
     })
 })
@@ -38,11 +41,11 @@ onMounted(() => {
 <template>
   <div class="user">
     <div class="user-header">
-      <img class="user-header-background" :src="'http://127.0.0.1:3000/img/background/' + userData[3]" alt="">
+      <img class="user-header-background" :src="'http://127.0.0.1:3000/img/background/' + userData.background_link" alt="">
       <div class="user-header-pre-block">
         <div class="user-header-block">
-          <img class="user-header-avatar" :src="'http://127.0.0.1:3000/img/user/' + userData[2]" alt="">
-          <div class="header-block-username fs-32">{{userData[0]}}</div>
+          <img class="user-header-avatar" :src="'http://127.0.0.1:3000/img/user/' + userData.avatar_link" alt="">
+          <div class="header-block-username fs-32">{{userData.username}}</div>
           <slot name="setting"/>
         </div>
       </div>
@@ -59,7 +62,7 @@ onMounted(() => {
         </svg>
       </button>
       <transition-group name="filter">
-        <div key="0"
+        <div key="1"
              v-if="openRatings"
              class="block-2-for-rating">
           <book-item-rating
@@ -69,11 +72,9 @@ onMounted(() => {
           >
           </book-item-rating>
         </div>
-        <div key="1"
-             class="block-2-other">
-        </div>
+        <div key="2" class="saca">fdsfsdf</div>
+        <slot key="3" name="datetime"/>
       </transition-group>
-      <slot name="datetime"/>
     </div>
   </div>
 </template>
@@ -84,7 +85,14 @@ onMounted(() => {
 .user {
   background-color: #dadada;
 }
-
+.saca {
+  width: 100%;
+  background-color: white;
+  height: max-content;
+  border-radius: 25px;
+  padding: 25px;
+  box-sizing: border-box;
+}
 .block-0 {
   width: 100%;
   height: 90px;
@@ -120,7 +128,7 @@ onMounted(() => {
   background-color: white;
   border-radius: 25px;
   height: 150px;
-  padding: 15px;
+  padding-bottom: 15px;
 }
 .user-header-block {
   height: 100%;
@@ -149,7 +157,7 @@ onMounted(() => {
   border-radius: 20px;
   margin-bottom: 15px;
   padding: 15px 25px;
-  @include main.flex(center);
+  @include main.flex(row);
   justify-content: space-between;
   width: 60%;
   color: black;
@@ -177,12 +185,12 @@ onMounted(() => {
 .block-2-other {
 
 }
-.filter-enter-active,
-.filter-leave-active {
-  transition: all 750ms ease;
+.filter-move,
+.filter-enter-active {
+  transition: all 0.5s ease;
 }
-.filter-move {
-  transition: all 500ms ease;
+.filter-leave-active {
+  transition: all 0.45s ease-out;
 }
 .filter-enter-from,
 .filter-leave-to {
@@ -191,17 +199,22 @@ onMounted(() => {
 .filter-leave-active {
   position: absolute;
   top: 200px;
-  transition: 500ms;
 }
 @media only screen and (max-width: 734px) {
   .block-2 {
-    padding: 25px 15px;
+    padding: 5px 15px;
+  }
+  .block-2-title {
+    width: 100%;
   }
   .header-block-username {
     font-size: 24px !important;
   }
   .user-header-pre-block {
-    width: 80%;
+    width: 100%;
+  }
+  .block-2-for-rating {
+    width: 50%;
   }
 }
 </style>

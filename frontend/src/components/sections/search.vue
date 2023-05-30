@@ -91,11 +91,11 @@ function changeSort(val) {
     <form class="search-block">
       <div class="query-block">
         <input :placeholder="placeholder.count" class="input" type="search" v-model="queryInput">
-        <app-button @submit.prevent @click="search" type="submit" class="button-search">
+        <app-button @submit.prevent @click="search" type="submit" class="button-search bkgd-dark">
           <p class="button-search-text">Найти</p>
           <img class="img-search" src="@/assets/buttons/search.svg" alt="search button">
         </app-button>
-        <app-button @click="openFilter = !openFilter" class="open-sort-block">Фильтр
+        <app-button @click="openFilter = !openFilter" class="open-sort-block bkgd-dark">Фильтр
           <svg class="sort-button-img" width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.9743 12.3906C10.7982 12.3906 10.6368 12.3613 10.49 12.3026C10.3432 12.2439
              10.1964 12.1411 10.0497 11.9944L1.33153 3.27621C1.0967 3.04138 0.986618 2.72583 1.0013
@@ -109,6 +109,9 @@ function changeSort(val) {
         </app-button>
       </div>
     </form>
+    <app-button @click="openFilter = !openFilter" class="bkgd-dark open-sort-block-mobile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 960 960"><path d="M430 816q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T430 756h100q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T530 816H430ZM150 396q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T150 336h660q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T810 396H150Zm120 210q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T270 546h420q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T690 606H270Z" fill="white"/></svg>
+    </app-button>
     <transition-group name="filter">
       <filter-block
           key="0"
@@ -183,6 +186,9 @@ function changeSort(val) {
   }
   .items {
     @include main.wrap;
+    height: max-content;
+    width: 100%;
+    min-height: 90vh;
   }
   .filter-move,
   .filter-enter-active,
@@ -216,17 +222,22 @@ function changeSort(val) {
     opacity: 0;
   }
   .items-move {
-
   }
-
+  .open-sort-block-mobile {
+    display: none;
+    margin-left: 35px;
+    border-radius: 35px;
+    padding: 12px;
+  }
   .open-sort-block {
     height: 40px;
+    margin-left: 15px;
   }
   @media only screen and (max-width: 734px) {
     .input{
       width: 265px;
     }
-    .button-search-text {
+    .button-search-text, .open-sort-block {
       display: none;
     }
     .button-search {
@@ -236,7 +247,7 @@ function changeSort(val) {
       padding: 0;
     }
     .img-search {
-      display: block;
+      display: flex;
     }
   }
 </style>

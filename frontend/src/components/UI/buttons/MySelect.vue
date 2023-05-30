@@ -1,8 +1,8 @@
 <template>
   <select class="select-block">
-    <option disabled value="">Популярности</option>
-    <option disabled value="">Дате написания</option>
-    <option disabled value="">Количеству страниц</option>
+    <option class="option" disabled value="">Популярности</option>
+    <option class="option" disabled value="">Дате написания</option>
+    <option class="option" disabled value="">Количеству страниц</option>
   </select>
 </template>
 
@@ -21,5 +21,10 @@ export default {
   width: 250px;
   height: 60px;
 }
-
+.option {
+  background-color: #1E1E1E;
+  padding: 5px;
+  border: 0;
+  color: white;
+}
 </style>

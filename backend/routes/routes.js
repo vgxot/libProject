@@ -20,9 +20,7 @@ router.post('/books/upload', booksControl.booksUpload)               // загр
 router.get('/books/download', booksControl.booksDownload)               // загрузка книги с сервера
 router.get('/books', booksControl.books)               // получить книги
 router.post('/books/search', booksControl.booksSearch)               // поиск книги
-router.get('/books/:id', booksControl.bookInfo)               // получить данные о какой-то книге
-router.get('/genre/books/:id', auth, booksControl.bookGenre)               // получить жанр книги
-router.get('/tags/books/:id', booksControl.bookTags)               // получить теги книги
+router.get('/books/info/:id', booksControl.bookInfo)               // получить данные о какой-то книге
 
 router.get('/statistics', other.statistics)               // получение статистики (beta)
 router.get('/datetime', other.dateTime)

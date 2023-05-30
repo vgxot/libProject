@@ -18,11 +18,13 @@ class userService {
     return {userData, tokens}
   }
   async logout(refreshToken) {
-    await db.none('DELETE FROM tokens WHERE token LIKE $1', [refreshToken])
+    await db.none('UPDATE tokens SET token = null WHERE token LIKE $1', [refreshToken])
       .then(() => {
         console.log('пользователь разлогинился')
       })
   }
+
+
 }
 
 module.exports = new userService()

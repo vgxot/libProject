@@ -88,7 +88,7 @@ function activeCC() {
           </div>элементов
       </div>
     </div>
-    <app-button class="sort-button" @click="sortFunction">
+    <app-button class="az-button bkgd-dark" @click="sortFunction">
       <transition name="sort">
         <svg :class="{up: sort.count, down: sort.count}" class="sort-button-img" fill="none" height="13"
              viewBox="0 0 22 13"
@@ -178,5 +178,11 @@ function activeCC() {
 
 .down {
   rotate: 180deg;
+}
+
+.az-button {
+  height: 30px;
+  width: 30px;
+  padding: 10px;
 }
 </style>

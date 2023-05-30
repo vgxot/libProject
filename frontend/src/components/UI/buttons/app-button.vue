@@ -11,7 +11,6 @@
 <style scoped>
 .app-button {
   border-radius: 20px;
-  background-color: #1e1e1e;
   color: #ffffff;
   text-align: center;
   cursor: pointer;
@@ -29,11 +28,9 @@
   -ms-user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  user-select: none;
 }
 
 .app-button:hover {
-  background-color: #313131;
   transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 }
 </style>

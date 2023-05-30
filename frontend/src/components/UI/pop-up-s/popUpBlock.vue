@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  width: 75%;
+  width: 100%;
   height: 400px;
   margin: auto;
   top: 0;

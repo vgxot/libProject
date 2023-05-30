@@ -3,11 +3,6 @@ const stat = require('../stat/stat.json');
 const fs = require("fs");
 const date = require("../dateTime");
 
-
-// пока что все эти функции на каждую книгу отправляют всю строку из бд, сделано это из-за удобства парсинга json
-// в скором времени сделаю так, чтобы запрашивалась и отправлялась только нужная информация
-
-
 class bookControl {
     async books(req, res) {
         let limit = 50;

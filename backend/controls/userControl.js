@@ -103,9 +103,8 @@ class UserControl {
     }
     async getUser(req, res) {
         let query = req.params.id;
-        let user = await db.one(`SELECT (username, name, avatar_link, background_link) FROM users WHERE username=$1`, [query])
-        res
-          .json(user['row'].substr(1, user['row'].length -2).split(',')) // гигастринг ахаххаха
+        let user = await db.one(`SELECT username, name, avatar_link, background_link FROM users WHERE username=$1`, [query])
+        res.json(JSON.stringify(user))
     }
     async getAccount(req, res) {
         const username = req.user['username']
@@ -117,8 +116,7 @@ class UserControl {
         let ratings = await db.query(`SELECT usr.rating, bks.author, bks.book_name, bks.book_id, bks.photo_link
                                       FROM users_rating AS usr
                                       JOIN books AS bks ON bks.book_id=usr.book_id WHERE usr.username=$1`, [query])
-        ratings = JSON.stringify(ratings);
-        res.end(ratings)
+        res.end(JSON.stringify(ratings))
     }
     async userBeAuthor(req, res) {
         const {username} = req.body;

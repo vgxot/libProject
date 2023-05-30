@@ -51,7 +51,7 @@ import AppButton from "@/components/UI/buttons/app-button.vue";
         </div>
         <div class="body-section">
           <p class="section-title fs-64 clr-bkdp color-serv">Услуги</p>
-          <img class="section-img" src="@/assets/images/architectureoodi-mobile.webp" alt="">
+          <img class="section-img" src="@/assets/images/services2.webp" alt="">
           <p class="section-description fs-24">Library - это не просто библиотека. Это место для развлечений и досуга,
             место для встреч и конечно чтения. Посмотрите что Library может вам предложить</p>
           <app-button class="bkgd-dark">
